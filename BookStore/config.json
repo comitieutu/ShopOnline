@@ -1,0 +1,10 @@
+{
+  "ConnectionStrings": {
+    "BookConnectionString": "server=(localdb)\\ProjectsV13;Database=BookDb; Integrated Security=true; MultipleActiveResultSets = true;"
+  },
+  "Logging": {
+    "LogLevel": {
+      "Default": "Warning"
+    }
+  }
+}

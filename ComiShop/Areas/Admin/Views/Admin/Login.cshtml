@@ -1,0 +1,38 @@
+﻿@model LoginViewModel
+<div class="main-content">
+    <div id="page-wrapper">
+        <div class="main-page login-page ">
+            <h3 class="title1">SignIn Page</h3>
+            <div class="widget-shadow">
+                <div class="login-top">
+                    <h4>Comi Admin ! <br> Not a Member? <a href="signup.html">  Sign Up »</a> </h4>
+                </div>
+                <div class="login-body">
+                    <form>
+                        <div asp-validation-summary="ModelOnly"></div>
+                        <input asp-for="UserName" type="text" class="user" name="email" placeholder="Enter your email" required="">
+                        <span asp-validation-for="UserName" class="text-warning"></span>
+                        <input asp-for="Password" type="password" name="password" class="lock" placeholder="password">
+                        <span asp-validation-for="Password" class="text-warning"></span>
+                        <input type="submit" name="Sign In" value="Sign In">
+                        <div class="forgot-grid">
+                            <label asp-for="RememberMe" class="checkbox"><input asp-for="RememberMe" type="checkbox" name="checkbox" checked=""><i></i>Remember me</label>
+                            <span asp-validation-for="RememberMe" class="text-warning"></span>
+                            <div class="forgot">
+                                <a href="#">forgot password?</a>
+                            </div>
+                            <div class="clearfix"> </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="login-page-bottom">
+                <h5> - OR -</h5>
+                <div class="social-btn"><a href="#"><i class="fa fa-facebook"></i><i>Sign In with Facebook</i></a></div>
+                <div class="social-btn sb-two"><a href="#"><i class="fa fa-twitter"></i><i>Sign In with Twitter</i></a></div>
+            </div>
+        </div>
+    </div>
+</div>
+

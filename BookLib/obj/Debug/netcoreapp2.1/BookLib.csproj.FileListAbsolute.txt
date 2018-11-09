@@ -1,0 +1,16 @@
+C:\Users\User\source\repos\BookLib\BookLib\bin\Debug\netcoreapp2.1\BookLib.deps.json
+C:\Users\User\source\repos\BookLib\BookLib\bin\Debug\netcoreapp2.1\BookLib.dll
+C:\Users\User\source\repos\BookLib\BookLib\bin\Debug\netcoreapp2.1\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+C:\Users\User\source\repos\BookLib\BookLib\bin\Debug\netcoreapp2.1\Microsoft.AspNetCore.Identity.EntityFrameworkCore.xml
+C:\Users\User\source\repos\BookLib\BookLib\obj\Debug\netcoreapp2.1\BookLib.csproj.CoreCompileInputs.cache
+C:\Users\User\source\repos\BookLib\BookLib\obj\Debug\netcoreapp2.1\BookLib.AssemblyInfoInputs.cache
+C:\Users\User\source\repos\BookLib\BookLib\obj\Debug\netcoreapp2.1\BookLib.AssemblyInfo.cs
+C:\Users\User\source\repos\BookLib\BookLib\obj\Debug\netcoreapp2.1\BookLib.csproj.CopyComplete
+C:\Users\User\source\repos\BookLib\BookLib\bin\Debug\netcoreapp2.1\Microsoft.EntityFrameworkCore.dll
+C:\Users\User\source\repos\BookLib\BookLib\bin\Debug\netcoreapp2.1\Microsoft.Extensions.Identity.Stores.dll
+C:\Users\User\source\repos\BookLib\BookLib\bin\Debug\netcoreapp2.1\Microsoft.EntityFrameworkCore.xml
+C:\Users\User\source\repos\BookLib\BookLib\bin\Debug\netcoreapp2.1\Microsoft.Extensions.Identity.Stores.xml
+C:\Users\User\source\repos\BookLib\BookLib\bin\Debug\netcoreapp2.1\BookLib.pdb
+C:\Users\User\source\repos\BookLib\BookLib\obj\Debug\netcoreapp2.1\BookLib.dll
+C:\Users\User\source\repos\BookLib\BookLib\obj\Debug\netcoreapp2.1\BookLib.pdb
+C:\Users\User\source\repos\BookLib\BookLib\obj\Debug\netcoreapp2.1\BookLib.csprojAssemblyReference.cache
