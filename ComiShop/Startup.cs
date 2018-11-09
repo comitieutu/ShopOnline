@@ -81,18 +81,18 @@ namespace ComiShop
             app.UseStaticFiles();
             app.UseCookiePolicy();
 
-            //app.UseAuthentication();
+            app.UseAuthentication();
 
             app.UseNodeModules(env);
 
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
-                    name: "default",
-                    template: "{controller=Book}/{action=Index}/{id?}");
-                routes.MapRoute(
                      name: "areaRoute",
-                     template: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
+                     template: "{area:exists}/{controller=Admin}/{action=Index}/{id?}");
+                routes.MapRoute(
+                    name: "default",
+                    template: "{controller=Book}/{action=Index}/{id?}");                
             });
         }
     }

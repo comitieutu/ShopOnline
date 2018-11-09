@@ -74,7 +74,7 @@ using ComiShop.ViewModels;
                 WriteLiteral("\r\n    ");
                 EndContext();
                 BeginContext(109, 84, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "46636124fb1e4d25af4fe82147cb7cdb", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a256c98cec8f4fbc9cfe31341300d79a", async() => {
                 }
                 );
                 __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -92,7 +92,7 @@ using ComiShop.ViewModels;
                 WriteLiteral("\r\n    ");
                 EndContext();
                 BeginContext(199, 108, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "61029a89ce254aaab1c5a99e2c9d136b", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "81f5884886cb48a382230d34157c7b18", async() => {
                 }
                 );
                 __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -325,7 +325,7 @@ using ComiShop.ViewModels;
             WriteLiteral("          Sorting By\r\n                            <select>\r\n                                ");
             EndContext();
             BeginContext(12692, 31, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "9955c4fc6c7d4f8099c7d8b62bf42a16", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "ff39c8d9b882472e9925bc35d1ffbc73", async() => {
                 BeginContext(12709, 5, true);
                 WriteLiteral(" Name");
                 EndContext();
@@ -347,7 +347,7 @@ using ComiShop.ViewModels;
             WriteLiteral("\r\n                                ");
             EndContext();
             BeginContext(12757, 32, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "41835563c60b4506b7c04b442476a111", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "9d0fb3236b1441ccbbc44793d786e5e3", async() => {
                 BeginContext(12774, 6, true);
                 WriteLiteral("  Rate");
                 EndContext();
@@ -369,7 +369,7 @@ using ComiShop.ViewModels;
             WriteLiteral("\r\n                                ");
             EndContext();
             BeginContext(12823, 33, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "5858c669d28c4f4cbf2cb72197298fb7", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "d81af41f10aa4da8b6aa5f170563af5b", async() => {
                 BeginContext(12840, 7, true);
                 WriteLiteral(" Color ");
                 EndContext();
@@ -391,7 +391,7 @@ using ComiShop.ViewModels;
             WriteLiteral("\r\n                                ");
             EndContext();
             BeginContext(12890, 33, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "fbc615dc33454da89cd94749e9e3a125", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "b6a24e03dd2e4194aecf2107cd6864cd", async() => {
                 BeginContext(12907, 7, true);
                 WriteLiteral(" Price ");
                 EndContext();
@@ -413,7 +413,7 @@ using ComiShop.ViewModels;
             WriteLiteral("\r\n                            </select>\r\n                        </p>\r\n                        <p>\r\n                            Show\r\n                            <select>\r\n                                ");
             EndContext();
             BeginContext(13127, 28, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e7563bb9c40946e88cc023b92efe18fb", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c674d6efe6164d5da47c4505a23d7075", async() => {
                 BeginContext(13144, 2, true);
                 WriteLiteral(" 9");
                 EndContext();
@@ -435,7 +435,7 @@ using ComiShop.ViewModels;
             WriteLiteral("\r\n                                ");
             EndContext();
             BeginContext(13189, 30, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e8f6202d8b7b494a88daf266631d9e77", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e321c7c43fde4f5b8b28c26d422a61a6", async() => {
                 BeginContext(13206, 4, true);
                 WriteLiteral("  10");
                 EndContext();
@@ -457,7 +457,7 @@ using ComiShop.ViewModels;
             WriteLiteral("\r\n                                ");
             EndContext();
             BeginContext(13253, 30, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "18fd2c910c8f44128218d1b6e66e44b5", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f00fab8ebbde48749ccc8e4f1912734a", async() => {
                 BeginContext(13270, 4, true);
                 WriteLiteral(" 11 ");
                 EndContext();
@@ -479,7 +479,7 @@ using ComiShop.ViewModels;
             WriteLiteral("\r\n                                ");
             EndContext();
             BeginContext(13317, 30, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "ae6e5a0fc2f04f0b9f5a576826a8e340", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f9fe9f9199f2429099763541ec8b5345", async() => {
                 BeginContext(13334, 4, true);
                 WriteLiteral(" 12 ");
                 EndContext();

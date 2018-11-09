@@ -388,7 +388,7 @@ using ComiShop.ViewModels;
                                                 ");
             EndContext();
             BeginContext(21130, 1556, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "1eb6ac831101404fb15e46694c0903dc", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "785990f2f06c406697f310cf0d123722", async() => {
                 BeginContext(21161, 1518, true);
                 WriteLiteral(@"
                                                     <label>Your Review </label>
