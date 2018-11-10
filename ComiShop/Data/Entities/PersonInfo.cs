@@ -1,18 +1,15 @@
 namespace ComiShop
 {
     using ComiShop.Entities;
+    using ComiShop.Models;
     using System;
-    using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
 
     [Table("PersonInfo")]
     public partial class PersonInfo : BaseEntity
     {
-        [Key]
-        [StringLength(7)]
-        public string CustomerId { get; set; }
-
+        public string UserId { get; set; }
         [StringLength(15)]
         public string FirstName { get; set; }
 
@@ -39,13 +36,5 @@ namespace ComiShop
 
         [StringLength(50)]
         public string Country { get; set; }
-
-        [StringLength(50)]
-        public string Email { get; set; }
-
-        [StringLength(18)]
-        public string Phone { get; set; }
-
-        public virtual Customer Customer { get; set; }
     }
 }

@@ -30,7 +30,7 @@ namespace ComiShop.Controllers
             return View();
         }
 
-        public ActionResult ProductList(string id)
+        public ActionResult ProductList(int id)
         {
             var product = _mapper.Map<IEnumerable<Product>, IEnumerable<ProductListViewModel>>(_unitOfWork.ProductRepository.GetAll().Where(p => p.CategoryId == id));
 

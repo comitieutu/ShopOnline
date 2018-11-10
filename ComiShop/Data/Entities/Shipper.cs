@@ -1,7 +1,6 @@
 namespace ComiShop
 {
     using ComiShop.Entities;
-    using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
@@ -15,9 +14,6 @@ namespace ComiShop
             SaleOrders = new HashSet<SaleOrder>();
         }
 
-        [StringLength(7)]
-        public string ShipperId { get; set; }
-
         [StringLength(20)]
         public string Company { get; set; }
 
@@ -26,12 +22,6 @@ namespace ComiShop
 
         [StringLength(18)]
         public string ContactPhone { get; set; }
-
-        [Column(TypeName = "date")]
-        public DateTime? CreateDate { get; set; }
-
-        [Column(TypeName = "date")]
-        public DateTime? LastUpdate { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SaleOrder> SaleOrders { get; set; }

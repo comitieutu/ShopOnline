@@ -14,7 +14,7 @@ namespace ComiShop.Data
 
         public DbSet<Product> Products { get; set; }
         public DbSet<Category> Categories { get; set; }
-        public DbSet<Customer> Customers { get; set; }
+        public DbSet<ApplicationUser> ApplicationUsers { get; set; }
         public DbSet<PersonInfo> PersonInfos { get; set; }
         public DbSet<ProductDetail> ProductDetails { get; set; }
         public DbSet<ReceiveProduct> ReceiveProducts { get; set; }

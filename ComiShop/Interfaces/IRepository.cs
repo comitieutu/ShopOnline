@@ -7,7 +7,7 @@ using System.Text;
 
 namespace ComiShop.Interfaces
 {
-    public interface IRepository<T> where T : Entity
+    public interface IRepository<T>
     {
         IQueryable<T> Entities { get; }
 
