@@ -36,9 +36,6 @@
     <Content Update="Areas\Admin\Views\_ViewStart.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
-    <Content Update="Views\Account\Login.cshtml">
-      <Pack>$(IncludeRazorContentInPack)</Pack>
-    </Content>
     <Content Update="Views\Book\Contact.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>

@@ -31,7 +31,6 @@ C:\Users\User\source\repos\BookLib\ComiShop\obj\Debug\netcoreapp2.1\ComiShop.dll
 C:\Users\User\source\repos\BookLib\ComiShop\obj\Debug\netcoreapp2.1\ComiShop.pdb
 C:\Users\User\source\repos\BookLib\ComiShop\obj\Debug\netcoreapp2.1\ComiShop.csproj.CopyComplete
 C:\Users\User\source\repos\BookLib\ComiShop\obj\Debug\netcoreapp2.1\Razor\Views\Shared\Components\Menu\Default.g.cshtml.cs
-C:\Users\User\source\repos\BookLib\ComiShop\obj\Debug\netcoreapp2.1\Razor\Views\Account\Login.g.cshtml.cs
 C:\Users\User\source\repos\BookLib\ComiShop\obj\Debug\netcoreapp2.1\Razor\Views\Book\Contact.g.cshtml.cs
 C:\Users\User\source\repos\BookLib\ComiShop\obj\Debug\netcoreapp2.1\Razor\Views\Book\Index.g.cshtml.cs
 C:\Users\User\source\repos\BookLib\ComiShop\obj\Debug\netcoreapp2.1\Razor\Views\Product\Details.g.cshtml.cs

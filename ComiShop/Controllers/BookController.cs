@@ -29,7 +29,7 @@ namespace ComiShop.Controllers
         // GET: Book   
         public ActionResult Index()
         {
-            var result = _unitOfWork.ProductRepository.GetAll();
+            //var result = _unitOfWork.ProductRepository.GetAll();
             return View();
         }
 
