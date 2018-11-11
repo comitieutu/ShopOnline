@@ -47,36 +47,40 @@ namespace ComiShop.Data.SeedData
             });
 
             modelBuilder.Entity<Category>().HasData(
-                new Category { CategoryId = "C001", CategoryName = "Tiểu thuyết", CategoryDes = "Tiểu thuyết nổi tiếng" },
-                new Category { CategoryId = "C002", CategoryName = "Truyện ngắn", CategoryDes = "Tuyển tập truyện ngắn" }
+                new Category { Id = 1, CategoryName = "Sách", CategoryDes = "Tiểu thuyết nổi tiếng" },
+                new Category { Id = 2, CategoryName = "Quần áo", CategoryDes = "Quần áo" }
             );
             modelBuilder.Entity<Product>().HasData(
-                new Product { ProductId = "P001", ProductName = "Cuốn theo chiều gió", ProductDes = "Kinh điển", Quantity = 5, CategoryId = "C001" },
-                new Product { ProductId = "P002", ProductName = "Mắt biếc", ProductDes = "Việt Nam", Quantity = 12, CategoryId = "C002" }
+                new Product { Id = 1, UnitPrice = 50, ProductName = "Cuốn theo chiều gió", ProductDes = "Kinh điển", Quantity = 5, CategoryId = 1},
+                new Product { Id = 2, UnitPrice = 60, ProductName = "Mắt biếc", ProductDes = "Việt Nam", Quantity = 12, CategoryId = 1 },
+                new Product { Id = 3, UnitPrice = 60, ProductName = "Sơ mi", ProductDes = "Việt Nam", Quantity = 11, CategoryId = 2 },
+                new Product { Id = 4, UnitPrice = 70, ProductName = "Đầm", ProductDes = "Việt Nam", Quantity = 22, CategoryId = 2 }
             );
-            modelBuilder.Entity<Customer>().HasData(
-                new Customer { CustomerId = "Cust001", CustomerType = CustType.Normal },
-                new Customer { CustomerId = "Cust002", CustomerType = CustType.Gold }
+            modelBuilder.Entity<ProductDetail>().HasData(
+                new ProductDetail { Id = 1, ProductImage = "i1.jpg", ProductId = 1},
+                new ProductDetail { Id = 2, ProductImage = "i10.jpg", ProductId = 2 },
+                new ProductDetail { Id = 3, ProductImage = "i12.jpg", ProductId = 3 },
+                new ProductDetail { Id = 4, ProductImage = "i11.jpg", ProductId = 4 }
             );
             modelBuilder.Entity<PersonInfo>().HasData(
-                new PersonInfo { FirstName = "Meo", LastName = "Meo", Phone = "0354464467", Email = "meomeo@gmail.com", CustomerId = "Cust001" },
-                new PersonInfo { FirstName = "Gau", LastName = "Gau", Phone = "094464467", Email = "gaugau@gmail.com", CustomerId = "Cust002" }
+                new PersonInfo { Id = 1, UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e575", FirstName = "Meo", LastName = "Meo"}
+            );
+
+            modelBuilder.Entity<Shipper>().HasData(
+                new Shipper { Id = 1, ContactPhone = "094123321", ContactName = "Anga" },
+                new Shipper { Id = 2, ContactPhone = "037864457", ContactName = "Husky" }
             );
             modelBuilder.Entity<SaleOrder>().HasData(
-                new SaleOrder { SaleOrderId = "SO001", OrderDate = DateTime.Now, TotalPrice = 150000, CustomerId = "Cust001" },
-                new SaleOrder { SaleOrderId = "SO002", OrderDate = DateTime.Now, TotalPrice = 500000, CustomerId = "Cust002" }
+                new SaleOrder { Id = 1, UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e575", ShipperId = 1, OrderDate = DateTime.Now, TotalPrice = 50},
+                new SaleOrder { Id = 2, UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e575", ShipperId = 1, OrderDate = DateTime.Now, TotalPrice = 120}
             );
             modelBuilder.Entity<SaleOrderDetail>().HasData(
-                new SaleOrderDetail { SaleOrderDetailId = "SOD001", ProductId = "P001", Quantity = 1, UnitPrice = 150000, SaleOrderId = "SO001" },
-                new SaleOrderDetail { SaleOrderDetailId = "SOD002", ProductId = "P002", Quantity = 2, UnitPrice = 250000, SaleOrderId = "SO002" }
+                new SaleOrderDetail { Id = 1, Quantity = 1, UnitPrice = 50, SaleOrderId = 1, ProductId = 1 },
+                new SaleOrderDetail { Id = 2, Quantity = 2, UnitPrice = 60, SaleOrderId = 2, ProductId = 3 }
             );
             modelBuilder.Entity<ReceiveProduct>().HasData(
-                new ReceiveProduct { SaleOrderId = "SO001", ShipToName = "Ichi", ShipToPhone = "0888888888" },
-                new ReceiveProduct { SaleOrderId = "SO002", ShipToName = "Gau Gau", ShipToPhone = "094464467" }
-            );
-            modelBuilder.Entity<Shipper>().HasData(
-                new Shipper { ShipperId = "SP001", ContactPhone = "094123321", ContactName = "Anga" },
-                new Shipper { ShipperId = "SP002", ContactPhone = "037864457", ContactName = "Husky" }
+                new ReceiveProduct { Id = 1, SaleId = 1, ShipToName = "Ichi", ShipToPhone = "0888888888" },
+                new ReceiveProduct { Id = 2, SaleId = 2, ShipToName = "Gau Gau", ShipToPhone = "094464467" }
             );
         }
     }

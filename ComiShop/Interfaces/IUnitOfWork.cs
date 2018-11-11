@@ -1,4 +1,5 @@
 ﻿using ComiShop.Interfaces;
+using ComiShop.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -9,7 +10,7 @@ namespace ComiShop.Interfaces
     {
         IRepository<Product> ProductRepository { get; }
         IRepository<Category> CategoryRepository { get; }
-        IRepository<Customer> CustomerRepository { get; }
+        IRepository<ApplicationUser> UserRepository { get; }
         IRepository<PersonInfo> PersonInfoRepository { get; }
         IRepository<ProductDetail> ProductDetailRepository { get; }
         IRepository<ReceiveProduct> ReceiveProductRepository { get; }

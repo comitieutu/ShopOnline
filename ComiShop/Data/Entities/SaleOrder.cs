@@ -1,6 +1,7 @@
 namespace ComiShop
 {
     using ComiShop.Entities;
+    using ComiShop.Models;
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
@@ -14,12 +15,8 @@ namespace ComiShop
         {
             SaleOrderDetails = new HashSet<SaleOrderDetail>();
         }
-
-        [StringLength(7)]
-        public string SaleOrderId { get; set; }
-
-        [StringLength(7)]
-        public string CustomerId { get; set; }
+        
+        public string UserId { get; set; }
 
         [Column(TypeName = "date")]
         public DateTime? OrderDate { get; set; }
@@ -31,17 +28,10 @@ namespace ComiShop
 
         [Column(TypeName = "date")]
         public DateTime? ShippedDate { get; set; }
+        
+        public int ShipperId { get; set; }
 
-        [StringLength(7)]
-        public string ShipperId { get; set; }
-
-        [Column(TypeName = "date")]
-        public DateTime? CreateDate { get; set; }
-
-        [Column(TypeName = "date")]
-        public DateTime? LastUpdate { get; set; }
-
-        public virtual Customer Customer { get; set; }
+        public virtual ApplicationUser ApplicationUser { get; set; }
 
         public virtual ReceiveProduct ReceiveProduct { get; set; }
 

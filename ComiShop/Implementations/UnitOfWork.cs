@@ -1,11 +1,7 @@
 ﻿using ComiShop.Data;
 using ComiShop.Interfaces;
 using ComiShop.Models;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace ComiShop.Implementations
 {
@@ -15,7 +11,7 @@ namespace ComiShop.Implementations
 
         private IRepository<Product> _productRepository;
         private IRepository<Category> _categoryRepository;
-        private IRepository<Customer> _customerRepository;
+        private IRepository<ApplicationUser> _userRepository;
         private IRepository<PersonInfo> _personInfoRepository;
         private IRepository<ProductDetail> _productDetailRepository;
         private IRepository<ReceiveProduct> _receiveProductRepository;
@@ -78,7 +74,7 @@ namespace ComiShop.Implementations
             }
         }
 
-        public IRepository<Customer> CustomerRepository => throw new NotImplementedException();
+        public IRepository<ApplicationUser> UserRepository => throw new NotImplementedException();
 
         public IRepository<PersonInfo> PersonInfoRepository => throw new NotImplementedException();
 

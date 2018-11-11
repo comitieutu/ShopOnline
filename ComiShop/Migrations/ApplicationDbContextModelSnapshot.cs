@@ -21,9 +21,9 @@ namespace ComiShop.Migrations
 
             modelBuilder.Entity("ComiShop.Category", b =>
                 {
-                    b.Property<string>("CategoryId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasMaxLength(7);
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("CategoryDes")
                         .HasMaxLength(50);
@@ -31,56 +31,53 @@ namespace ComiShop.Migrations
                     b.Property<string>("CategoryName")
                         .HasMaxLength(20);
 
-                    b.Property<DateTime?>("CreateDate")
-                        .HasColumnType("date");
+                    b.Property<DateTime>("CreatedDate");
 
                     b.Property<bool?>("Deleted");
 
-                    b.Property<DateTime?>("LastUpdate")
-                        .HasColumnType("date");
+                    b.Property<DateTime>("ModifiedDate");
 
-                    b.Property<byte[]>("Timestamp");
+                    b.Property<Guid>("UniqueId");
 
-                    b.HasKey("CategoryId");
+                    b.HasKey("Id");
 
                     b.ToTable("Category");
 
                     b.HasData(
-                        new { CategoryId = "C001", CategoryDes = "Tiểu thuyết nổi tiếng", CategoryName = "Tiểu thuyết" },
-                        new { CategoryId = "C002", CategoryDes = "Tuyển tập truyện ngắn", CategoryName = "Truyện ngắn" }
+                        new { Id = 1, CategoryDes = "Tiểu thuyết nổi tiếng", CategoryName = "Sách", CreatedDate = new DateTime(2018, 11, 10, 21, 40, 36, 536, DateTimeKind.Local), ModifiedDate = new DateTime(2018, 11, 10, 21, 40, 36, 536, DateTimeKind.Local), UniqueId = new Guid("0daa6bf9-d18f-43fa-b231-dee8fe5a5c33") },
+                        new { Id = 2, CategoryDes = "Quần áo", CategoryName = "Quần áo", CreatedDate = new DateTime(2018, 11, 10, 21, 40, 36, 537, DateTimeKind.Local), ModifiedDate = new DateTime(2018, 11, 10, 21, 40, 36, 537, DateTimeKind.Local), UniqueId = new Guid("59570ab9-91fb-4323-aa4e-9d57f54a1d84") }
                     );
                 });
 
-            modelBuilder.Entity("ComiShop.Customer", b =>
+            modelBuilder.Entity("ComiShop.Data.Entities.Comment", b =>
                 {
-                    b.Property<string>("CustomerId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasMaxLength(7);
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("BankAccount")
-                        .HasMaxLength(20);
+                    b.Property<string>("ApplicationUserId");
 
-                    b.Property<DateTime?>("CreateDate")
-                        .HasColumnType("date");
+                    b.Property<string>("Context");
 
-                    b.Property<int>("CustomerType")
-                        .HasMaxLength(10);
+                    b.Property<DateTime>("CreatedDate");
 
                     b.Property<bool?>("Deleted");
 
-                    b.Property<DateTime?>("LastUpdate")
-                        .HasColumnType("date");
+                    b.Property<DateTime>("ModifiedDate");
 
-                    b.Property<byte[]>("Timestamp");
+                    b.Property<int>("ProductId");
 
-                    b.HasKey("CustomerId");
+                    b.Property<Guid>("UniqueId");
 
-                    b.ToTable("Customer");
+                    b.Property<string>("UserId");
 
-                    b.HasData(
-                        new { CustomerId = "Cust001", CustomerType = 0 },
-                        new { CustomerId = "Cust002", CustomerType = 2 }
-                    );
+                    b.HasKey("Id");
+
+                    b.HasIndex("ApplicationUserId");
+
+                    b.HasIndex("ProductId");
+
+                    b.ToTable("Comment");
                 });
 
             modelBuilder.Entity("ComiShop.Models.ApplicationRole", b =>
@@ -111,7 +108,7 @@ namespace ComiShop.Migrations
                     b.ToTable("AspNetRoles");
 
                     b.HasData(
-                        new { Id = "a18be9c0-aa65-4af8-bd17-00bd9344e575", ConcurrencyStamp = "687c8e66-b56f-4b9f-937c-5d21f8525fbe", CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Name = "admin", NormalizedName = "admin" }
+                        new { Id = "a18be9c0-aa65-4af8-bd17-00bd9344e575", ConcurrencyStamp = "6db04c14-e738-45f9-bb6a-6806d7aeadc3", CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Name = "admin", NormalizedName = "admin" }
                     );
                 });
 
@@ -122,17 +119,19 @@ namespace ComiShop.Migrations
 
                     b.Property<int>("AccessFailedCount");
 
+                    b.Property<string>("BankAccount")
+                        .HasMaxLength(20);
+
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken();
+
+                    b.Property<int>("CustomerType")
+                        .HasMaxLength(10);
 
                     b.Property<string>("Email")
                         .HasMaxLength(256);
 
                     b.Property<bool>("EmailConfirmed");
-
-                    b.Property<string>("FirstName");
-
-                    b.Property<string>("LastName");
 
                     b.Property<bool>("LockoutEnabled");
 
@@ -145,6 +144,8 @@ namespace ComiShop.Migrations
                         .HasMaxLength(256);
 
                     b.Property<string>("PasswordHash");
+
+                    b.Property<int?>("PersonInfoId");
 
                     b.Property<string>("PhoneNumber");
 
@@ -167,17 +168,20 @@ namespace ComiShop.Migrations
                         .HasName("UserNameIndex")
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
+                    b.HasIndex("PersonInfoId");
+
                     b.ToTable("AspNetUsers");
 
                     b.HasData(
-                        new { Id = "a18be9c0-aa65-4af8-bd17-00bd9344e575", AccessFailedCount = 0, ConcurrencyStamp = "fe4aa8b3-a81a-48db-861b-e935c00d2dc7", Email = "admin@gmail.com", EmailConfirmed = false, LockoutEnabled = true, NormalizedEmail = "admin@gmail.com", NormalizedUserName = "admin@gmail.com", PasswordHash = "AQAAAAEAACcQAAAAEIqBPODFmwEphoxsA0p98pFxYel0/SuXx9TnQA4FX77vA7ITxM3xiYePLhmaFygM2w==", PhoneNumberConfirmed = false, SecurityStamp = "6981f064-cb8b-437e-b26b-e492fe713538", TwoFactorEnabled = false, UserName = "admin@gmail.com" }
+                        new { Id = "a18be9c0-aa65-4af8-bd17-00bd9344e575", AccessFailedCount = 0, ConcurrencyStamp = "e8d9a644-5103-459e-8092-73bc060b4420", CustomerType = 0, Email = "admin@gmail.com", EmailConfirmed = false, LockoutEnabled = true, NormalizedEmail = "admin@gmail.com", NormalizedUserName = "admin@gmail.com", PasswordHash = "AQAAAAEAACcQAAAAEEWYuSsEwWd5Joy9T9ekElhY6+NLp3DX/stC6hqcdr2NXF178XeaFlZ5x91KUV1c0w==", PhoneNumberConfirmed = false, SecurityStamp = "0aac0972-c104-4481-9c91-bf52567b6f24", TwoFactorEnabled = false, UserName = "admin@gmail.com" }
                     );
                 });
 
             modelBuilder.Entity("ComiShop.PersonInfo", b =>
                 {
-                    b.Property<string>("CustomerId")
-                        .HasMaxLength(7);
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Address")
                         .HasMaxLength(50);
@@ -191,12 +195,11 @@ namespace ComiShop.Migrations
                     b.Property<string>("Country")
                         .HasMaxLength(50);
 
+                    b.Property<DateTime>("CreatedDate");
+
                     b.Property<bool?>("Deleted");
 
                     b.Property<string>("District")
-                        .HasMaxLength(50);
-
-                    b.Property<string>("Email")
                         .HasMaxLength(50);
 
                     b.Property<string>("FirstName")
@@ -208,40 +211,40 @@ namespace ComiShop.Migrations
                     b.Property<string>("LastName")
                         .HasMaxLength(15);
 
-                    b.Property<string>("Phone")
-                        .HasMaxLength(18);
+                    b.Property<DateTime>("ModifiedDate");
 
                     b.Property<string>("Street")
                         .HasMaxLength(50);
 
-                    b.Property<byte[]>("Timestamp");
+                    b.Property<Guid>("UniqueId");
 
-                    b.HasKey("CustomerId");
+                    b.Property<string>("UserId");
+
+                    b.HasKey("Id");
 
                     b.ToTable("PersonInfo");
 
                     b.HasData(
-                        new { CustomerId = "Cust001", Email = "meomeo@gmail.com", FirstName = "Meo", LastName = "Meo", Phone = "0354464467" },
-                        new { CustomerId = "Cust002", Email = "gaugau@gmail.com", FirstName = "Gau", LastName = "Gau", Phone = "094464467" }
+                        new { Id = 1, CreatedDate = new DateTime(2018, 11, 10, 21, 40, 36, 537, DateTimeKind.Local), FirstName = "Meo", LastName = "Meo", ModifiedDate = new DateTime(2018, 11, 10, 21, 40, 36, 537, DateTimeKind.Local), UniqueId = new Guid("4ec73af3-3cc3-48dc-848f-c517caf7ea75"), UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e575" }
                     );
                 });
 
             modelBuilder.Entity("ComiShop.Product", b =>
                 {
-                    b.Property<string>("ProductId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasMaxLength(7);
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("CategoryId")
-                        .HasMaxLength(7);
+                    b.Property<int>("CategoryId");
 
-                    b.Property<DateTime?>("CreateDate")
-                        .HasColumnType("date");
+                    b.Property<DateTime>("CreatedDate");
 
                     b.Property<bool?>("Deleted");
 
-                    b.Property<DateTime?>("LastUpdate")
-                        .HasColumnType("date");
+                    b.Property<string>("DesDetail")
+                        .HasMaxLength(50);
+
+                    b.Property<DateTime>("ModifiedDate");
 
                     b.Property<string>("ProductDes")
                         .HasMaxLength(50);
@@ -251,49 +254,71 @@ namespace ComiShop.Migrations
 
                     b.Property<int?>("Quantity");
 
-                    b.Property<byte[]>("Timestamp");
+                    b.Property<Guid>("UniqueId");
 
-                    b.HasKey("ProductId");
+                    b.Property<double?>("UnitPrice");
+
+                    b.HasKey("Id");
 
                     b.HasIndex("CategoryId");
 
                     b.ToTable("Product");
 
                     b.HasData(
-                        new { ProductId = "P001", CategoryId = "C001", ProductDes = "Kinh điển", ProductName = "Cuốn theo chiều gió", Quantity = 5 },
-                        new { ProductId = "P002", CategoryId = "C002", ProductDes = "Việt Nam", ProductName = "Mắt biếc", Quantity = 12 }
+                        new { Id = 1, CategoryId = 1, CreatedDate = new DateTime(2018, 11, 10, 21, 40, 36, 537, DateTimeKind.Local), ModifiedDate = new DateTime(2018, 11, 10, 21, 40, 36, 537, DateTimeKind.Local), ProductDes = "Kinh điển", ProductName = "Cuốn theo chiều gió", Quantity = 5, UniqueId = new Guid("9682743c-c2cf-4e9f-98f3-793b198a0ec9"), UnitPrice = 50.0 },
+                        new { Id = 2, CategoryId = 1, CreatedDate = new DateTime(2018, 11, 10, 21, 40, 36, 537, DateTimeKind.Local), ModifiedDate = new DateTime(2018, 11, 10, 21, 40, 36, 537, DateTimeKind.Local), ProductDes = "Việt Nam", ProductName = "Mắt biếc", Quantity = 12, UniqueId = new Guid("53f6a96e-ca64-448a-8fca-01978f71f77a"), UnitPrice = 60.0 },
+                        new { Id = 3, CategoryId = 2, CreatedDate = new DateTime(2018, 11, 10, 21, 40, 36, 537, DateTimeKind.Local), ModifiedDate = new DateTime(2018, 11, 10, 21, 40, 36, 537, DateTimeKind.Local), ProductDes = "Việt Nam", ProductName = "Sơ mi", Quantity = 11, UniqueId = new Guid("987caef1-e4fe-4bb0-9361-8e6a97f312d9"), UnitPrice = 60.0 },
+                        new { Id = 4, CategoryId = 2, CreatedDate = new DateTime(2018, 11, 10, 21, 40, 36, 537, DateTimeKind.Local), ModifiedDate = new DateTime(2018, 11, 10, 21, 40, 36, 537, DateTimeKind.Local), ProductDes = "Việt Nam", ProductName = "Đầm", Quantity = 22, UniqueId = new Guid("0926a2e2-6d49-40b4-8919-1cca6d2ccd54"), UnitPrice = 70.0 }
                     );
                 });
 
             modelBuilder.Entity("ComiShop.ProductDetail", b =>
                 {
-                    b.Property<string>("ProductId")
-                        .HasMaxLength(7);
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Comment")
-                        .HasMaxLength(50);
+                    b.Property<DateTime>("CreatedDate");
 
                     b.Property<bool?>("Deleted");
 
-                    b.Property<string>("DesDetail")
-                        .HasMaxLength(50);
+                    b.Property<DateTime>("ModifiedDate");
+
+                    b.Property<int>("ProductId");
 
                     b.Property<string>("ProductImage")
                         .HasMaxLength(50);
 
-                    b.Property<byte[]>("Timestamp");
+                    b.Property<Guid>("UniqueId");
 
-                    b.HasKey("ProductId");
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProductId")
+                        .IsUnique();
 
                     b.ToTable("ProductDetail");
+
+                    b.HasData(
+                        new { Id = 1, CreatedDate = new DateTime(2018, 11, 10, 21, 40, 36, 537, DateTimeKind.Local), ModifiedDate = new DateTime(2018, 11, 10, 21, 40, 36, 537, DateTimeKind.Local), ProductId = 1, ProductImage = "i1.jpg", UniqueId = new Guid("e8305049-b32d-4923-b455-b7963a20a2ac") },
+                        new { Id = 2, CreatedDate = new DateTime(2018, 11, 10, 21, 40, 36, 537, DateTimeKind.Local), ModifiedDate = new DateTime(2018, 11, 10, 21, 40, 36, 537, DateTimeKind.Local), ProductId = 2, ProductImage = "i10.jpg", UniqueId = new Guid("b57eb9f3-c6f5-4349-9323-8b351c367e03") },
+                        new { Id = 3, CreatedDate = new DateTime(2018, 11, 10, 21, 40, 36, 537, DateTimeKind.Local), ModifiedDate = new DateTime(2018, 11, 10, 21, 40, 36, 537, DateTimeKind.Local), ProductId = 3, ProductImage = "i12.jpg", UniqueId = new Guid("d57c0cd8-67b0-46ff-a797-6859d22d1420") },
+                        new { Id = 4, CreatedDate = new DateTime(2018, 11, 10, 21, 40, 36, 537, DateTimeKind.Local), ModifiedDate = new DateTime(2018, 11, 10, 21, 40, 36, 537, DateTimeKind.Local), ProductId = 4, ProductImage = "i11.jpg", UniqueId = new Guid("3f3eaa2a-8b39-4844-9214-3308329d9a1a") }
+                    );
                 });
 
             modelBuilder.Entity("ComiShop.ReceiveProduct", b =>
                 {
-                    b.Property<string>("SaleOrderId")
-                        .HasMaxLength(7);
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("CreatedDate");
 
                     b.Property<bool?>("Deleted");
+
+                    b.Property<DateTime>("ModifiedDate");
+
+                    b.Property<int>("SaleId");
 
                     b.Property<string>("ShipToAddress")
                         .HasMaxLength(50);
@@ -316,34 +341,31 @@ namespace ComiShop.Migrations
                     b.Property<string>("ShipToStreet")
                         .HasMaxLength(50);
 
-                    b.Property<byte[]>("Timestamp");
+                    b.Property<Guid>("UniqueId");
 
-                    b.HasKey("SaleOrderId");
+                    b.HasKey("Id");
 
                     b.ToTable("ReceiveProduct");
 
                     b.HasData(
-                        new { SaleOrderId = "SO001", ShipToName = "Ichi", ShipToPhone = "0888888888" },
-                        new { SaleOrderId = "SO002", ShipToName = "Gau Gau", ShipToPhone = "094464467" }
+                        new { Id = 1, CreatedDate = new DateTime(2018, 11, 10, 21, 40, 36, 538, DateTimeKind.Local), ModifiedDate = new DateTime(2018, 11, 10, 21, 40, 36, 538, DateTimeKind.Local), SaleId = 1, ShipToName = "Ichi", ShipToPhone = "0888888888", UniqueId = new Guid("49213234-0a7d-4623-854f-7879d8d0e84f") },
+                        new { Id = 2, CreatedDate = new DateTime(2018, 11, 10, 21, 40, 36, 538, DateTimeKind.Local), ModifiedDate = new DateTime(2018, 11, 10, 21, 40, 36, 538, DateTimeKind.Local), SaleId = 2, ShipToName = "Gau Gau", ShipToPhone = "094464467", UniqueId = new Guid("aa960296-e500-4483-ae13-7833723bf8f8") }
                     );
                 });
 
             modelBuilder.Entity("ComiShop.SaleOrder", b =>
                 {
-                    b.Property<string>("SaleOrderId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasMaxLength(7);
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<DateTime?>("CreateDate")
-                        .HasColumnType("date");
+                    b.Property<string>("ApplicationUserId");
 
-                    b.Property<string>("CustomerId")
-                        .HasMaxLength(7);
+                    b.Property<DateTime>("CreatedDate");
 
                     b.Property<bool?>("Deleted");
 
-                    b.Property<DateTime?>("LastUpdate")
-                        .HasColumnType("date");
+                    b.Property<DateTime>("ModifiedDate");
 
                     b.Property<DateTime?>("OrderDate")
                         .HasColumnType("date");
@@ -351,53 +373,60 @@ namespace ComiShop.Migrations
                     b.Property<string>("OrderStatus")
                         .HasMaxLength(20);
 
+                    b.Property<int?>("ReceiveProductId");
+
                     b.Property<DateTime?>("ShippedDate")
                         .HasColumnType("date");
 
-                    b.Property<string>("ShipperId")
-                        .HasMaxLength(7);
-
-                    b.Property<byte[]>("Timestamp");
+                    b.Property<int>("ShipperId");
 
                     b.Property<double?>("TotalPrice");
 
-                    b.HasKey("SaleOrderId");
+                    b.Property<Guid>("UniqueId");
 
-                    b.HasIndex("CustomerId");
+                    b.Property<string>("UserId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ApplicationUserId");
+
+                    b.HasIndex("ReceiveProductId");
 
                     b.HasIndex("ShipperId");
 
                     b.ToTable("SaleOrder");
 
                     b.HasData(
-                        new { SaleOrderId = "SO001", CustomerId = "Cust001", OrderDate = new DateTime(2018, 10, 24, 20, 50, 52, 345, DateTimeKind.Local), TotalPrice = 150000.0 },
-                        new { SaleOrderId = "SO002", CustomerId = "Cust002", OrderDate = new DateTime(2018, 10, 24, 20, 50, 52, 346, DateTimeKind.Local), TotalPrice = 500000.0 }
+                        new { Id = 1, CreatedDate = new DateTime(2018, 11, 10, 21, 40, 36, 538, DateTimeKind.Local), ModifiedDate = new DateTime(2018, 11, 10, 21, 40, 36, 538, DateTimeKind.Local), OrderDate = new DateTime(2018, 11, 10, 21, 40, 36, 538, DateTimeKind.Local), ShipperId = 1, TotalPrice = 50.0, UniqueId = new Guid("fc84649e-80b7-42b7-8114-865b8d09473c"), UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e575" },
+                        new { Id = 2, CreatedDate = new DateTime(2018, 11, 10, 21, 40, 36, 538, DateTimeKind.Local), ModifiedDate = new DateTime(2018, 11, 10, 21, 40, 36, 538, DateTimeKind.Local), OrderDate = new DateTime(2018, 11, 10, 21, 40, 36, 538, DateTimeKind.Local), ShipperId = 1, TotalPrice = 120.0, UniqueId = new Guid("54b44810-f2a0-41a8-a3b3-15f6164f4001"), UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e575" }
                     );
                 });
 
             modelBuilder.Entity("ComiShop.SaleOrderDetail", b =>
                 {
-                    b.Property<string>("SaleOrderDetailId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasMaxLength(7);
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("CreatedDate");
 
                     b.Property<bool?>("Deleted");
 
                     b.Property<int?>("Discount");
 
-                    b.Property<string>("ProductId")
-                        .HasMaxLength(7);
+                    b.Property<DateTime>("ModifiedDate");
+
+                    b.Property<int>("ProductId");
 
                     b.Property<int?>("Quantity");
 
-                    b.Property<string>("SaleOrderId")
-                        .HasMaxLength(7);
+                    b.Property<int>("SaleOrderId");
 
-                    b.Property<byte[]>("Timestamp");
+                    b.Property<Guid>("UniqueId");
 
                     b.Property<double?>("UnitPrice");
 
-                    b.HasKey("SaleOrderDetailId");
+                    b.HasKey("Id");
 
                     b.HasIndex("ProductId");
 
@@ -406,16 +435,16 @@ namespace ComiShop.Migrations
                     b.ToTable("SaleOrderDetail");
 
                     b.HasData(
-                        new { SaleOrderDetailId = "SOD001", ProductId = "P001", Quantity = 1, SaleOrderId = "SO001", UnitPrice = 150000.0 },
-                        new { SaleOrderDetailId = "SOD002", ProductId = "P002", Quantity = 2, SaleOrderId = "SO002", UnitPrice = 250000.0 }
+                        new { Id = 1, CreatedDate = new DateTime(2018, 11, 10, 21, 40, 36, 538, DateTimeKind.Local), ModifiedDate = new DateTime(2018, 11, 10, 21, 40, 36, 538, DateTimeKind.Local), ProductId = 1, Quantity = 1, SaleOrderId = 1, UniqueId = new Guid("63e59065-585a-48c6-adc8-f2447b1f9ccd"), UnitPrice = 50.0 },
+                        new { Id = 2, CreatedDate = new DateTime(2018, 11, 10, 21, 40, 36, 538, DateTimeKind.Local), ModifiedDate = new DateTime(2018, 11, 10, 21, 40, 36, 538, DateTimeKind.Local), ProductId = 3, Quantity = 2, SaleOrderId = 2, UniqueId = new Guid("2d9e51a3-3721-4a3a-8079-65013872893e"), UnitPrice = 60.0 }
                     );
                 });
 
             modelBuilder.Entity("ComiShop.Shipper", b =>
                 {
-                    b.Property<string>("ShipperId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasMaxLength(7);
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Company")
                         .HasMaxLength(20);
@@ -426,23 +455,21 @@ namespace ComiShop.Migrations
                     b.Property<string>("ContactPhone")
                         .HasMaxLength(18);
 
-                    b.Property<DateTime?>("CreateDate")
-                        .HasColumnType("date");
+                    b.Property<DateTime>("CreatedDate");
 
                     b.Property<bool?>("Deleted");
 
-                    b.Property<DateTime?>("LastUpdate")
-                        .HasColumnType("date");
+                    b.Property<DateTime>("ModifiedDate");
 
-                    b.Property<byte[]>("Timestamp");
+                    b.Property<Guid>("UniqueId");
 
-                    b.HasKey("ShipperId");
+                    b.HasKey("Id");
 
                     b.ToTable("Shipper");
 
                     b.HasData(
-                        new { ShipperId = "SP001", ContactName = "Anga", ContactPhone = "094123321" },
-                        new { ShipperId = "SP002", ContactName = "Husky", ContactPhone = "037864457" }
+                        new { Id = 1, ContactName = "Anga", ContactPhone = "094123321", CreatedDate = new DateTime(2018, 11, 10, 21, 40, 36, 538, DateTimeKind.Local), ModifiedDate = new DateTime(2018, 11, 10, 21, 40, 36, 538, DateTimeKind.Local), UniqueId = new Guid("58bde419-cef2-4212-b9f8-4859444501c9") },
+                        new { Id = 2, ContactName = "Husky", ContactPhone = "037864457", CreatedDate = new DateTime(2018, 11, 10, 21, 40, 36, 538, DateTimeKind.Local), ModifiedDate = new DateTime(2018, 11, 10, 21, 40, 36, 538, DateTimeKind.Local), UniqueId = new Guid("06aba560-81c1-4504-88d4-3707952b6369") }
                     );
                 });
 
@@ -540,19 +567,31 @@ namespace ComiShop.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("ComiShop.PersonInfo", b =>
+            modelBuilder.Entity("ComiShop.Data.Entities.Comment", b =>
                 {
-                    b.HasOne("ComiShop.Customer", "Customer")
-                        .WithOne("PersonInfo")
-                        .HasForeignKey("ComiShop.PersonInfo", "CustomerId")
+                    b.HasOne("ComiShop.Models.ApplicationUser", "ApplicationUser")
+                        .WithMany("Comments")
+                        .HasForeignKey("ApplicationUserId");
+
+                    b.HasOne("ComiShop.Product", "Product")
+                        .WithMany("Comments")
+                        .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("ComiShop.Models.ApplicationUser", b =>
+                {
+                    b.HasOne("ComiShop.PersonInfo", "PersonInfo")
+                        .WithMany()
+                        .HasForeignKey("PersonInfoId");
                 });
 
             modelBuilder.Entity("ComiShop.Product", b =>
                 {
                     b.HasOne("ComiShop.Category", "Category")
                         .WithMany("Products")
-                        .HasForeignKey("CategoryId");
+                        .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("ComiShop.ProductDetail", b =>
@@ -563,34 +602,33 @@ namespace ComiShop.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("ComiShop.ReceiveProduct", b =>
-                {
-                    b.HasOne("ComiShop.SaleOrder", "SaleOrder")
-                        .WithOne("ReceiveProduct")
-                        .HasForeignKey("ComiShop.ReceiveProduct", "SaleOrderId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
             modelBuilder.Entity("ComiShop.SaleOrder", b =>
                 {
-                    b.HasOne("ComiShop.Customer", "Customer")
+                    b.HasOne("ComiShop.Models.ApplicationUser", "ApplicationUser")
                         .WithMany("SaleOrders")
-                        .HasForeignKey("CustomerId");
+                        .HasForeignKey("ApplicationUserId");
+
+                    b.HasOne("ComiShop.ReceiveProduct", "ReceiveProduct")
+                        .WithMany()
+                        .HasForeignKey("ReceiveProductId");
 
                     b.HasOne("ComiShop.Shipper", "Shipper")
                         .WithMany("SaleOrders")
-                        .HasForeignKey("ShipperId");
+                        .HasForeignKey("ShipperId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("ComiShop.SaleOrderDetail", b =>
                 {
                     b.HasOne("ComiShop.Product", "Product")
                         .WithMany("SaleOrderDetails")
-                        .HasForeignKey("ProductId");
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("ComiShop.SaleOrder", "SaleOrder")
                         .WithMany("SaleOrderDetails")
-                        .HasForeignKey("SaleOrderId");
+                        .HasForeignKey("SaleOrderId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

@@ -388,7 +388,7 @@ using BookStore.Entities;
                                                 ");
             EndContext();
             BeginContext(21130, 1556, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "36cf603d899c473a90883146bed890ac", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "dd45af2150e9470ea462c22282e891ec", async() => {
                 BeginContext(21161, 1518, true);
                 WriteLiteral(@"
                                                     <label>Your Review </label>
