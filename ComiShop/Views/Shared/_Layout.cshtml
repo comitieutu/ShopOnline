@@ -25,7 +25,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <!-- cart -->
     <script src="~/js/simpleCart.min.js"></script>
     <!-- cart -->
-
 </head>
 <body>
     <!--header-->
@@ -37,7 +36,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 </div>
                 <div class="top-right">
                     <ul>
-                        <li><a href="checkout.html">Checkout</a></li>
+                        <li><a asp-controller="Cart" asp-action="Index">Checkout</a></li>
                         <partial name="_LoginPartial" />
                     </ul>
                 </div>
@@ -101,13 +100,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         </div>
     </div>
     <!--header-->
-    <!--banner-->
-    <div class="banner1">
-        <div class="container">
-            <h3><a href="index.html">Home</a> / <span>Products</span></h3>
-        </div>
-    </div>
-    <!--banner-->
 
     @RenderBody()
 
@@ -171,6 +163,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         </div>
     </div>
     <!--copy-->
+
     <script src="~/node_modules/jquery/dist/jquery.min.js"></script>
     <script src="~/js/index.js"></script>
     @RenderSection("scripts", false)

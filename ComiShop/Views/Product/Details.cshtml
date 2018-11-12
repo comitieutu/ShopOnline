@@ -1,7 +1,15 @@
-﻿@{
+﻿@model ProductDetailViewModel
+@{
     ViewBag.Title = "Detail";
 }
 
+<!--banner-->
+<div class="banner1">
+    <div class="container">
+        <h3><a href="index.html">Home</a> / <span>Products</span></h3>
+    </div>
+</div>
+<!--banner-->
 <!--content-->
 <div class="content">
     <!--single-->
@@ -45,21 +53,21 @@
                                 </div>
                                 <!--quantity-->
                                 <script>
-													$('.value-plus1').on('click', function(){
-														var divUpd = $(this).parent().find('.value1'), newVal = parseInt(divUpd.text(), 10)+1;
-														divUpd.text(newVal);
-													});
+                                    $('.value-plus1').on('click', function () {
+                                        var divUpd = $(this).parent().find('.value1'), newVal = parseInt(divUpd.text(), 10) + 1;
+                                        divUpd.text(newVal);
+                                    });
 
-													$('.value-minus1').on('click', function(){
-														var divUpd = $(this).parent().find('.value1'), newVal = parseInt(divUpd.text(), 10)-1;
-														if(newVal>=1) divUpd.text(newVal);
-													});
+                                    $('.value-minus1').on('click', function () {
+                                        var divUpd = $(this).parent().find('.value1'), newVal = parseInt(divUpd.text(), 10) - 1;
+                                        if (newVal >= 1) divUpd.text(newVal);
+                                    });
                                 </script>
                                 <!--quantity-->
                             </div>
                             <div class="women">
                                 <span class="size">XL / XXL / S </span>
-                                <a href="#" data-text="Add To Cart" class="my-cart-b item_add">Add To Cart</a>
+                                <a asp-controller="Cart" asp-action="Buy" asp-route-id="@Model.Id" data-text="Add To Cart" class="my-cart-b item_add">Add To Cart</a>
                             </div>
                             <div class="social-icon">
                                 <a href="#"><i class="icon"></i></a>

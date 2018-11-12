@@ -50,10 +50,14 @@ namespace ComiShop
 
             services.AddScoped<IUnitOfWork, UnitOfWork>();
 
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+
             var mappingConfig = new MapperConfiguration(mc =>
             {
                 mc.AddProfile(new BookProfile());
             });
+
+            Mapper.Initialize(cfg => cfg.AddProfile<BookProfile>());
 
             IMapper mapper = mappingConfig.CreateMapper();
             services.AddSingleton(mapper);
@@ -61,6 +65,7 @@ namespace ComiShop
             services.AddMvc(config =>
                 {})
                 .AddJsonOptions(opt => opt.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore);
+            services.AddSession();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -78,6 +83,7 @@ namespace ComiShop
             }
 
             app.UseHttpsRedirection();
+            app.UseSession();
             app.UseStaticFiles();
             app.UseCookiePolicy();
 

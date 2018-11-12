@@ -74,7 +74,7 @@ using BookStore.Entities;
             WriteLiteral("    <li>");
             EndContext();
             BeginContext(77, 107, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "95eca4c379734fc584ffd4820b6a72ed", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f0c90448ce794731b11c9ed9160ecab7", async() => {
                 BeginContext(163, 17, false);
 #line 5 "C:\Users\User\source\repos\BookLib\BookStore\Views\Shared\Components\Menu\Default.cshtml"
                                                                                         Write(item.CategoryName);

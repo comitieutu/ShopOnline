@@ -1,0 +1,116 @@
+﻿@model ReceiveProductViewModel
+@{
+    ViewData["Title"] = "Index";
+    int seq = 0;
+}
+
+<div class="content">
+    <div class="cart-items">
+        <div class="container">
+            <h2>Shopping cart</h2>
+            <div class="bs-docs-example">
+                @if (ViewBag.cart != null)
+                {
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Photo</th>
+                                <th>Name</th>
+                                <th>Price</th>
+                                <th>Quantity</th>
+                                <th>Total</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in ViewBag.cart)
+                            {
+                                @(seq++);
+                                <tr>
+                                    <td>@seq</td>
+                                    <td><img src="~/images/p15.jpg" class="img-responsive" alt=""></td>
+                                    <td>@item.Product.ProductName</td>
+                                    <td><span class="badge badge-primary">@item.Product.UnitPrice</span></td>
+                                    <td><span class="badge badge-primary">@item.Quantity</span></td>
+                                    <td><span class="badge badge-primary">@(item.Product.UnitPrice * item.Quantity)</span></td>
+                                    <td><a asp-controller="Cart" asp-action="Remove" asp-route-id="@item.Product.Id" id="removeItem" class="btn btn-default">Remove</a></td>
+                                </tr>
+                            }
+                            <tr>
+                                <td colspan="5" align="right">Total</td>
+                                <td><span class="badge badge-danger">@ViewBag.Total</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div>
+                        <a href="#" class="btn btn-default">Continue shopping</a>
+                    </div>
+                }
+                else
+                {
+                    <h3>No item</h3>
+                }
+            </div>
+
+            <h3 class="title1">Shipping infomation</h3>
+            <div class="form-three widget-shadow">
+                <form asp-controller="Cart" asp-action="Order" class="form-horizontal" method="post">
+                    <div class="form-group">
+                        <label for="focusedinput" class="col-sm-2 control-label">Ship to name</label>
+                        <div class="col-sm-8">
+                            <input asp-for="ShipToName" type="text" class="form-control1" id="focusedinput" placeholder="Name">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="focusedinput" class="col-sm-2 control-label">Ship to phone</label>
+                        <div class="col-sm-8">
+                            <input asp-for="ShipToPhone" type="text" class="form-control1" id="focusedinput" placeholder="Phone">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="focusedinput" class="col-sm-2 control-label">Ship to address</label>
+                        <div class="col-sm-8">
+                            <input asp-for="ShipToAddress" type="text" class="form-control1" id="focusedinput" placeholder="Address">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="focusedinput" class="col-sm-2 control-label">Ship to street</label>
+                        <div class="col-sm-8">
+                            <input asp-for="ShipToStreet" type="text" class="form-control1" id="focusedinput" placeholder="Street">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="focusedinput" class="col-sm-2 control-label">Ship to district</label>
+                        <div class="col-sm-8">
+                            <input asp-for="ShipToDistrict" type="text" class="form-control1" id="focusedinput" placeholder="District">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="focusedinput" class="col-sm-2 control-label">Ship to city</label>
+                        <div class="col-sm-8">
+                            <input asp-for="ShipToCity" type="text" class="form-control1" id="focusedinput" placeholder="City">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="focusedinput" class="col-sm-2 control-label">Ship to Country</label>
+                        <div class="col-sm-8">
+                            <input asp-for="ShipToCountry" type="text" class="form-control1" id="focusedinput" placeholder="Country">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-2"></div>
+                        <div class="col-sm-8">
+                            <input type="submit" value="Check out" />
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+
+        </div>
+    </div>
+    
+    <!-- checkout -->
+</div>
+

@@ -7,5 +7,6 @@ namespace ComiShop.ViewModels
 {
     public class ProductDetailViewModel
     {
+        public int Id { get; set; }
     }
 }
