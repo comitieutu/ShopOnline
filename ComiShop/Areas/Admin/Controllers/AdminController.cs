@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
+using ComiShop.Interfaces;
+using ComiShop.ViewModels;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -10,6 +13,13 @@ namespace ComiShop.Areas.Admin.Controllers
     [Area("Admin")]
     public class AdminController : Controller
     {
+        private readonly IUnitOfWork _unitOfWork;
+
+        public AdminController(IUnitOfWork unitOfWork)
+        {
+            _unitOfWork = unitOfWork;
+        }
+
         // GET: Admin
         public ActionResult Index()
         {
@@ -21,27 +31,80 @@ namespace ComiShop.Areas.Admin.Controllers
             return View();
         }
 
+        [HttpGet]
+        public ActionResult DataWarehouse()
+        {
+            var products = _unitOfWork.ProductRepository.GetAll().ToList();
+            var productListView = Mapper.Map<List<ProductListViewModel>>(products);
+            var category = _unitOfWork.CategoryRepository.GetAll().ToList();
+            var warehouseView = category.Select(ct => new WarehouseView
+            {
+                CategoryId = ct.Id,
+                CategoryName = ct.CategoryName,
+                ProductList = productListView.Where(pl => pl.CategoryId == ct.Id).ToList()
+            });
+
+            return View(warehouseView);
+        }
+
         // GET: Admin/Create
-        public ActionResult Create()
+        public ActionResult CreateProduct()
+        {
+            var categories = _unitOfWork.CategoryRepository.GetAll().ToList();
+            var categoryViewList = Mapper.Map<List<CategoryViewModel>>(categories);
+            //var viewModel = categoryViewList.Select(x => new ProductCreateViewModel()
+            //{
+            //    CategoryView = new List<CategoryViewModel>
+            //    {
+            //        new CategoryViewModel
+            //        {
+            //            CategoryId = x.CategoryId,
+            //            CategoryName = x.CategoryName
+            //        }
+            //    }
+            //}).Single();
+
+            var viewModel = new ProductCreateViewModel()
+            {
+                CategoryView = categoryViewList
+            };
+            ViewData["Category"] = categoryViewList;
+            return View(viewModel);
+        }
+
+        // POST: Admin/Create   
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult CreateProduct(ProductCreateViewModel productCreate)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    // TODO: Add insert logic here
+                    var product = Mapper.Map<Product>(productCreate);
+                    _unitOfWork.ProductRepository.Create(product);
+                    return RedirectToAction("CreateProduct");
+                }
+                catch (Exception e)
+                {
+                    return View("Index");
+                }
+            }
+            return View("Index");
+        }
+
+        [HttpGet]
+        public ActionResult CreateCategory()
         {
             return View();
         }
 
-        // POST: Admin/Create
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public ActionResult CreateCategory(Category category)
         {
-            try
-            {
-                // TODO: Add insert logic here
-
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
+            _unitOfWork.CategoryRepository.Create(category);            
+            return View();
         }
 
         // GET: Admin/Edit/5

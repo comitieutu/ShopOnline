@@ -3,6 +3,7 @@ using ComiShop.Models;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System.Data.SqlClient;
+using ComiShop.ViewModels;
 
 namespace ComiShop.Data
 {
@@ -28,5 +29,7 @@ namespace ComiShop.Data
             base.OnModelCreating(modelBuilder);
             modelBuilder.Seed();
         }
+
+        public DbSet<ComiShop.ViewModels.WarehouseView> WarehouseView { get; set; }
     }
 }

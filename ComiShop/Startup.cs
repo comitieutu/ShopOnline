@@ -15,6 +15,8 @@ using ComiShop.Interfaces;
 using ComiShop.Implementations;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.Authorization;
+using System.Collections.Generic;
+using ComiShop.ViewModels;
 
 namespace ComiShop
 {
@@ -49,6 +51,13 @@ namespace ComiShop
             services.AddTransient<IMailService, NullMailService>();
 
             services.AddScoped<IUnitOfWork, UnitOfWork>();
+
+            //Mapper.Initialize(x=>x.CreateMap<CategoryViewModel, Category>().ReverseMap());
+
+            Mapper.Initialize(cfg =>
+            {
+                cfg.AddProfile<BookProfile>();
+            });
 
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 

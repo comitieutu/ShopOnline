@@ -47,6 +47,7 @@ namespace ComiShop.Implementations
         public void Create(T entity)
         {
             _context.Entry(entity).State = EntityState.Added;
+            _context.SaveChanges();
         }
 
         public void Delete(params object[] keyValues)
