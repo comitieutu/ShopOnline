@@ -11,8 +11,12 @@ namespace ComiShop.Data
     {
         public BookProfile()
         {
-            CreateMap<CategoryViewModel, Category>();
+            CreateMap<CategoryViewModel, Category>().ReverseMap();
             CreateMap<Product, ProductListViewModel>().ReverseMap();
+            CreateMap<ProductCreateViewModel, Product>()
+                .ForMember(dest => dest.Category, opt => opt.Ignore())
+                .ForMember(dest => dest.Comments, opt => opt.Ignore())
+                .ForMember(dest => dest.ProductDetail, opt => opt.Ignore());
             CreateMap<ReceiveProduct, ReceiveProductViewModel>().ReverseMap();
         }
     }
