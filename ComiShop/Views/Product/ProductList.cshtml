@@ -1,13 +1,22 @@
-﻿@model IEnumerable<ProductListViewModel>
+﻿@model PageViewModel
 @{
     ViewBag.Title = "Product list";
-    var product = Model.Take(12);
+    var product = Model.ProductListViewModels;
     int flag;
 }
 @section scripts{
+    <script src="~/js/jquery-ui.js"></script>
     <script src="~/node_modules/jquery-validation/dist/jquery.validate.min.js"></script>
     <script src="~/node_modules/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.min.js"></script>
 }
+
+<!--banner-->
+<div class="banner1">
+    <div class="container">
+        <h3><a href="index.html">Home</a> / <span>Products</span></h3>
+    </div>
+</div>
+<!--banner-->
 <!--content-->
 <div class="content">
     <div class="products-agileinfo">
@@ -18,91 +27,7 @@
                     <div class="categories">
                         <h3>Categories</h3>
                         <ul class="tree-list-pad">
-                            <li>
-                                <input type="checkbox" checked="checked" id="item-0" /><label for="item-0"><span></span>Women's Wear</label>
-                                <ul>
-                                    <li>
-                                        <input type="checkbox" id="item-0-0" /><label for="item-0-0">Ethnic Wear</label>
-                                        <ul>
-                                            <li><a href="products.html">Shirts</a></li>
-                                            <li><a href="products.html">Caps</a></li>
-                                            <li><a href="products.html">Shoes</a></li>
-                                            <li><a href="products.html">Pants</a></li>
-                                            <li><a href="products.html">SunGlasses</a></li>
-                                            <li><a href="products.html">Trousers</a></li>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <input type="checkbox" id="item-0-1" /><label for="item-0-1">Party Wear</label>
-                                        <ul>
-                                            <li><a href="products.html">Shirts</a></li>
-                                            <li><a href="products.html">Caps</a></li>
-                                            <li><a href="products.html">Shoes</a></li>
-                                            <li><a href="products.html">Pants</a></li>
-                                            <li><a href="products.html">SunGlasses</a></li>
-                                            <li><a href="products.html">Trousers</a></li>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <input type="checkbox" id="item-0-2" /><label for="item-0-2">Casual Wear</label>
-                                        <ul>
-                                            <li><a href="products.html">Shirts</a></li>
-                                            <li><a href="products.html">Caps</a></li>
-                                            <li><a href="products.html">Shoes</a></li>
-                                            <li><a href="products.html">Pants</a></li>
-                                            <li><a href="products.html">SunGlasses</a></li>
-                                            <li><a href="products.html">Trousers</a></li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li>
-                                <input type="checkbox" id="item-1" checked="checked" /><label for="item-1">Best Collections</label>
-                                <ul>
-                                    <li>
-                                        <input type="checkbox" checked="checked" id="item-1-0" /><label for="item-1-0">New Arrivals</label>
-                                        <ul>
-                                            <li><a href="products.html">Shirts</a></li>
-                                            <li><a href="products.html">Shoes</a></li>
-                                            <li><a href="products.html">Pants</a></li>
-                                            <li><a href="products.html">SunGlasses</a></li>
-                                        </ul>
-                                    </li>
-
-                                </ul>
-                            </li>
-                            <li>
-                                <input type="checkbox" checked="checked" id="item-2" /><label for="item-2">Best Offers</label>
-                                <ul>
-                                    <li>
-                                        <input type="checkbox" id="item-2-0" /><label for="item-2-0">Summer Discount Sales</label>
-                                        <ul>
-                                            <li><a href="products.html">Shirts</a></li>
-                                            <li><a href="products.html">Shoes</a></li>
-                                            <li><a href="products.html">Pants</a></li>
-                                            <li><a href="products.html">SunGlasses</a></li>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <input type="checkbox" id="item-2-1" /><label for="item-2-1">Exciting Offers</label>
-                                        <ul>
-                                            <li><a href="products.html">Shirts</a></li>
-                                            <li><a href="products.html">Shoes</a></li>
-                                            <li><a href="products.html">Pants</a></li>
-                                            <li><a href="products.html">SunGlasses</a></li>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <input type="checkbox" id="item-2-2" /><label for="item-2-2">Flat Discounts</label>
-                                        <ul>
-                                            <li><a href="products.html">Shirts</a></li>
-                                            <li><a href="products.html">Shoes</a></li>
-                                            <li><a href="products.html">Pants</a></li>
-                                            <li><a href="products.html">SunGlasses</a></li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </li>
+                            @(await Component.InvokeAsync("Menu"))
                         </ul>
                     </div>
                     <div class="price">
@@ -130,7 +55,7 @@
                             });//]]>
 
                         </script>
-                        <script type="text/javascript" src="js/jquery-ui.js"></script>
+                        @*<script type="text/javascript" src="~/js/jquery-ui.js"></script>*@
                     </div>
                     <div class="top-rates">
                         <h3>Top Rates products</h3>
@@ -235,8 +160,8 @@
                                 <div role="tabpanel" class="tab-pane fade in active" id="home" aria-labelledby="home-tab">
                                     @for (int i = 0; i < 4; i++)
                                     {
+                                        @(flag = 0)
                                         <div class="product-tab">
-                                            @(flag = 0)
                                             @foreach (var p in product)
                                             {
                                                 @(flag++)
@@ -246,7 +171,7 @@
                                                             <figure>
                                                                 <a asp-controller="Product" asp-action="Details" class="new-gri" data-toggle="modal" data-target="#myModal1">
                                                                     <div class="grid-img">
-                                                                        <img src="~/images/@(p.ProductName).jpg" class="img-responsive" alt="" asp-append-version="true">
+                                                                        <img src="~/images/@(p.ProductName)" class="img-responsive" alt="" asp-append-version="true">
                                                                     </div>
                                                                     <div class="grid-img">
                                                                         <img src="images/p5.jpg" class="img-responsive" alt="">
@@ -261,20 +186,37 @@
                                                             <h6><a asp-controller="Product" asp-action="Details">Sed ut perspiciatis unde</a></h6>
                                                             <span class="size">XL / XXL / S </span>
                                                             <p><del>$100.00</del><em class="item_price">$70.00</em></p>
-                                                            <a href="#" data-text="Add To Cart" class="my-cart-b item_add">Add To Cart</a>
+                                                            <a asp-controller="Cart" asp-action="Buy" asp-route-id="@p.Id" data-text="Add To Cart" class="my-cart-b item_add addItem">Add To Cart</a>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                product.ToList().Remove(p);
-                                                @if(flag == 2)
+
+                                                @if (flag == 2)
                                                 { break; }
                                             }
                                             <div class="clearfix"></div>
                                         </div>
                                     }
-                                    
+
+                                    <script>
+                                        $(document).ready(function () {
+                                            $(".addItem").click(function (e) {
+
+                                                e.preventDefault();
+                                                $.ajax({
+                                                    url: $(this).attr("href"),
+                                                    success: function () {
+                                                        alert("Value Added");
+                                                    }
+                                                });
+
+                                            });
+                                        });                                        
+                                    </script>
+
                                 </div>
                                 <div role="tabpanel" class="tab-pane fade" id="profile" aria-labelledby="profile-tab">
+
                                     <div class="product-tab1">
                                         <div class="col-md-4 product-tab1-grid">
                                             <div class="grid-arr">
@@ -306,137 +248,41 @@
                                         </div>
                                         <div class="clearfix"></div>
                                     </div>
-                                    <div class="product-tab1 prod3">
-                                        <div class="col-md-4 product-tab1-grid">
-                                            <div class="grid-arr">
-                                                <div class="grid-arrival">
-                                                    <figure>
-                                                        <a href="#" class="new-gri" data-toggle="modal" data-target="#myModal1">
-                                                            <div class="grid-img">
-                                                                <img src="images/i2.jpg" class="img-responsive" alt="">
-                                                            </div>
-                                                            <div class="grid-img">
-                                                                <img src="images/i1.jpg" class="img-responsive" alt="">
-                                                            </div>
-                                                        </a>
-                                                    </figure>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-8 product-tab1-grid1 simpleCart_shelfItem">
-                                            <div class="block">
-                                                <div class="starbox small ghosting"> </div>
-                                            </div>
-                                            <div class="women">
-                                                <h6><a href="single.html">Sed ut perspiciatis unde</a></h6>
-                                                <span class="size">XL / XXL / S </span>
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Atqui iste locus est, Piso, tibi etiam atque etiam confirmandus, inquam; Refert tamen, quo modo. Quod autem meum munus dicis non equidem recuso, sed te adiungo socium. </p>
-                                                <p><del>$100.00</del><em class="item_price">$70.00</em></p>
-                                                <a href="#" data-text="Add To Cart" class="my-cart-b item_add">Add To Cart</a>
-                                            </div>
-                                        </div>
-                                        <div class="clearfix"></div>
-                                    </div>
-                                    <div class="product-tab1">
-                                        <div class="col-md-4 product-tab1-grid">
-                                            <div class="grid-arr">
-                                                <div class="grid-arrival">
-                                                    <figure>
-                                                        <a href="#" class="new-gri" data-toggle="modal" data-target="#myModal1">
-                                                            <div class="grid-img">
-                                                                <img src="images/i4.jpg" class="img-responsive" alt="">
-                                                            </div>
-                                                            <div class="grid-img">
-                                                                <img src="images/i3.jpg" class="img-responsive" alt="">
-                                                            </div>
-                                                        </a>
-                                                    </figure>
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                        <div class="col-md-8 product-tab1-grid1 simpleCart_shelfItem">
-                                            <div class="block">
-                                                <div class="starbox small ghosting"> </div>
-                                            </div>
-                                            <div class="women">
-                                                <h6><a href="single.html">Sed ut perspiciatis unde</a></h6>
-                                                <span class="size">XL / XXL / S </span>
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Atqui iste locus est, Piso, tibi etiam atque etiam confirmandus, inquam; Refert tamen, quo modo. Quod autem meum munus dicis non equidem recuso, sed te adiungo socium. </p>
-                                                <p><del>$100.00</del><em class="item_price">$70.00</em></p>
-                                                <a href="#" data-text="Add To Cart" class="my-cart-b item_add">Add To Cart</a>
-                                            </div>
-                                        </div>
-                                        <div class="clearfix"></div>
-                                    </div>
-                                    <div class="product-tab1 prod3">
-                                        <div class="col-md-4 product-tab1-grid">
-                                            <div class="grid-arr">
-                                                <div class="grid-arrival">
-                                                    <figure>
-                                                        <a href="#" class="new-gri" data-toggle="modal" data-target="#myModal1">
-                                                            <div class="grid-img">
-                                                                <img src="images/i6.jpg" class="img-responsive" alt="">
-                                                            </div>
-                                                            <div class="grid-img">
-                                                                <img src="images/i5.jpg" class="img-responsive" alt="">
-                                                            </div>
-                                                        </a>
-                                                    </figure>
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                        <div class="col-md-8 product-tab1-grid1 simpleCart_shelfItem">
-                                            <div class="block">
-                                                <div class="starbox small ghosting"> </div>
-                                            </div>
-                                            <div class="women">
-                                                <h6><a href="single.html">Sed ut perspiciatis unde</a></h6>
-                                                <span class="size">XL / XXL / S </span>
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Atqui iste locus est, Piso, tibi etiam atque etiam confirmandus, inquam; Refert tamen, quo modo. Quod autem meum munus dicis non equidem recuso, sed te adiungo socium. </p>
-                                                <p><del>$100.00</del><em class="item_price">$70.00</em></p>
-                                                <a href="#" data-text="Add To Cart" class="my-cart-b item_add">Add To Cart</a>
-                                            </div>
-                                        </div>
-                                        <div class="clearfix"></div>
-                                    </div>
-                                    <div class="product-tab1">
-                                        <div class="col-md-4 product-tab1-grid">
-                                            <div class="grid-arr">
-                                                <div class="grid-arrival">
-                                                    <figure>
-                                                        <a href="#" class="new-gri" data-toggle="modal" data-target="#myModal1">
-                                                            <div class="grid-img">
-                                                                <img src="images/i8.jpg" class="img-responsive" alt="">
-                                                            </div>
-                                                            <div class="grid-img">
-                                                                <img src="images/i7.jpg" class="img-responsive" alt="">
-                                                            </div>
-                                                        </a>
-                                                    </figure>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-8 product-tab1-grid1 simpleCart_shelfItem">
-                                            <div class="block">
-                                                <div class="starbox small ghosting"> </div>
-                                            </div>
-                                            <div class="women">
-                                                <h6><a href="single.html">Sed ut perspiciatis unde</a></h6>
-                                                <span class="size">XL / XXL / S </span>
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Atqui iste locus est, Piso, tibi etiam atque etiam confirmandus, inquam; Refert tamen, quo modo. Quod autem meum munus dicis non equidem recuso, sed te adiungo socium. </p>
-                                                <p><del>$100.00</del><em class="item_price">$70.00</em></p>
-                                                <a href="#" data-text="Add To Cart" class="my-cart-b item_add">Add To Cart</a>
-                                            </div>
-                                        </div>
-                                        <div class="clearfix"></div>
-                                    </div>
-
                                 </div>
                             </div>
                         </ul>
                     </div>
+                    @if (Model.Pager.EndPage > 1)
+                    {
+                        <ul class="pagination">
+                            @if (Model.Pager.CurrentPage > 1)
+                            {
+                                <li>
+                                    <a href="~/Home/Index">First</a>
+                                </li>
+                                <li>
+                                    <a href="~/Home/Index?page=@(Model.Pager.CurrentPage - 1)">Previous</a>
+                                </li>
+                            }
+
+                            @for (var page = Model.Pager.StartPage; page <= Model.Pager.EndPage; page++)
+                            {
+                                <li class="@(page == Model.Pager.CurrentPage ? "active" : "")">
+                                    <a href="~/Home/Index?page=@(page)">@(page)</a>
+                                </li>
+                            }
+
+                            @if (Model.Pager.CurrentPage < Model.Pager.TotalPages)
+                            {
+                                <li>
+                                    <a href="~/Home/Index?page=@(Model.Pager.CurrentPage + 1)">Next</a>
+                                </li>
+                                <li>
+                                    <a href="~/Home/Index?page=@(Model.Pager.TotalPages)">Last</a>
+                                </li>
+                            }
+                        </ul>
+                    }
                 </div>
                 <div class="clearfix"> </div>
             </div>

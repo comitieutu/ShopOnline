@@ -13,4 +13,3 @@ C:\Users\User\source\repos\BookLib\BookLib\bin\Debug\netcoreapp2.1\Microsoft.Ext
 C:\Users\User\source\repos\BookLib\BookLib\bin\Debug\netcoreapp2.1\BookLib.pdb
 C:\Users\User\source\repos\BookLib\BookLib\obj\Debug\netcoreapp2.1\BookLib.dll
 C:\Users\User\source\repos\BookLib\BookLib\obj\Debug\netcoreapp2.1\BookLib.pdb
-C:\Users\User\source\repos\BookLib\BookLib\obj\Debug\netcoreapp2.1\BookLib.csprojAssemblyReference.cache

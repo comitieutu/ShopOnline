@@ -14,6 +14,15 @@
           "lib/netcoreapp2.0/AutoMapper.dll": {}
         }
       },
+      "JW.Pager/1.0.1": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/JW.Pager.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/JW.Pager.dll": {}
+        }
+      },
       "Microsoft.AspNet.WebApi.Client/5.2.6": {
         "type": "package",
         "dependencies": {
@@ -4660,6 +4669,17 @@
         "lib/netstandard2.0/AutoMapper.dll",
         "lib/netstandard2.0/AutoMapper.pdb",
         "lib/netstandard2.0/AutoMapper.xml"
+      ]
+    },
+    "JW.Pager/1.0.1": {
+      "sha512": "Fn7fAhgGuL4gcuoBNsuNCiotUGaGwf0us1fSs2RfwSm8DCSRF0ldNC0CVmexe6EYd4/e75jVpBtcC10+HON7jg==",
+      "type": "package",
+      "path": "jw.pager/1.0.1",
+      "files": [
+        ".signature.p7s",
+        "jw.pager.1.0.1.nupkg.sha512",
+        "jw.pager.nuspec",
+        "lib/netstandard2.0/JW.Pager.dll"
       ]
     },
     "Microsoft.AspNet.WebApi.Client/5.2.6": {
@@ -12295,6 +12315,7 @@
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v2.1": [
       "AutoMapper >= 7.0.1",
+      "JW.Pager >= 1.0.1",
       "Microsoft.AspNetCore.App >= 2.1.1",
       "Microsoft.EntityFrameworkCore.SqlServer >= 2.1.4",
       "Microsoft.EntityFrameworkCore.Tools >= 2.1.4",
@@ -12347,6 +12368,10 @@
           "AutoMapper": {
             "target": "Package",
             "version": "[7.0.1, )"
+          },
+          "JW.Pager": {
+            "target": "Package",
+            "version": "[1.0.1, )"
           },
           "Microsoft.AspNetCore.App": {
             "suppressParent": "All",

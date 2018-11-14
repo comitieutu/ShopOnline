@@ -18,9 +18,6 @@ namespace ComiShop
         
         public string UserId { get; set; }
 
-        [Column(TypeName = "date")]
-        public DateTime? OrderDate { get; set; }
-
         [StringLength(20)]
         public string OrderStatus { get; set; }
 

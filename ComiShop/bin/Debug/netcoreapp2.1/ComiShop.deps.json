@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v2.1",
-    "signature": "7df4831548576bfed9799b6ddf6c5f1533f806ed"
+    "signature": "23bd9e038424d34d221c1994e95b87cac12f819f"
   },
   "compilationOptions": {
     "defines": [
@@ -25,6 +25,7 @@
       "ComiShop/1.0.0": {
         "dependencies": {
           "AutoMapper": "7.0.1",
+          "JW.Pager": "1.0.1",
           "Microsoft.AspNetCore.App": "2.1.1",
           "Microsoft.EntityFrameworkCore.SqlServer": "2.1.4",
           "Microsoft.EntityFrameworkCore.Tools": "2.1.4",
@@ -51,6 +52,17 @@
         },
         "compile": {
           "lib/netcoreapp2.0/AutoMapper.dll": {}
+        }
+      },
+      "JW.Pager/1.0.1": {
+        "runtime": {
+          "lib/netstandard2.0/JW.Pager.dll": {
+            "assemblyVersion": "1.0.1.0",
+            "fileVersion": "1.0.1.0"
+          }
+        },
+        "compile": {
+          "lib/netstandard2.0/JW.Pager.dll": {}
         }
       },
       "Microsoft.CodeAnalysis.CSharp.Workspaces/2.8.0": {
@@ -3533,6 +3545,13 @@
       "sha512": "sha512-6xHbhsW09sWjjYuE1sqhYn25PQzB6UEUVPME5uhlaIz2NR2+L3+FGbVxvknJKug1BLp6VTLxDb5RcGXKMm0ieQ==",
       "path": "automapper/7.0.1",
       "hashPath": "automapper.7.0.1.nupkg.sha512"
+    },
+    "JW.Pager/1.0.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Fn7fAhgGuL4gcuoBNsuNCiotUGaGwf0us1fSs2RfwSm8DCSRF0ldNC0CVmexe6EYd4/e75jVpBtcC10+HON7jg==",
+      "path": "jw.pager/1.0.1",
+      "hashPath": "jw.pager.1.0.1.nupkg.sha512"
     },
     "Microsoft.CodeAnalysis.CSharp.Workspaces/2.8.0": {
       "type": "package",

@@ -30,7 +30,7 @@ namespace ComiShop
 
         public virtual Category Category { get; set; }
 
-        public virtual ProductDetail ProductDetail { get; set; }
+        public virtual ICollection<ProductDetail> ProductDetails { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SaleOrderDetail> SaleOrderDetails { get; set; }

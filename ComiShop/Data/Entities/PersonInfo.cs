@@ -36,5 +36,6 @@ namespace ComiShop
 
         [StringLength(50)]
         public string Country { get; set; }
+        public virtual ApplicationUser User { get; set; }
     }
 }

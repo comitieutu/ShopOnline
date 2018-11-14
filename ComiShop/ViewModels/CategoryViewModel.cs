@@ -7,7 +7,7 @@ namespace ComiShop.ViewModels
 {
     public class CategoryViewModel
     {
-        public string CategoryId { get; set; }
+        public int Id { get; set; }
         public string CategoryName { get; set; }
     }
 }

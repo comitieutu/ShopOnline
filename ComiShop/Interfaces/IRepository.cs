@@ -24,5 +24,6 @@ namespace ComiShop.Interfaces
         void Delete(params object[] keyValues);
 
         int Delete(Expression<Func<T, bool>> predicate);
+        T GetByUId(Guid keyValue);
     }
 }

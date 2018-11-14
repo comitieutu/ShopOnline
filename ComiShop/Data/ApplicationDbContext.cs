@@ -2,6 +2,7 @@
 using ComiShop.Models;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using System.Data.SqlClient;
 
 namespace ComiShop.Data
 {

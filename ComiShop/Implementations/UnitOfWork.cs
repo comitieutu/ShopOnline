@@ -19,37 +19,10 @@ namespace ComiShop.Implementations
         private IRepository<SaleOrderDetail> _saleOrderDetailRepository;
         private IRepository<Shipper> _shipperRepository;
 
-        //private UserManager<ApplicationUser> _userManager;
-        //private RoleManager<ApplicationRole> _roleManager;
-
         public UnitOfWork(ApplicationDbContext context)
         {
             _context = context;
         }
-
-        //public UserManager<ApplicationUser> UserManager
-        //{
-        //    get
-        //    {
-        //        if (_userManager == null)
-        //        {
-        //            _userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(_context));
-        //        }
-        //        return _userManager;
-        //    }
-        //}
-
-        //public RoleManager<IdentityRole> RoleManager
-        //{
-        //    get
-        //    {
-        //        if (_roleManager == null)
-        //        {
-        //            _roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(_context));
-        //        }
-        //        return _roleManager;
-        //    }
-        //}
 
         public IRepository<Product> ProductRepository
         {
@@ -74,19 +47,91 @@ namespace ComiShop.Implementations
             }
         }
 
+        //public IRepository<ApplicationUser> UserRepository
+        //{
+        //    get
+        //    {
+        //        if (_userRepository == null)
+        //        {
+        //            _userRepository = new Repository<ApplicationUser>(_context);
+        //        }
+        //        return _userRepository;
+        //    }
+        //}
+
+        public IRepository<PersonInfo> PersonInfoRepository
+        {
+            get
+            {
+                if (_personInfoRepository == null)
+                {
+                    _personInfoRepository = new Repository<PersonInfo>(_context);
+                }
+                return _personInfoRepository;
+            }
+        }
+
+        public IRepository<ProductDetail> ProductDetailRepository
+        {
+            get
+            {
+                if (_productDetailRepository == null)
+                {
+                    _productDetailRepository = new Repository<ProductDetail>(_context);
+                }
+                return _productDetailRepository;
+            }
+        }
+
+        public IRepository<ReceiveProduct> ReceiveProductRepository
+        {
+            get
+            {
+                if (_receiveProductRepository == null)
+                {
+                    _receiveProductRepository = new Repository<ReceiveProduct>(_context);
+                }
+                return _receiveProductRepository;
+            }
+        }
+
+        public IRepository<SaleOrder> SaleOrderRepository
+        {
+            get
+            {
+                if (_saleOrderRepository == null)
+                {
+                    _saleOrderRepository = new Repository<SaleOrder>(_context);
+                }
+                return _saleOrderRepository;
+            }
+        }
+
+        public IRepository<SaleOrderDetail> SaleOrderDetailRepository
+        {
+            get
+            {
+                if (_saleOrderDetailRepository == null)
+                {
+                    _saleOrderDetailRepository = new Repository<SaleOrderDetail>(_context);
+                }
+                return _saleOrderDetailRepository;
+            }
+        }
+
+        public IRepository<Shipper> ShipperRepository
+        {
+            get
+            {
+                if (_shipperRepository == null)
+                {
+                    _shipperRepository = new Repository<Shipper>(_context);
+                }
+                return _shipperRepository;
+            }
+        }
+
         public IRepository<ApplicationUser> UserRepository => throw new NotImplementedException();
-
-        public IRepository<PersonInfo> PersonInfoRepository => throw new NotImplementedException();
-
-        public IRepository<ProductDetail> ProductDetailRepository => throw new NotImplementedException();
-
-        public IRepository<ReceiveProduct> ReceiveProductRepository => throw new NotImplementedException();
-
-        public IRepository<SaleOrder> SaleOrderRepository => throw new NotImplementedException();
-
-        public IRepository<SaleOrderDetail> SaleOrderDetailRepository => throw new NotImplementedException();
-
-        public IRepository<Shipper> ShipperRepository => throw new NotImplementedException();
 
         public void Refresh()
         {

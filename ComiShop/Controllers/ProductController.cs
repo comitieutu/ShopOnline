@@ -33,14 +33,19 @@ namespace ComiShop.Controllers
         public ActionResult ProductList(int id)
         {
             var product = _mapper.Map<IEnumerable<Product>, IEnumerable<ProductListViewModel>>(_unitOfWork.ProductRepository.GetAll().Where(p => p.CategoryId == id));
-
-            return View(product);
+            var pager = new Pager(product.Count(), null);
+            var viewModel = new PageViewModel
+            {
+                ProductListViewModels = product,
+                Pager = pager
+            };
+            return View(viewModel);
         }
 
         // GET: Product/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            return View(new ProductDetailViewModel{ Id = id});
         }
 
         // GET: Product/Create

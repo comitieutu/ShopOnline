@@ -13,6 +13,7 @@ namespace ComiShop.Data
         {
             CreateMap<CategoryViewModel, Category>();
             CreateMap<Product, ProductListViewModel>().ReverseMap();
+            CreateMap<ReceiveProduct, ReceiveProductViewModel>().ReverseMap();
         }
     }
 }

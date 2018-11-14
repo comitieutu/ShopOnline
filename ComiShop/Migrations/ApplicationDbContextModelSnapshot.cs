@@ -44,8 +44,8 @@ namespace ComiShop.Migrations
                     b.ToTable("Category");
 
                     b.HasData(
-                        new { Id = 1, CategoryDes = "Tiểu thuyết nổi tiếng", CategoryName = "Sách", CreatedDate = new DateTime(2018, 11, 10, 21, 40, 36, 536, DateTimeKind.Local), ModifiedDate = new DateTime(2018, 11, 10, 21, 40, 36, 536, DateTimeKind.Local), UniqueId = new Guid("0daa6bf9-d18f-43fa-b231-dee8fe5a5c33") },
-                        new { Id = 2, CategoryDes = "Quần áo", CategoryName = "Quần áo", CreatedDate = new DateTime(2018, 11, 10, 21, 40, 36, 537, DateTimeKind.Local), ModifiedDate = new DateTime(2018, 11, 10, 21, 40, 36, 537, DateTimeKind.Local), UniqueId = new Guid("59570ab9-91fb-4323-aa4e-9d57f54a1d84") }
+                        new { Id = 1, CategoryDes = "Tiểu thuyết nổi tiếng", CategoryName = "Sách", CreatedDate = new DateTime(2018, 11, 14, 19, 3, 13, 759, DateTimeKind.Local), ModifiedDate = new DateTime(2018, 11, 14, 19, 3, 13, 759, DateTimeKind.Local), UniqueId = new Guid("c1f2f2e2-3cd1-4a97-bbe0-556a9b064cb4") },
+                        new { Id = 2, CategoryDes = "Quần áo", CategoryName = "Quần áo", CreatedDate = new DateTime(2018, 11, 14, 19, 3, 13, 760, DateTimeKind.Local), ModifiedDate = new DateTime(2018, 11, 14, 19, 3, 13, 760, DateTimeKind.Local), UniqueId = new Guid("a98c8a48-fefa-4a83-8d7b-10b69079f736") }
                     );
                 });
 
@@ -108,7 +108,7 @@ namespace ComiShop.Migrations
                     b.ToTable("AspNetRoles");
 
                     b.HasData(
-                        new { Id = "a18be9c0-aa65-4af8-bd17-00bd9344e575", ConcurrencyStamp = "6db04c14-e738-45f9-bb6a-6806d7aeadc3", CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Name = "admin", NormalizedName = "admin" }
+                        new { Id = "a18be9c0-aa65-4af8-bd17-00bd9344e575", ConcurrencyStamp = "12536547-4dc6-465b-bd46-ce8ab5bb8647", CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Name = "admin", NormalizedName = "admin" }
                     );
                 });
 
@@ -173,7 +173,7 @@ namespace ComiShop.Migrations
                     b.ToTable("AspNetUsers");
 
                     b.HasData(
-                        new { Id = "a18be9c0-aa65-4af8-bd17-00bd9344e575", AccessFailedCount = 0, ConcurrencyStamp = "e8d9a644-5103-459e-8092-73bc060b4420", CustomerType = 0, Email = "admin@gmail.com", EmailConfirmed = false, LockoutEnabled = true, NormalizedEmail = "admin@gmail.com", NormalizedUserName = "admin@gmail.com", PasswordHash = "AQAAAAEAACcQAAAAEEWYuSsEwWd5Joy9T9ekElhY6+NLp3DX/stC6hqcdr2NXF178XeaFlZ5x91KUV1c0w==", PhoneNumberConfirmed = false, SecurityStamp = "0aac0972-c104-4481-9c91-bf52567b6f24", TwoFactorEnabled = false, UserName = "admin@gmail.com" }
+                        new { Id = "a18be9c0-aa65-4af8-bd17-00bd9344e575", AccessFailedCount = 0, ConcurrencyStamp = "c2819bab-a461-4df3-b57a-def6743da8f9", CustomerType = 0, Email = "admin@gmail.com", EmailConfirmed = false, LockoutEnabled = true, NormalizedEmail = "admin@gmail.com", NormalizedUserName = "admin@gmail.com", PasswordHash = "AQAAAAEAACcQAAAAELcSBYWaPyfsfjyblKANOEqM7o5b8CajIurfLpEmm1deAeDpO4xHDplXaDlGylUnOg==", PhoneNumberConfirmed = false, SecurityStamp = "a6d45a94-8a51-4e74-a0e1-2b9275e1c402", TwoFactorEnabled = false, UserName = "admin@gmail.com" }
                     );
                 });
 
@@ -225,7 +225,7 @@ namespace ComiShop.Migrations
                     b.ToTable("PersonInfo");
 
                     b.HasData(
-                        new { Id = 1, CreatedDate = new DateTime(2018, 11, 10, 21, 40, 36, 537, DateTimeKind.Local), FirstName = "Meo", LastName = "Meo", ModifiedDate = new DateTime(2018, 11, 10, 21, 40, 36, 537, DateTimeKind.Local), UniqueId = new Guid("4ec73af3-3cc3-48dc-848f-c517caf7ea75"), UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e575" }
+                        new { Id = 1, CreatedDate = new DateTime(2018, 11, 14, 19, 3, 13, 760, DateTimeKind.Local), FirstName = "Meo", LastName = "Meo", ModifiedDate = new DateTime(2018, 11, 14, 19, 3, 13, 760, DateTimeKind.Local), UniqueId = new Guid("e91ff8a9-81a6-489d-87f9-b04cfbb5f26e"), UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e575" }
                     );
                 });
 
@@ -265,10 +265,10 @@ namespace ComiShop.Migrations
                     b.ToTable("Product");
 
                     b.HasData(
-                        new { Id = 1, CategoryId = 1, CreatedDate = new DateTime(2018, 11, 10, 21, 40, 36, 537, DateTimeKind.Local), ModifiedDate = new DateTime(2018, 11, 10, 21, 40, 36, 537, DateTimeKind.Local), ProductDes = "Kinh điển", ProductName = "Cuốn theo chiều gió", Quantity = 5, UniqueId = new Guid("9682743c-c2cf-4e9f-98f3-793b198a0ec9"), UnitPrice = 50.0 },
-                        new { Id = 2, CategoryId = 1, CreatedDate = new DateTime(2018, 11, 10, 21, 40, 36, 537, DateTimeKind.Local), ModifiedDate = new DateTime(2018, 11, 10, 21, 40, 36, 537, DateTimeKind.Local), ProductDes = "Việt Nam", ProductName = "Mắt biếc", Quantity = 12, UniqueId = new Guid("53f6a96e-ca64-448a-8fca-01978f71f77a"), UnitPrice = 60.0 },
-                        new { Id = 3, CategoryId = 2, CreatedDate = new DateTime(2018, 11, 10, 21, 40, 36, 537, DateTimeKind.Local), ModifiedDate = new DateTime(2018, 11, 10, 21, 40, 36, 537, DateTimeKind.Local), ProductDes = "Việt Nam", ProductName = "Sơ mi", Quantity = 11, UniqueId = new Guid("987caef1-e4fe-4bb0-9361-8e6a97f312d9"), UnitPrice = 60.0 },
-                        new { Id = 4, CategoryId = 2, CreatedDate = new DateTime(2018, 11, 10, 21, 40, 36, 537, DateTimeKind.Local), ModifiedDate = new DateTime(2018, 11, 10, 21, 40, 36, 537, DateTimeKind.Local), ProductDes = "Việt Nam", ProductName = "Đầm", Quantity = 22, UniqueId = new Guid("0926a2e2-6d49-40b4-8919-1cca6d2ccd54"), UnitPrice = 70.0 }
+                        new { Id = 1, CategoryId = 1, CreatedDate = new DateTime(2018, 11, 14, 19, 3, 13, 760, DateTimeKind.Local), ModifiedDate = new DateTime(2018, 11, 14, 19, 3, 13, 760, DateTimeKind.Local), ProductDes = "Kinh điển", ProductName = "Cuốn theo chiều gió", Quantity = 5, UniqueId = new Guid("43731edb-984a-4b5d-bc42-f85364654464"), UnitPrice = 50.0 },
+                        new { Id = 2, CategoryId = 1, CreatedDate = new DateTime(2018, 11, 14, 19, 3, 13, 760, DateTimeKind.Local), ModifiedDate = new DateTime(2018, 11, 14, 19, 3, 13, 760, DateTimeKind.Local), ProductDes = "Việt Nam", ProductName = "Mắt biếc", Quantity = 12, UniqueId = new Guid("58c71da6-a9dc-4d88-9314-09fbdc91222f"), UnitPrice = 60.0 },
+                        new { Id = 3, CategoryId = 2, CreatedDate = new DateTime(2018, 11, 14, 19, 3, 13, 760, DateTimeKind.Local), ModifiedDate = new DateTime(2018, 11, 14, 19, 3, 13, 760, DateTimeKind.Local), ProductDes = "Việt Nam", ProductName = "Sơ mi", Quantity = 11, UniqueId = new Guid("58cb18ea-bdb0-4bf1-879f-199c0aac51a0"), UnitPrice = 60.0 },
+                        new { Id = 4, CategoryId = 2, CreatedDate = new DateTime(2018, 11, 14, 19, 3, 13, 760, DateTimeKind.Local), ModifiedDate = new DateTime(2018, 11, 14, 19, 3, 13, 760, DateTimeKind.Local), ProductDes = "Việt Nam", ProductName = "Đầm", Quantity = 22, UniqueId = new Guid("ca4f8a87-ec35-4c41-ae0f-679ccaf610cc"), UnitPrice = 70.0 }
                     );
                 });
 
@@ -293,16 +293,15 @@ namespace ComiShop.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ProductId")
-                        .IsUnique();
+                    b.HasIndex("ProductId");
 
                     b.ToTable("ProductDetail");
 
                     b.HasData(
-                        new { Id = 1, CreatedDate = new DateTime(2018, 11, 10, 21, 40, 36, 537, DateTimeKind.Local), ModifiedDate = new DateTime(2018, 11, 10, 21, 40, 36, 537, DateTimeKind.Local), ProductId = 1, ProductImage = "i1.jpg", UniqueId = new Guid("e8305049-b32d-4923-b455-b7963a20a2ac") },
-                        new { Id = 2, CreatedDate = new DateTime(2018, 11, 10, 21, 40, 36, 537, DateTimeKind.Local), ModifiedDate = new DateTime(2018, 11, 10, 21, 40, 36, 537, DateTimeKind.Local), ProductId = 2, ProductImage = "i10.jpg", UniqueId = new Guid("b57eb9f3-c6f5-4349-9323-8b351c367e03") },
-                        new { Id = 3, CreatedDate = new DateTime(2018, 11, 10, 21, 40, 36, 537, DateTimeKind.Local), ModifiedDate = new DateTime(2018, 11, 10, 21, 40, 36, 537, DateTimeKind.Local), ProductId = 3, ProductImage = "i12.jpg", UniqueId = new Guid("d57c0cd8-67b0-46ff-a797-6859d22d1420") },
-                        new { Id = 4, CreatedDate = new DateTime(2018, 11, 10, 21, 40, 36, 537, DateTimeKind.Local), ModifiedDate = new DateTime(2018, 11, 10, 21, 40, 36, 537, DateTimeKind.Local), ProductId = 4, ProductImage = "i11.jpg", UniqueId = new Guid("3f3eaa2a-8b39-4844-9214-3308329d9a1a") }
+                        new { Id = 1, CreatedDate = new DateTime(2018, 11, 14, 19, 3, 13, 760, DateTimeKind.Local), ModifiedDate = new DateTime(2018, 11, 14, 19, 3, 13, 760, DateTimeKind.Local), ProductId = 1, ProductImage = "i1.jpg", UniqueId = new Guid("24623e17-9ab6-4d0f-b905-5d79debbe306") },
+                        new { Id = 2, CreatedDate = new DateTime(2018, 11, 14, 19, 3, 13, 760, DateTimeKind.Local), ModifiedDate = new DateTime(2018, 11, 14, 19, 3, 13, 760, DateTimeKind.Local), ProductId = 2, ProductImage = "i10.jpg", UniqueId = new Guid("2f1bb8be-db28-44bb-b766-8105e09c92ca") },
+                        new { Id = 3, CreatedDate = new DateTime(2018, 11, 14, 19, 3, 13, 760, DateTimeKind.Local), ModifiedDate = new DateTime(2018, 11, 14, 19, 3, 13, 760, DateTimeKind.Local), ProductId = 3, ProductImage = "i12.jpg", UniqueId = new Guid("8d993c1e-0786-4bc3-b367-31f58efa3b8c") },
+                        new { Id = 4, CreatedDate = new DateTime(2018, 11, 14, 19, 3, 13, 760, DateTimeKind.Local), ModifiedDate = new DateTime(2018, 11, 14, 19, 3, 13, 760, DateTimeKind.Local), ProductId = 4, ProductImage = "i11.jpg", UniqueId = new Guid("282aff3d-1dab-4a8b-ae78-60610f2ee5d4") }
                     );
                 });
 
@@ -348,8 +347,8 @@ namespace ComiShop.Migrations
                     b.ToTable("ReceiveProduct");
 
                     b.HasData(
-                        new { Id = 1, CreatedDate = new DateTime(2018, 11, 10, 21, 40, 36, 538, DateTimeKind.Local), ModifiedDate = new DateTime(2018, 11, 10, 21, 40, 36, 538, DateTimeKind.Local), SaleId = 1, ShipToName = "Ichi", ShipToPhone = "0888888888", UniqueId = new Guid("49213234-0a7d-4623-854f-7879d8d0e84f") },
-                        new { Id = 2, CreatedDate = new DateTime(2018, 11, 10, 21, 40, 36, 538, DateTimeKind.Local), ModifiedDate = new DateTime(2018, 11, 10, 21, 40, 36, 538, DateTimeKind.Local), SaleId = 2, ShipToName = "Gau Gau", ShipToPhone = "094464467", UniqueId = new Guid("aa960296-e500-4483-ae13-7833723bf8f8") }
+                        new { Id = 1, CreatedDate = new DateTime(2018, 11, 14, 19, 3, 13, 761, DateTimeKind.Local), ModifiedDate = new DateTime(2018, 11, 14, 19, 3, 13, 761, DateTimeKind.Local), SaleId = 1, ShipToName = "Ichi", ShipToPhone = "0888888888", UniqueId = new Guid("61a8c7c4-b922-42de-bf99-542b25c10717") },
+                        new { Id = 2, CreatedDate = new DateTime(2018, 11, 14, 19, 3, 13, 761, DateTimeKind.Local), ModifiedDate = new DateTime(2018, 11, 14, 19, 3, 13, 761, DateTimeKind.Local), SaleId = 2, ShipToName = "Gau Gau", ShipToPhone = "094464467", UniqueId = new Guid("624433cd-c21e-4ac6-b00f-0a9111837585") }
                     );
                 });
 
@@ -366,9 +365,6 @@ namespace ComiShop.Migrations
                     b.Property<bool?>("Deleted");
 
                     b.Property<DateTime>("ModifiedDate");
-
-                    b.Property<DateTime?>("OrderDate")
-                        .HasColumnType("date");
 
                     b.Property<string>("OrderStatus")
                         .HasMaxLength(20);
@@ -397,8 +393,8 @@ namespace ComiShop.Migrations
                     b.ToTable("SaleOrder");
 
                     b.HasData(
-                        new { Id = 1, CreatedDate = new DateTime(2018, 11, 10, 21, 40, 36, 538, DateTimeKind.Local), ModifiedDate = new DateTime(2018, 11, 10, 21, 40, 36, 538, DateTimeKind.Local), OrderDate = new DateTime(2018, 11, 10, 21, 40, 36, 538, DateTimeKind.Local), ShipperId = 1, TotalPrice = 50.0, UniqueId = new Guid("fc84649e-80b7-42b7-8114-865b8d09473c"), UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e575" },
-                        new { Id = 2, CreatedDate = new DateTime(2018, 11, 10, 21, 40, 36, 538, DateTimeKind.Local), ModifiedDate = new DateTime(2018, 11, 10, 21, 40, 36, 538, DateTimeKind.Local), OrderDate = new DateTime(2018, 11, 10, 21, 40, 36, 538, DateTimeKind.Local), ShipperId = 1, TotalPrice = 120.0, UniqueId = new Guid("54b44810-f2a0-41a8-a3b3-15f6164f4001"), UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e575" }
+                        new { Id = 1, CreatedDate = new DateTime(2018, 11, 14, 19, 3, 13, 761, DateTimeKind.Local), ModifiedDate = new DateTime(2018, 11, 14, 19, 3, 13, 761, DateTimeKind.Local), ShipperId = 1, TotalPrice = 50.0, UniqueId = new Guid("cdeedf70-db7e-490e-a078-94b6e7a8063f"), UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e575" },
+                        new { Id = 2, CreatedDate = new DateTime(2018, 11, 14, 19, 3, 13, 761, DateTimeKind.Local), ModifiedDate = new DateTime(2018, 11, 14, 19, 3, 13, 761, DateTimeKind.Local), ShipperId = 1, TotalPrice = 120.0, UniqueId = new Guid("1b58d27c-289c-4eb9-addd-fe266e1342e7"), UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e575" }
                     );
                 });
 
@@ -435,8 +431,8 @@ namespace ComiShop.Migrations
                     b.ToTable("SaleOrderDetail");
 
                     b.HasData(
-                        new { Id = 1, CreatedDate = new DateTime(2018, 11, 10, 21, 40, 36, 538, DateTimeKind.Local), ModifiedDate = new DateTime(2018, 11, 10, 21, 40, 36, 538, DateTimeKind.Local), ProductId = 1, Quantity = 1, SaleOrderId = 1, UniqueId = new Guid("63e59065-585a-48c6-adc8-f2447b1f9ccd"), UnitPrice = 50.0 },
-                        new { Id = 2, CreatedDate = new DateTime(2018, 11, 10, 21, 40, 36, 538, DateTimeKind.Local), ModifiedDate = new DateTime(2018, 11, 10, 21, 40, 36, 538, DateTimeKind.Local), ProductId = 3, Quantity = 2, SaleOrderId = 2, UniqueId = new Guid("2d9e51a3-3721-4a3a-8079-65013872893e"), UnitPrice = 60.0 }
+                        new { Id = 1, CreatedDate = new DateTime(2018, 11, 14, 19, 3, 13, 761, DateTimeKind.Local), ModifiedDate = new DateTime(2018, 11, 14, 19, 3, 13, 761, DateTimeKind.Local), ProductId = 1, Quantity = 1, SaleOrderId = 1, UniqueId = new Guid("66e17bf2-dd00-4267-bafa-65ec6de1cbad"), UnitPrice = 50.0 },
+                        new { Id = 2, CreatedDate = new DateTime(2018, 11, 14, 19, 3, 13, 761, DateTimeKind.Local), ModifiedDate = new DateTime(2018, 11, 14, 19, 3, 13, 761, DateTimeKind.Local), ProductId = 3, Quantity = 2, SaleOrderId = 2, UniqueId = new Guid("b1fd3d34-8b21-4945-82cd-321db9debd5c"), UnitPrice = 60.0 }
                     );
                 });
 
@@ -468,8 +464,8 @@ namespace ComiShop.Migrations
                     b.ToTable("Shipper");
 
                     b.HasData(
-                        new { Id = 1, ContactName = "Anga", ContactPhone = "094123321", CreatedDate = new DateTime(2018, 11, 10, 21, 40, 36, 538, DateTimeKind.Local), ModifiedDate = new DateTime(2018, 11, 10, 21, 40, 36, 538, DateTimeKind.Local), UniqueId = new Guid("58bde419-cef2-4212-b9f8-4859444501c9") },
-                        new { Id = 2, ContactName = "Husky", ContactPhone = "037864457", CreatedDate = new DateTime(2018, 11, 10, 21, 40, 36, 538, DateTimeKind.Local), ModifiedDate = new DateTime(2018, 11, 10, 21, 40, 36, 538, DateTimeKind.Local), UniqueId = new Guid("06aba560-81c1-4504-88d4-3707952b6369") }
+                        new { Id = 1, ContactName = "Anga", ContactPhone = "094123321", CreatedDate = new DateTime(2018, 11, 14, 19, 3, 13, 760, DateTimeKind.Local), ModifiedDate = new DateTime(2018, 11, 14, 19, 3, 13, 760, DateTimeKind.Local), UniqueId = new Guid("1b95c2c0-02c7-4659-b21f-d3dc5248f5da") },
+                        new { Id = 2, ContactName = "Husky", ContactPhone = "037864457", CreatedDate = new DateTime(2018, 11, 14, 19, 3, 13, 761, DateTimeKind.Local), ModifiedDate = new DateTime(2018, 11, 14, 19, 3, 13, 761, DateTimeKind.Local), UniqueId = new Guid("ddf0c24e-fae9-4abe-8263-ff0138939ccc") }
                     );
                 });
 
@@ -597,8 +593,8 @@ namespace ComiShop.Migrations
             modelBuilder.Entity("ComiShop.ProductDetail", b =>
                 {
                     b.HasOne("ComiShop.Product", "Product")
-                        .WithOne("ProductDetail")
-                        .HasForeignKey("ComiShop.ProductDetail", "ProductId")
+                        .WithMany("ProductDetails")
+                        .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 

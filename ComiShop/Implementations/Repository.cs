@@ -2,11 +2,11 @@
 using ComiShop.Entities;
 using ComiShop.Interfaces;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Storage;
 using System;
-using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
 
 namespace ComiShop.Implementations
 {
@@ -64,7 +64,7 @@ namespace ComiShop.Implementations
 
         public void Edit(T entity)
         {
-            //_context.Entry(entity).State = EntityState.Modified;
+            _context.Entry(entity).State = EntityState.Modified;
         }
 
         private void DeleteEntity(T entity)
@@ -78,6 +78,10 @@ namespace ComiShop.Implementations
             //{
             //    _context.Entry(entity).State = EntityState.Deleted;
             //}
+        }
+        public T GetByUId(Guid keyValue)
+        {
+            return EntitySet.Where(e => e.UniqueId == keyValue).FirstOrDefault();
         }
     }
 }
