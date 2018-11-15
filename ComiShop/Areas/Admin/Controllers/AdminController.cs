@@ -83,6 +83,7 @@ namespace ComiShop.Areas.Admin.Controllers
                 {
                     var product = Mapper.Map<Product>(productCreate);
                     _unitOfWork.ProductRepository.Create(product);
+                    _unitOfWork.Commit();
                     
                     var productId = _unitOfWork.ProductRepository.GetByUId(product.UniqueId).Id;
                     
@@ -120,7 +121,8 @@ namespace ComiShop.Areas.Admin.Controllers
         [HttpPost]
         public ActionResult CreateCategory(CategoryCreateViewModel category)
         {
-            _unitOfWork.CategoryRepository.Create(Mapper.Map<Category>(category));            
+            _unitOfWork.CategoryRepository.Create(Mapper.Map<Category>(category));   
+            _unitOfWork.Commit();
             return View();
         }
 
