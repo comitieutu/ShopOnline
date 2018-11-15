@@ -16,7 +16,7 @@ namespace ComiShop.Data
             CreateMap<ProductCreateViewModel, Product>()
                 .ForMember(dest => dest.Category, opt => opt.Ignore())
                 .ForMember(dest => dest.Comments, opt => opt.Ignore())
-                .ForMember(dest => dest.ProductDetail, opt => opt.Ignore());
+                .ForMember(dest => dest.ProductDetails, opt => opt.Ignore());
             CreateMap<ReceiveProduct, ReceiveProductViewModel>().ReverseMap();
             CreateMap<CategoryCreateViewModel, Category>().ReverseMap();
         }

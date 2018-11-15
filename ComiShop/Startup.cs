@@ -66,8 +66,6 @@ namespace ComiShop
                 mc.AddProfile(new BookProfile());
             });
 
-            Mapper.Initialize(cfg => cfg.AddProfile<BookProfile>());
-
             IMapper mapper = mappingConfig.CreateMapper();
             services.AddSingleton(mapper);
 
