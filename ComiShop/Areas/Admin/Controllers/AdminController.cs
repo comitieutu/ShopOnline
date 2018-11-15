@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using ComiShop.Interfaces;
 using ComiShop.ViewModels;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -14,10 +16,12 @@ namespace ComiShop.Areas.Admin.Controllers
     public class AdminController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;
+        private readonly IHostingEnvironment _hostingEnv;
 
-        public AdminController(IUnitOfWork unitOfWork)
+        public AdminController(IUnitOfWork unitOfWork, IHostingEnvironment hostingEnv)
         {
             _unitOfWork = unitOfWork;
+            _hostingEnv = hostingEnv;
         }
 
         // GET: Admin
@@ -75,10 +79,8 @@ namespace ComiShop.Areas.Admin.Controllers
         // POST: Admin/Create   
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> CreateProduct(ProductCreateViewModel productCreate, List<IFormFile> files)
+        public async Task<IActionResult> CreateProduct(ProductCreateViewModel productCreate, List<IFormFile> files = null)
         {
-            if (ModelState.IsValid)
-            {
                 try
                 {
                     var product = Mapper.Map<Product>(productCreate);
@@ -86,8 +88,8 @@ namespace ComiShop.Areas.Admin.Controllers
                     _unitOfWork.Commit();
                     
                     var productId = _unitOfWork.ProductRepository.GetByUId(product.UniqueId).Id;
-                    
-                    var filePath = Path.GetTempFileName();
+
+                    var filePath = _hostingEnv.WebRootPath + "\\images";
                     foreach (var formFile in files)
                     {
                         var fileName = Guid.NewGuid().ToString().Replace("-", "") + Path.GetExtension(formFile.FileName);
@@ -108,7 +110,6 @@ namespace ComiShop.Areas.Admin.Controllers
                 {
                     return View("Index");
                 }
-            }
             return View("Index");
         }
 
