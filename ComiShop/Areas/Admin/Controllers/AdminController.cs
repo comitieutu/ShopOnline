@@ -75,15 +75,32 @@ namespace ComiShop.Areas.Admin.Controllers
         // POST: Admin/Create   
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult CreateProduct(ProductCreateViewModel productCreate)
+        public async Task<IActionResult> CreateProduct(ProductCreateViewModel productCreate, List<IFormFile> files)
         {
             if (ModelState.IsValid)
             {
                 try
                 {
-                    // TODO: Add insert logic here
                     var product = Mapper.Map<Product>(productCreate);
                     _unitOfWork.ProductRepository.Create(product);
+                    
+                    var productId = _unitOfWork.ProductRepository.GetByUId(product.UniqueId).Id;
+                    
+                    var filePath = Path.GetTempFileName();
+                    foreach (var formFile in files)
+                    {
+                        var fileName = Guid.NewGuid().ToString().Replace("-", "") + Path.GetExtension(formFile.FileName);
+                        if (formFile.Length > 0)
+                        {
+                            using (var stream = new FileStream(Path.Combine(filePath, fileName), FileMode.Create))
+                            {
+                                await formFile.CopyToAsync(stream);
+                            }
+                        }
+                        _unitOfWork.ProductDetailRepository.Create(new ProductDetail{ ProductId = productId, ProductImage = fileName});
+                    }
+                    _unitOfWork.Commit();
+                    
                     return RedirectToAction("CreateProduct");
                 }
                 catch (Exception e)
