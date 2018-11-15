@@ -118,9 +118,9 @@ namespace ComiShop.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public ActionResult CreateCategory(Category category)
+        public ActionResult CreateCategory(CategoryCreateViewModel category)
         {
-            _unitOfWork.CategoryRepository.Create(category);            
+            _unitOfWork.CategoryRepository.Create(Mapper.Map<Category>(category));            
             return View();
         }
 
