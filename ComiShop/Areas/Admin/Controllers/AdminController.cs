@@ -42,7 +42,7 @@ namespace ComiShop.Areas.Admin.Controllers
                 CategoryId = ct.Id,
                 CategoryName = ct.CategoryName,
                 ProductList = productListView.Where(pl => pl.CategoryId == ct.Id).ToList()
-            });
+            }).ToList();
 
             return View(warehouseView);
         }
