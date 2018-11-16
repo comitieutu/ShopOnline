@@ -9,6 +9,7 @@ using ComiShop.ViewModels;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace ComiShop.Areas.Admin.Controllers
 {
@@ -110,7 +111,6 @@ namespace ComiShop.Areas.Admin.Controllers
                 {
                     return View("Index");
                 }
-            return View("Index");
         }
 
         [HttpGet]
@@ -127,50 +127,58 @@ namespace ComiShop.Areas.Admin.Controllers
             return View();
         }
 
+        [HttpGet]
+        public ActionResult CategoryList()
+        {
+            var categories = _unitOfWork.CategoryRepository.GetAll().Include(x => x.Products).ToList();
+            var categoriesView = Mapper.Map<List<CategoryViewModel>>(categories);
+            return View(categoriesView);
+        }
+
         // GET: Admin/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult CategoryDetail(int id)
         {
-            return View();
+            var category = _unitOfWork.CategoryRepository.Get(id);
+            var categoryView = Mapper.Map<CategoryViewModel>(category);
+            return View(categoryView);
         }
 
-        // POST: Admin/Edit/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public ActionResult EditCategory(CategoryViewModel categoryView)
         {
-            try
+            if (ModelState.IsValid)
             {
-                // TODO: Add update logic here
-
-                return RedirectToAction(nameof(Index));
+                try
+                {
+                    var categoryUpdate = Mapper.Map<Category>(categoryView);
+                    _unitOfWork.CategoryRepository.Edit(categoryUpdate);
+                    _unitOfWork.Commit();
+                    return Redirect("CategoryList");
+                }
+                catch (Exception e)
+                {
+                    throw new Exception(nameof(e));
+                }
             }
-            catch
+            else
             {
-                return View();
-            }
+                return BadRequest(ModelState);
+            }            
         }
 
-        // GET: Admin/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: Admin/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public ActionResult DeleteCategory(int id)
         {
             try
             {
-                // TODO: Add delete logic here
-
-                return RedirectToAction(nameof(Index));
+                _unitOfWork.CategoryRepository.Delete(id);
+                _unitOfWork.Commit();
+                return RedirectToAction("CategoryList");
             }
-            catch
+            catch (Exception e)
             {
-                return View();
+                throw new Exception(nameof(e));
             }
         }
+
+
     }
 }
