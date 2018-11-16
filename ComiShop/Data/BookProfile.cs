@@ -11,7 +11,9 @@ namespace ComiShop.Data
     {
         public BookProfile()
         {
-            CreateMap<CategoryViewModel, Category>().ReverseMap();
+            CreateMap<CategoryViewModel, Category>();
+            CreateMap<Category, CategoryViewModel>()
+                .ForMember(x => x.IsDeleteAble, p => p.MapFrom(src => src.Products.Any() ? false : true));
             CreateMap<Product, ProductListViewModel>().ReverseMap();
             CreateMap<ProductCreateViewModel, Product>()
                 .ForMember(dest => dest.Category, opt => opt.Ignore())

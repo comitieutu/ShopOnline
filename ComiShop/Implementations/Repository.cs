@@ -32,13 +32,6 @@ namespace ComiShop.Implementations
             return Entities.Where(predicate);
         }
 
-        //public IQueryable<T> GetByCategory(string id)
-        //{
-        //    var product = EntitySet.Find(id).
-        //    category.
-        //    return Entities;
-        //}
-
         public IQueryable<T> GetAll()
         {
             return Entities;
@@ -69,15 +62,7 @@ namespace ComiShop.Implementations
 
         private void DeleteEntity(T entity)
         {
-            //if (entity is ILogicalDeleteEntity unDeletableEntity)
-            //{
-            //    unDeletableEntity.Deleted = true;
-            //    _context.Entry(unDeletableEntity).State = EntityState.Modified;
-            //}
-            //else
-            //{
-            //    _context.Entry(entity).State = EntityState.Deleted;
-            //}
+            _context.Entry(entity).State = EntityState.Deleted;
         }
         public T GetByUId(Guid keyValue)
         {

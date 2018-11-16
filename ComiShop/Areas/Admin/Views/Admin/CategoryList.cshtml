@@ -1,0 +1,47 @@
+﻿@model List<ComiShop.ViewModels.CategoryViewModel>
+
+<div id="page-wrapper">
+    <div class="main-page">
+        <div class="row">
+            <div class="col-md-10">
+                <div>
+                    <h4>CategoryViewModel</h4>
+                    <hr />
+                    <table class="table table-responsive table-bordered table-condensed">
+                        <thead>
+                            <tr>
+                                <th>Category Name</th>
+                                <th>Category Description</th>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var category in Model)
+                            {
+                            <tr>
+                                <td>@category.CategoryName</td>
+                                <td>@category.CategoryDes</td>
+                                <td><a asp-action="CategoryDetail" asp-route-id="@(category.Id)">Edit</a></td>
+                                @if (category.IsDeleteAble)
+                                {
+
+                                    <td><a asp-action="DeleteCategory" asp-route-id="@(category.Id)">Delete</a></td>
+                                }
+                                else
+                                {
+                                    <td>Delete</td>
+                                }
+                            </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    <a asp-action="Index">Back to List</a>
+</div>

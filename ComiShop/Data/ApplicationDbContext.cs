@@ -29,7 +29,5 @@ namespace ComiShop.Data
             base.OnModelCreating(modelBuilder);
             modelBuilder.Seed();
         }
-
-        public DbSet<ComiShop.ViewModels.WarehouseView> WarehouseView { get; set; }
     }
 }
