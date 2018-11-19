@@ -8,6 +8,7 @@ using ComiShop.Services;
 using ComiShop.ViewModels;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace ComiShop.Controllers
 {
@@ -23,16 +24,10 @@ namespace ComiShop.Controllers
             _unitOfWork = unitOfWork;
             _mapper = mapper;
         }
-        [HttpGet(Name = "Trangchu")]
-        // GET: Product
-        public ActionResult Index()
-        {
-            return View();
-        }
 
         public ActionResult ProductList(int id)
         {
-            var product = _mapper.Map<IEnumerable<Product>, IEnumerable<ProductListViewModel>>(_unitOfWork.ProductRepository.GetAll().Where(p => p.CategoryId == id));
+            var product = _mapper.Map<IEnumerable<Product>, IEnumerable<ProductListViewModel>>(_unitOfWork.ProductRepository.GetAll().Include(p => p.ProductDetails).Where(p => p.CategoryId == id));
             var pager = new Pager(product.Count(), null);
             var viewModel = new PageViewModel
             {
@@ -45,76 +40,54 @@ namespace ComiShop.Controllers
         // GET: Product/Details/5
         public ActionResult Details(int id)
         {
-            return View(new ProductDetailViewModel{ Id = id});
-        }
+            var product = _unitOfWork.ProductRepository.GetAll().Include(p => p.ProductDetails).Where(p => p.Id == id)
+                .Select(p => new Product
+                {
+                    Id = p.Id,
+                    ProductName = p.ProductName,
+                    CategoryId = p.CategoryId,
+                    ProductDes = p.ProductDes,
+                    DesDetail = p.DesDetail,
+                    UnitPrice = p.UnitPrice,
+                    ProductDetails = p.ProductDetails.Select(pd => new ProductDetail { ProductImage = pd.ProductImage }).ToList()
+                })
+                .FirstOrDefault();
 
-        // GET: Product/Create
-        public ActionResult Create()
+            var productView = _mapper.Map<Product, ProductListViewModel>(product);
+            
+            var recentProduct = _unitOfWork.ProductRepository.GetAll()
+                .Include(p => p.ProductDetails)
+                .Where(p => p.CategoryId == product.CategoryId && p.Id != id)
+                .Select(p => new Product
+                {
+                    Id = p.Id,
+                    ProductName = p.ProductName,
+                    CategoryId = p.CategoryId,
+                    ProductDes = p.ProductDes,
+                    DesDetail = p.DesDetail,
+                    UnitPrice = p.UnitPrice,
+                    ProductDetails = p.ProductDetails.Select(pd => new ProductDetail { ProductImage = pd.ProductImage }).ToList()
+                }).ToList();
+
+            ViewBag.RecentProducts = recentProduct;
+
+            ViewBag.NewProduct = _unitOfWork.ProductRepository.GetAll().Include(p => p.ProductDetails).OrderByDescending(p => p.CreatedDate)
+                .Select(p => new Product
+                {
+                    Id = p.Id,
+                    ProductName = p.ProductName,
+                    CategoryId = p.CategoryId,
+                    ProductDes = p.ProductDes,
+                    DesDetail = p.DesDetail,
+                    UnitPrice = p.UnitPrice,
+                    ProductDetails = p.ProductDetails.Select(pd => new ProductDetail { ProductImage = pd.ProductImage }).ToList()
+                }).Take(4).ToList();
+            return View(productView);
+        }
+        public ActionResult Comment(int id)
         {
+
             return View();
-        }
-
-        // POST: Product/Create
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
-        {
-            try
-            {
-                // TODO: Add insert logic here
-
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: Product/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
-
-        // POST: Product/Edit/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
-        {
-            try
-            {
-                // TODO: Add update logic here
-
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: Product/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: Product/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
-
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
         }
     }
 }

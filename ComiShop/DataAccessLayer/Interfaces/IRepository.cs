@@ -1,4 +1,5 @@
 ﻿using ComiShop.Entities;
+using Microsoft.EntityFrameworkCore.ChangeTracking;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,5 +26,6 @@ namespace ComiShop.Interfaces
 
         int Delete(Expression<Func<T, bool>> predicate);
         T GetByUId(Guid keyValue);
+        EntityEntry GetTracking(T entity);
     }
 }

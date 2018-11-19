@@ -1,7 +1,6 @@
 ﻿@model PageViewModel
 @{
     ViewBag.Title = "Product list";
-    var product = Model.ProductListViewModels;
     int flag;
 }
 @section scripts{
@@ -158,45 +157,41 @@
                             </ul>
                             <div id="myTabContent" class="tab-content">
                                 <div role="tabpanel" class="tab-pane fade in active" id="home" aria-labelledby="home-tab">
-                                    @for (int i = 0; i < 4; i++)
-                                    {
-                                        @(flag = 0)
-                                        <div class="product-tab">
-                                            @foreach (var p in product)
-                                            {
-                                                @(flag++)
-                                                <div class="col-md-4 product-tab-grid simpleCart_shelfItem">
-                                                    <div class="grid-arr">
-                                                        <div class="grid-arrival">
-                                                            <figure>
-                                                                <a asp-controller="Product" asp-action="Details" class="new-gri" data-toggle="modal" data-target="#myModal1">
+                                    <div class="product-tab">
+                                        @foreach (var p in Model.ProductListViewModels)
+                                        {
+                                            flag = 0;
+                                            <div class="col-md-4 product-tab-grid simpleCart_shelfItem">
+                                                <div class="grid-arr">
+                                                    <div class="grid-arrival">
+                                                        <figure>
+                                                            <a asp-controller="Product" asp-action="Details" asp-route-id="@p.Id" class="new-gri" data-toggle="modal" data-target="#myModal1">
+                                                                @foreach (var photo in p.ProductDetails)
+                                                                {
+                                                                    flag++;
                                                                     <div class="grid-img">
-                                                                        <img src="~/images/@(p.ProductName)" class="img-responsive" alt="" asp-append-version="true">
+                                                                        <img src="~/images/@(photo.ProductImage)" class="img-responsive" alt="" asp-append-version="true">
                                                                     </div>
-                                                                    <div class="grid-img">
-                                                                        <img src="images/p5.jpg" class="img-responsive" alt="">
-                                                                    </div>
-                                                                </a>
-                                                            </figure>
-                                                        </div>
-                                                        <div class="block">
-                                                            <div class="starbox small ghosting"> </div>
-                                                        </div>
-                                                        <div class="women">
-                                                            <h6><a asp-controller="Product" asp-action="Details">Sed ut perspiciatis unde</a></h6>
-                                                            <span class="size">XL / XXL / S </span>
-                                                            <p><del>$100.00</del><em class="item_price">$70.00</em></p>
-                                                            <a asp-controller="Cart" asp-action="Buy" asp-route-id="@p.Id" data-text="Add To Cart" class="my-cart-b item_add addItem">Add To Cart</a>
-                                                        </div>
+                                                                    if (flag == 2)
+                                                                    { break; }
+                                                                }
+                                                            </a>
+                                                        </figure>
+                                                    </div>
+                                                    <div class="block">
+                                                        <div class="starbox small ghosting"> </div>
+                                                    </div>
+                                                    <div class="women">
+                                                        <h6><a asp-controller="Product" asp-action="Details" asp-route-id="@p.Id">@p.ProductName</a></h6>
+                                                        <span class="size">XL / XXL / S </span>
+                                                        <p><em class="item_price">$@p.UnitPrice</em></p>
+                                                        <a asp-controller="Cart" asp-action="Buy" asp-route-id="@p.Id" data-text="Add To Cart" class="my-cart-b item_add addItem">Add To Cart</a>
                                                     </div>
                                                 </div>
-
-                                                @if (flag == 2)
-                                                { break; }
-                                            }
-                                            <div class="clearfix"></div>
-                                        </div>
-                                    }
+                                            </div>
+                                        }
+                                        <div class="clearfix"></div>
+                                    </div>
 
                                     <script>
                                         $(document).ready(function () {
@@ -206,7 +201,7 @@
                                                 $.ajax({
                                                     url: $(this).attr("href"),
                                                     success: function () {
-                                                        alert("Value Added");
+                                                        alert("Item added");
                                                     }
                                                 });
 
@@ -216,38 +211,40 @@
 
                                 </div>
                                 <div role="tabpanel" class="tab-pane fade" id="profile" aria-labelledby="profile-tab">
-
-                                    <div class="product-tab1">
-                                        <div class="col-md-4 product-tab1-grid">
-                                            <div class="grid-arr">
-                                                <div class="grid-arrival">
-                                                    <figure>
-                                                        <a href="#" class="new-gri" data-toggle="modal" data-target="#myModal1">
-                                                            <div class="grid-img">
-                                                                <img src="images/p6.jpg" class="img-responsive" alt="">
-                                                            </div>
-                                                            <div class="grid-img">
-                                                                <img src="images/p5.jpg" class="img-responsive" alt="">
-                                                            </div>
-                                                        </a>
-                                                    </figure>
+                                    @foreach (var p in Model.ProductListViewModels)
+                                    {
+                                        <div class="product-tab1">
+                                            <div class="col-md-4 product-tab1-grid">
+                                                <div class="grid-arr">
+                                                    <div class="grid-arrival">
+                                                        <figure>
+                                                            <a asp-controller="Product" asp-action="Details" asp-route-id="@p.Id" class="new-gri" data-toggle="modal" data-target="#myModal1">
+                                                                <div class="grid-img">
+                                                                    <img src="~/images/@(p.ProductDetails.FirstOrDefault().ProductImage)" class="img-responsive" alt="" asp-append-version="true">
+                                                                </div>
+                                                                <div class="grid-img">
+                                                                    <img src="~/images/@(p.ProductDetails.LastOrDefault().ProductImage)" class="img-responsive" alt="" asp-append-version="true">
+                                                                </div>
+                                                            </a>
+                                                        </figure>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="col-md-8 product-tab1-grid1 simpleCart_shelfItem">
-                                            <div class="block">
-                                                <div class="starbox small ghosting"> </div>
+                                            <div class="col-md-8 product-tab1-grid1 simpleCart_shelfItem">
+                                                <div class="block">
+                                                    <div class="starbox small ghosting"> </div>
+                                                </div>
+                                                <div class="women">
+                                                    <h6><a asp-controller="Product" asp-action="Details" asp-route-id="@p.Id">@p.ProductName</a></h6>
+                                                    <span class="size">XL / XXL / S </span>
+                                                    <p>@p.ProductDes</p>
+                                                    <p><em class="item_price">$@p.UnitPrice</em></p>
+                                                    <a asp-controller="Cart" asp-action="Buy" asp-route-id="@p.Id" data-text="Add To Cart" class="my-cart-b item_add">Add To Cart</a>
+                                                </div>
                                             </div>
-                                            <div class="women">
-                                                <h6><a href="single.html">Sed ut perspiciatis unde</a></h6>
-                                                <span class="size">XL / XXL / S </span>
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Atqui iste locus est, Piso, tibi etiam atque etiam confirmandus, inquam; Refert tamen, quo modo. Quod autem meum munus dicis non equidem recuso, sed te adiungo socium. </p>
-                                                <p><del>$100.00</del><em class="item_price">$70.00</em></p>
-                                                <a href="#" data-text="Add To Cart" class="my-cart-b item_add">Add To Cart</a>
-                                            </div>
+                                            <div class="clearfix"></div>
                                         </div>
-                                        <div class="clearfix"></div>
-                                    </div>
+                                    }
                                 </div>
                             </div>
                         </ul>

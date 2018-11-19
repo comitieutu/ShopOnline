@@ -2,6 +2,7 @@
 using ComiShop.Entities;
 using ComiShop.Interfaces;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Microsoft.EntityFrameworkCore.Storage;
 using System;
 using System.Data.SqlClient;
@@ -67,6 +68,10 @@ namespace ComiShop.Implementations
         public T GetByUId(Guid keyValue)
         {
             return EntitySet.Where(e => e.UniqueId == keyValue).FirstOrDefault();
+        }
+        public EntityEntry GetTracking(T entity)
+        {
+            return _context.Entry(entity);
         }
     }
 }

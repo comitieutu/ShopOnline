@@ -10,6 +10,7 @@ using ComiShop.Services;
 using ComiShop.ViewModels;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace ComiShop.Controllers
 {
@@ -29,7 +30,12 @@ namespace ComiShop.Controllers
         // GET: Book   
         public ActionResult Index()
         {
-            //var result = _unitOfWork.ProductRepository.GetAll();
+            ViewBag.NewProduct = _unitOfWork.ProductRepository.GetAll().Include(p => p.ProductDetails).OrderByDescending(p => p.CreatedDate).Take(4).ToList();
+            var so = _unitOfWork.SaleOrderDetailRepository.GetAll().GroupBy(s => s.ProductId)
+                .Select(o => new { ProductId = o.FirstOrDefault().ProductId, Quantity = o.Sum(p => p.Quantity) }).OrderByDescending(p => p.Quantity).Take(4).ToList();
+            List<Product> bestSellers = new List<Product>();
+            so.ForEach(s => bestSellers.Add(_unitOfWork.ProductRepository.GetAll().Include(p => p.ProductDetails).Where(p => p.Id == s.ProductId).Single()));
+            ViewBag.BestSellers = bestSellers;
             return View();
         }
 

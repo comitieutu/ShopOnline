@@ -7,16 +7,17 @@ using ComiShop.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using ComiShop.Models;
-using ComiShop.Data.SeedData;
 using ComiShop.Services;
 using AutoMapper;
 using Newtonsoft.Json;
 using ComiShop.Interfaces;
 using ComiShop.Implementations;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc.Authorization;
 using System.Collections.Generic;
-using ComiShop.ViewModels;
+using System.Buffers;
+using Microsoft.AspNetCore.Mvc.Formatters;
+using System.Linq;
+using PayPal.Core;
+using PayPal.v1.Payments;
 
 namespace ComiShop
 {
@@ -35,7 +36,7 @@ namespace ComiShop
             services.Configure<CookiePolicyOptions>(options =>
             {
                 // This lambda determines whether user consent for non-essential cookies is needed for a given request.
-                options.CheckConsentNeeded = context => true;
+                options.CheckConsentNeeded = context => false;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
@@ -70,8 +71,13 @@ namespace ComiShop
             services.AddSingleton(mapper);
 
             services.AddMvc(config =>
-                {})
-                .AddJsonOptions(opt => opt.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore);
+                {
+                    config.OutputFormatters.Clear();
+                    config.OutputFormatters.Add(new JsonOutputFormatter(new JsonSerializerSettings()
+                    {
+                        ReferenceLoopHandling = ReferenceLoopHandling.Ignore,
+                    }, ArrayPool<char>.Shared));
+                }).AddJsonOptions(opt => opt.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore);
             services.AddSession();
         }
 
@@ -105,7 +111,7 @@ namespace ComiShop
                      template: "{area:exists}/{controller=Admin}/{action=Index}/{id?}");
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Book}/{action=Index}/{id?}");                
+                    template: "{controller=Book}/{action=Index}/{id?}/{id1?}");
             });
         }
     }
