@@ -74,7 +74,7 @@ using ComiShop.ViewModels;
             WriteLiteral("    <li>");
             EndContext();
             BeginContext(67, 99, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6326963c67e14792a51a05cb968499c8", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "93446164f2614ec08514ac46a144b072", async() => {
                 BeginContext(145, 17, false);
 #line 5 "C:\Users\User\source\repos\BookLib\ComiShop\Views\Shared\Components\Menu\Default.cshtml"
                                                                                 Write(item.CategoryName);

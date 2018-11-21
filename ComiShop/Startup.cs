@@ -12,12 +12,8 @@ using AutoMapper;
 using Newtonsoft.Json;
 using ComiShop.Interfaces;
 using ComiShop.Implementations;
-using System.Collections.Generic;
 using System.Buffers;
 using Microsoft.AspNetCore.Mvc.Formatters;
-using System.Linq;
-using PayPal.Core;
-using PayPal.v1.Payments;
 
 namespace ComiShop
 {
@@ -50,6 +46,7 @@ namespace ComiShop
                 .AddDefaultTokenProviders();
 
             services.AddTransient<IMailService, NullMailService>();
+            services.AddTransient<IEmailService, EmailService>();
 
             services.AddScoped<IUnitOfWork, UnitOfWork>();
 
@@ -111,7 +108,7 @@ namespace ComiShop
                      template: "{area:exists}/{controller=Admin}/{action=Index}/{id?}");
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Book}/{action=Index}/{id?}/{id1?}");
+                    template: "{controller=Book}/{action=Index}/{id?}");
             });
         }
     }

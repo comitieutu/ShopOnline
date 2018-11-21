@@ -9,7 +9,7 @@ namespace ComiShop.Entities
 {
     public interface IEntity
     {
-        bool? Deleted { get; set; }
+        bool Deleted { get; set; }
         Guid UniqueId { get; set; }
         DateTime CreatedDate { get; set; }
         DateTime ModifiedDate { get; set; }
@@ -18,7 +18,7 @@ namespace ComiShop.Entities
     public abstract class Entity : IEntity
     {
         public Guid UniqueId { get; set; } = Guid.NewGuid();
-        public bool? Deleted { get; set; }
+        public bool Deleted { get; set; }
         public DateTime CreatedDate { get; set; } = DateTime.Now;
         public DateTime ModifiedDate { get; set; } = DateTime.Now;
     }

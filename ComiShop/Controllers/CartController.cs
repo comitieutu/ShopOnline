@@ -4,8 +4,8 @@ using ComiShop.Interfaces;
 using ComiShop.Paypal;
 using ComiShop.Services;
 using ComiShop.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
@@ -14,6 +14,7 @@ using System.Security.Claims;
 
 namespace ComiShop.Controllers
 {
+    [Authorize]
     [Route("Cart")]
     public class CartController : Controller
     {
@@ -47,15 +48,19 @@ namespace ComiShop.Controllers
         [Route("Buy/{id}")]
         public IActionResult Buy(int id, int quantity = 1)
         {
-            //var pro = _unitOfWork.ProductRepository.Get(id).ProductDetails.FirstOrDefault().ProductImage;
-            var productDetail = _unitOfWork.ProductRepository.GetAll().Include(p => p.ProductDetails).Where(p => p.Id == id).FirstOrDefault().ProductDetails.FirstOrDefault();
+            var product = _unitOfWork.ProductRepository.GetAll().Include(p => p.ProductDetails)
+                .Where(p => p.Id == id).Select(p => new Product {
+                    Id = p.Id,
+                    ProductName = p.ProductName,
+                    UnitPrice = p.UnitPrice,
+                    ProductDetails = p.ProductDetails.Select(pd => new ProductDetail { ProductImage = pd.ProductImage }).ToList()
+                }).Single();
             if (SessionHelper.GetObjectFromJson<List<ItemViewModel>>(HttpContext.Session, "cart") == null)
             {
                 var cart = new List<ItemViewModel>();
                 cart.Add(new ItemViewModel()
                 {
-                    Product = _unitOfWork.ProductRepository.Get(id),
-                    ProductImage = productDetail.ProductImage,
+                    Product = product,
                     Quantity = quantity
                 });
                 SessionHelper.SetObjectAsJson(HttpContext.Session, "cart", cart);
@@ -68,7 +73,7 @@ namespace ComiShop.Controllers
                 {
                     cart.Add(new ItemViewModel()
                     {
-                        Product = _unitOfWork.ProductRepository.Get(id),
+                        Product = product,
                         Quantity = quantity
                     });
                 }
@@ -79,7 +84,6 @@ namespace ComiShop.Controllers
                 SessionHelper.SetObjectAsJson(HttpContext.Session, "cart", cart);
             }
             return new EmptyResult();
-            //return RedirectToAction("Index");
         }
 
         [Route("Remove/{id}")]
@@ -134,7 +138,9 @@ namespace ComiShop.Controllers
 
             _unitOfWork.Commit();
 
-            return RedirectToAction("Index", "Book");
+            SessionHelper.SetObjectAsJson(HttpContext.Session, "cart", null);
+
+            return View("Order");
         }
 
         [Route("Success")]

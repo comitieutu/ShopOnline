@@ -25,6 +25,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <!-- cart -->
     <script src="~/js/simpleCart.min.js"></script>
     <!-- cart -->
+    
 </head>
 <body>
     <!--header-->
@@ -47,7 +48,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             <div class="container">
                 <div class="logo-nav">
                     <div class="logo-nav-left">
-                        <h1><a asp-controller="Book" asp-action="Index">New Shop <span>Shop anywhere</span></a></h1>
+                        <h1><a asp-controller="Book" asp-action="Index"> Thành Công <span>Shop anywhere</span></a></h1>
                     </div>
                     <div class="logo-nav-left1">
                         <nav class="navbar navbar-default">
@@ -64,7 +65,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                 <ul class="nav navbar-nav">
                                     <li class="active"><a asp-controller="Book" asp-action="Index" class="act">Home</a></li>
                                     @(await Component.InvokeAsync("Menu"))
-                                    <li><a href="codes.html">Short Codes</a></li>
                                     <li><a asp-controller="Book" asp-action="Contact">Contact</a></li>
                                 </ul>
                             </div>

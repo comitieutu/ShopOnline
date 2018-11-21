@@ -2,6 +2,7 @@
 @{
     ViewData["Title"] = "Index";
     int seq = 0;
+    var items = (List<ItemViewModel>)ViewBag.cart;
 }
 
 <div class="content">
@@ -24,12 +25,13 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach (var item in ViewBag.cart)
+                            @foreach (var item in items)
                             {
+                                var pt = item.Product.ProductDetails.ToList()[0].ProductImage;
                                 @(seq++);
                                 <tr>
                                     <td>@seq</td>
-                                    <td><img src="~/images/@(item.Product.ProductName)" class="img-responsive" alt=""></td>
+                                    <td><img src="~/images/@pt" class="img-responsive" alt=""></td>
                                     <td>@item.Product.ProductName</td>
                                     <td><span class="badge badge-primary">@item.Product.UnitPrice</span></td>
                                     <td><span class="badge badge-primary">@item.Quantity</span></td>

@@ -1,4 +1,4 @@
-﻿@model ProductListViewModel
+﻿@model ProductDetailViewModel
 @{
     ViewBag.Title = "Detail";
 }
@@ -25,23 +25,23 @@
                         <div class="single-left">
                             <div class="row">
                                 <ul class="list-inline gallery">
-                                    @foreach (var i in Model.ProductDetails.Take(3))
+                                    @foreach (var i in Model.ProductListViewModel.ProductDetails.Take(3))
                                     {
                                         <li>
-                                            <img src="~/images/@i.ProductImage" class="thumbnail zoom img-responsive "> 
+                                            <img src="~/images/@i.ProductImage" class="thumbnail zoom img-responsive ">
                                         </li>
                                     }
                                 </ul>
                             </div>
                         </div>
                         <div class="single-right simpleCart_shelfItem">
-                            <h4>@Model.ProductName</h4>
+                            <h4>@Model.ProductListViewModel.ProductName</h4>
                             <div class="block">
                                 <div class="starbox small ghosting"> </div>
                             </div>
-                            <p class="price item_price">$ @Model.UnitPrice</p>
+                            <p class="price item_price">$ @Model.ProductListViewModel.UnitPrice</p>
                             <div class="description">
-                                <p><span>Quick Overview : </span> @Model.ProductDes</p>
+                                <p><span>Quick Overview : </span> @Model.ProductListViewModel.ProductDes</p>
                             </div>
                             <div class="color-quality">
                                 <h6>Quality :</h6>
@@ -68,7 +68,7 @@
                             </div>
                             <div class="women">
                                 <span class="size">XL / XXL / S </span>
-                                <a asp-controller="Cart" asp-action="Buy" asp-route-id="@Model.Id" id="addItem" data-text="Add To Cart" class="my-cart-b item_add">Add To Cart </a>
+                                <a asp-controller="Cart" asp-action="Buy" asp-route-id="@Model.ProductListViewModel.Id" id="addItem" data-text="Add To Cart" class="my-cart-b item_add">Add To Cart </a>
                             </div>
 
                             <script>
@@ -109,9 +109,9 @@
                     {
                         <div class="recent-grids">
                             <div class="recent-left">
-                                @foreach (var detail in item.ProductDetails)
+                                @foreach (var itemDetail in item.ProductDetails)
                                 {
-                                    <a asp-controller="Product" asp-action="Details" asp-route-id="@item.Id"><img class="img-responsive " src="~/images/@detail.ProductImage" alt=""></a>
+                                    <a asp-controller="Product" asp-action="Details" asp-route-id="@item.Id"><img class="img-responsive " src="~/images/@itemDetail.ProductImage" alt=""></a>
                                     break;
                                 }
                             </div>
@@ -139,9 +139,9 @@
                                 {
                                     <div class="recent-grids">
                                         <div class="recent-left">
-                                            @foreach (var detail in np.ProductDetails)
+                                            @foreach (var itemDetail in np.ProductDetails)
                                             {
-                                                <a asp-controller="Product" asp-action="Details" asp-route-id="@np.Id"><img class="img-responsive " src="~/images/@detail.ProductImage" alt=""></a>
+                                                <a asp-controller="Product" asp-action="Details" asp-route-id="@np.Id"><img class="img-responsive " src="~/images/@itemDetail.ProductImage" alt=""></a>
                                                 break;
                                             }
                                         </div>
@@ -169,14 +169,22 @@
                                 <div id="myTabContent" class="tab-content">
                                     <div role="tabpanel" class="tab-pane fade in active" id="home" aria-labelledby="home-tab">
                                         <div class="descr">
-                                            <h4>@Model.ProductName </h4>
-                                            <p>@Model.DesDetail</p>
+                                            <h4>@Model.ProductListViewModel.ProductName </h4>
+                                            <p>@Model.ProductListViewModel.DesDetail</p>
                                             <p class="quote">Thanks you</p>
 
                                         </div>
                                     </div>
                                     <div role="tabpanel" class="tab-pane fade" id="reviews" aria-labelledby="reviews-tab">
                                         <div class="descr">
+                                            <div class="grid_3 grid_5">
+                                                <h3>Comments</h3>
+                                                @foreach (var cmt in Model.CommentViewModels)
+                                                {
+                                                    @*<label>@cmt.ApplicationUser.Email</label>*@
+                                                    <div class="well">@cmt.Context</div>
+                                                }
+                                            </div>
                                             <div class="reviews-bottom">
                                                 <h4>Add Reviews</h4>
                                                 <p>Your email address will not be published. Required fields are marked *</p>
@@ -184,9 +192,9 @@
                                                 <div class="block">
                                                     <div class="starbox small ghosting"><div class="positioner"><div class="stars"><div class="ghost" style="width: 42.5px; display: none;"></div><div class="colorbar" style="width: 42.5px;"></div><div class="star_holder"><div class="star star-0"></div><div class="star star-1"></div><div class="star star-2"></div><div class="star star-3"></div><div class="star star-4"></div></div></div></div></div>
                                                 </div>
-                                                <form asp-controller="Product" asp-action="Comment" asp-route-id="@Model.Id" method="post">
+                                                <form asp-controller="Product" asp-action="Comment" asp-route-id="@Model.ProductListViewModel.Id" method="post">
                                                     <label>Your Review </label>
-                                                    <textarea type="text" Name="Message" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Message...';}" required="">Message...</textarea>
+                                                    <textarea asp-for="CommentCreateViewModel.Context" type="text" Name="Message" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Message...';}" required="">Message...</textarea>
                                                     <input type="submit" value="SEND">
                                                 </form>
                                             </div>

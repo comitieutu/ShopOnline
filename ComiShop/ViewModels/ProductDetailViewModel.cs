@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace ComiShop.ViewModels
 {
     public class ProductDetailViewModel
     {
-        public int Id { get; set; }
+        public ProductListViewModel ProductListViewModel { get; set; }
+        public List<CommentViewModel> CommentViewModels { get; set; }
+        public CommentCreateViewModel CommentCreateViewModel { get; set; }
     }
 }

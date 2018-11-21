@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Net;
-using System.Threading.Tasks;
 using System.Web;
 
 namespace ComiShop.Paypal
@@ -63,6 +60,8 @@ namespace ComiShop.Paypal
                 {
                     String[] StringArray1 = StringArray[i].Split('=');
                     sKey = StringArray1[0];
+                    if (sKey == "SUCCESS")
+                        break;
                     sValue = HttpUtility.UrlDecode(StringArray1[1]);
                     switch (sKey)
                     {
@@ -109,13 +108,14 @@ namespace ComiShop.Paypal
                             ph.SubscriberId = Convert.ToString(sValue);
                             break;
                     }
+                    
                 }
                 return ph;
             }
-            catch (Exception)
+            catch (Exception e)
             {
 
-                throw;
+                throw e;
             }
         }
     }
