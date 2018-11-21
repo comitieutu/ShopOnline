@@ -1,0 +1,67 @@
+﻿@model ComiShop.ViewModels.ProductDetailViewModel
+
+@{
+    ViewData["Title"] = "ProductDetail";
+    var rowSpan = Model.ProductImage.Any() ? Model.ProductImage.Count() : 1;
+}
+
+
+<div id="page-wrapper">
+    <div class="main-page">
+        <h2>ProductDetail</h2>
+        <div class="row">
+            <div class="col-md-10">
+                <h4>Product Detail</h4>
+                <hr />
+                <table class="table table-responsive table-bordered table-condensed">
+                    <thead>
+                        <tr>
+                            <th>Product Name</th>
+                            <th>Category Name</th>
+                            <th>Description</th>
+                            <th>Detail</th>
+                            <th>Category</th>
+                            <th>Quantity</th>
+                            <th>Unit Price</th>
+                            <th>Image</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var image in Model.ProductImage)
+                        {
+
+                            @if (image.Equals(Model.ProductImage[0]))
+                            {
+                        <tr>
+                            <td rowspan="@rowSpan" style="vertical-align: middle">@(Model.ProductName)</td>
+                            <td rowspan="@rowSpan" style="vertical-align: middle">@(Model.CategoryName)</td>
+                            <td rowspan="@rowSpan" style="vertical-align: middle">@(Model.ProductDes)</td>
+                            <td rowspan="@rowSpan" style="vertical-align: middle">@(Model.CategoryId)</td>
+                            <td rowspan="@rowSpan" style="vertical-align: middle">@(Model.Quantity)</td>
+                            <td rowspan="@rowSpan" style="vertical-align: middle">@(Model.DesDetail)</td>
+                            <td rowspan="@rowSpan" style="vertical-align: middle">@(Model.UnitPrice)</td>
+                            <td><img src="~/images/@image" width="50" height="60"/></td>
+                        </tr>
+                            }
+                            else
+                            {
+                                <tr>
+                                    <td><img src="~/images/@image" width="50" height="60" /></td>
+                                </tr>
+                            }
+                        }
+                    </tbody>
+                </table>                
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-10">
+                <div>
+                    <a asp-action="ProductEdit" asp-route-id="@(Model.Id)">Edit</a> |
+                    <a asp-action="DataWarehouse">Back to List</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

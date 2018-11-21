@@ -46,7 +46,8 @@ namespace ComiShop.Implementations
         public void Delete(params object[] keyValues)
         {
             var entity = Get(keyValues);
-            DeleteEntity(entity);
+            entity.Deleted = true;
+            Edit(entity);
         }
 
         public int Delete(Expression<Func<T, bool>> predicate)
