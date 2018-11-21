@@ -2,6 +2,7 @@
 @{
     ViewData["Title"] = "Index";
     int seq = 0;
+    var items = (List<ItemViewModel>)ViewBag.cart;
 }
 
 <div class="content">
@@ -24,12 +25,13 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach (var item in ViewBag.cart)
+                            @foreach (var item in items)
                             {
+                                var pt = item.Product.ProductDetails.ToList()[0].ProductImage;
                                 @(seq++);
                                 <tr>
                                     <td>@seq</td>
-                                    <td><img src="~/images/p15.jpg" class="img-responsive" alt=""></td>
+                                    <td><img src="~/images/@pt" class="img-responsive" alt=""></td>
                                     <td>@item.Product.ProductName</td>
                                     <td><span class="badge badge-primary">@item.Product.UnitPrice</span></td>
                                     <td><span class="badge badge-primary">@item.Quantity</span></td>
@@ -44,7 +46,7 @@
                         </tbody>
                     </table>
                     <div>
-                        <a href="#" class="btn btn-default">Continue shopping</a>
+                        <a asp-controller="Book" asp-action="Index" class="btn btn-default">Continue shopping</a>
                     </div>
                 }
                 else
@@ -107,6 +109,26 @@
                 </form>
             </div>
 
+            <form action="@ViewBag.PayPalConfig.PostUrl" method="post">
+
+                <input type="hidden" name="upload" value="1" />
+                <input type="hidden" name="return" value="@ViewBag.PayPalConfig.ReturnUrl" />
+                <input type="hidden" name="cmd" value="_cart" />
+                <input type="hidden" name="business" value="@ViewBag.PayPalConfig.Business" />
+
+                @{var index = 1; }
+
+                @foreach (var i in ViewBag.cart)
+                {
+                    <input type="hidden" name="item_number_@index" value="@i.Product.Id" />
+                    <input type="hidden" name="item_name_@index" value="@i.Product.ProductName" />
+                    <input type="hidden" name="amount_@index" value="@i.Product.UnitPrice" />
+                    <input type="hidden" name="quantity_@index" value="@i.Product.Quantity" />
+                    index++;
+
+                }
+                    <input type="image" src="https://www.paypal.com/en_US/i/btn/btn_xpressCheckout.gif" />
+            </form>
 
         </div>
     </div>

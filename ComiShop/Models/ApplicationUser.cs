@@ -1,8 +1,6 @@
-﻿using ComiShop.Data;
-using ComiShop.Data.Entities;
+﻿using ComiShop.Data.Entities;
 using Microsoft.AspNetCore.Identity;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 
 namespace ComiShop.Models
 {
@@ -12,10 +10,6 @@ namespace ComiShop.Models
         {
 
         }
-        [StringLength(10)]
-        public CustType CustomerType { get; set; }
-
-        [StringLength(20)]
         public string BankAccount { get; set; }
         public virtual PersonInfo PersonInfo { get; set; }
 

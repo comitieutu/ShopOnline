@@ -1,4 +1,5 @@
 ﻿using ComiShop.Data;
+using ComiShop.Data.Entities;
 using ComiShop.Interfaces;
 using ComiShop.Models;
 using System;
@@ -18,6 +19,7 @@ namespace ComiShop.Implementations
         private IRepository<SaleOrder> _saleOrderRepository;
         private IRepository<SaleOrderDetail> _saleOrderDetailRepository;
         private IRepository<Shipper> _shipperRepository;
+        private IRepository<Comment> _commentRepository;
 
         public UnitOfWork(ApplicationDbContext context)
         {
@@ -46,18 +48,6 @@ namespace ComiShop.Implementations
                 return _categoryRepository;
             }
         }
-
-        //public IRepository<ApplicationUser> UserRepository
-        //{
-        //    get
-        //    {
-        //        if (_userRepository == null)
-        //        {
-        //            _userRepository = new Repository<ApplicationUser>(_context);
-        //        }
-        //        return _userRepository;
-        //    }
-        //}
 
         public IRepository<PersonInfo> PersonInfoRepository
         {
@@ -132,6 +122,18 @@ namespace ComiShop.Implementations
         }
 
         public IRepository<ApplicationUser> UserRepository => throw new NotImplementedException();
+
+        public IRepository<Comment> CommentRepository
+        {
+            get
+            {
+                if (_commentRepository == null)
+                {
+                    _commentRepository = new Repository<Comment>(_context);
+                }
+                return _commentRepository;
+            }
+        }
 
         public void Refresh()
         {

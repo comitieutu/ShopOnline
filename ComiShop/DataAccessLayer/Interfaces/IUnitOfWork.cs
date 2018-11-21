@@ -1,8 +1,5 @@
-﻿using ComiShop.Interfaces;
+﻿using ComiShop.Data.Entities;
 using ComiShop.Models;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace ComiShop.Interfaces
 {
@@ -17,6 +14,7 @@ namespace ComiShop.Interfaces
         IRepository<SaleOrder> SaleOrderRepository { get; }
         IRepository<SaleOrderDetail> SaleOrderDetailRepository { get; }
         IRepository<Shipper> ShipperRepository { get; }
+        IRepository<Comment> CommentRepository { get; }
 
         void Refresh();
 

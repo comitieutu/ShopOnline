@@ -6,5 +6,11 @@
     "LogLevel": {
       "Default": "Warning"
     }
+  },
+  "Email": {
+    "Email": "shopthanhcongc1611l@gmail.com",
+    "Password": "Pass@word1",
+    "Host": "smtp.gmail.com",
+    "Port": "587"
   }
 }
