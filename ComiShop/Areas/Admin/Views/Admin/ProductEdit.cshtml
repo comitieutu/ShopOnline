@@ -1,24 +1,23 @@
-﻿@model ProductCreateViewModel
+﻿@model ComiShop.ViewModels.ProductDetailViewModel
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "ProductEdit";
     var categoryList = (List<CategoryViewModel>)ViewData["Category"];
-    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Create</h2>
+<h2>ProductEdit</h2>
 
-<h4>Product</h4>
+<h4>ProductDetailViewModel</h4>
 <hr />
 <div id="page-wrapper">
     <div class="main-page">
         <div class="row">
-            <div class="col-md-4">
-                <form asp-controller="Admin" asp-action="CreateProduct" enctype="multipart/form-data" method="post">
+            <div class="col-md-10">
+                <form asp-action="ProductEdit">
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                     <div class="form-group">
                         <label asp-for="ProductName" class="control-label">Product Name</label>
-                        <input asp-for="ProductName" class="form-control"/>
+                        <input asp-for="ProductName" class="form-control" />
                         <span asp-validation-for="ProductName" class="text-danger"></span>
                     </div>
                     <div class="form-group">
@@ -27,18 +26,18 @@
                         <span asp-validation-for="ProductDes" class="text-danger"></span>
                     </div>
                     <div class="form-group">
-                        <label asp-for="DesDetail" class="control-label">Product Detail</label>
+                        <label asp-for="DesDetail" class="control-label">Detail</label>
                         <input asp-for="DesDetail" class="form-control" />
                         <span asp-validation-for="DesDetail" class="text-danger"></span>
                     </div>
                     <div class="form-group">
                         <label asp-for="CategoryId" class="control-label">Category</label>
-                        <select asp-for="CategoryId" class="form-control" asp-items="@(new SelectList(Model.CategoryView,"Id","CategoryName"))">
-                            <option>Please Select One</option>
-                         </select>
+                        <select asp-for="CategoryId" class="form-control" asp-items="@(new SelectList(categoryList,"Id","CategoryName"))">
+                           
+                        </select>
                     </div>
                     <div class="form-group">
-                        <label asp-for="Quantity" class="control-label"></label>
+                        <label asp-for="Quantity" class="control-label">Quantity</label>
                         <input asp-for="Quantity" class="form-control" />
                         <span asp-validation-for="Quantity" class="text-danger"></span>
                     </div>
@@ -48,20 +47,20 @@
                         <span asp-validation-for="UnitPrice" class="text-danger"></span>
                     </div>
                     <div class="form-group">
-                        <p>Upload one or more files using this form:</p>
-                        <input type="file" name="files" multiple />
-                    </div>
-                    <div class="form-group">
-                        <input type="submit" value="Create" class="btn btn-default" />
+                        <input type="submit" value="Save" class="btn btn-default" />
                     </div>
                 </form>
             </div>
         </div>
     </div>
-
-</div>
-
-
-<div>
-    <a asp-action="Index">Back to List</a>
+    <div class="row">
+        <div class="col-md-10">
+            <div>
+                <a asp-action="ManagePicture" asp-route-id="@(Model.Id)">Manage Picture</a>
+            </div>
+            <div>
+                <a asp-action="Index">Back to List</a>
+            </div>
+        </div>
+    </div>
 </div>

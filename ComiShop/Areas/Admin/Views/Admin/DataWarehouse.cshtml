@@ -31,7 +31,7 @@
                                     <tr>
                                         <td rowspan="@item.ProductList.Count()" style="vertical-align: middle">@item.CategoryName</td>
                                         <td>
-                                            @product.ProductName
+                                            <a asp-action="ProductDetail" asp-route-id="@(product.Id)">@product.ProductName</a>
                                         </td>
                                         <td>
                                             @product.ProductDes
@@ -48,7 +48,7 @@
                                 {
                                     <tr>
                                         <td>
-                                            @product.ProductName
+                                            <a asp-action="ProductDetail" asp-route-id="@(product.Id)">@product.ProductName</a>
                                         </td>
                                         <td>
                                             @product.ProductDes
