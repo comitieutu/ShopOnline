@@ -29,7 +29,7 @@ namespace ComiShop.Controllers
         [Route("")]
         [Route("Index")]
         [Route("~/")]
-        public ActionResult Index()
+        public async Task<IActionResult> Index()
         {
             ViewBag.NewProduct = _unitOfWork.ProductRepository.GetAll().Include(p => p.ProductDetails)
                 .Where(p => p.Deleted == false).OrderByDescending(p => p.CreatedDate).Take(4).ToList();

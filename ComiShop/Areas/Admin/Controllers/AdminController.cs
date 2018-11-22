@@ -55,7 +55,7 @@ namespace ComiShop.Areas.Admin.Controllers
         // GET: Admin/Create
         public ActionResult CreateProduct()
         {
-            var categories = _unitOfWork.CategoryRepository.GetAll().ToList();
+            var categories = _unitOfWork.CategoryRepository.GetAll().Where(x => x.Deleted == false).ToList();
             var categoryViewList = Mapper.Map<List<CategoryViewModel>>(categories);
 
             var viewModel = new ProductCreateViewModel()
@@ -104,7 +104,7 @@ namespace ComiShop.Areas.Admin.Controllers
                 ProductImage = productDetail.Select(x => x.ProductImage).ToList()
             };
 
-            var categories = _unitOfWork.CategoryRepository.GetAll().ToList();
+            var categories = _unitOfWork.CategoryRepository.GetAll().Where(x => x.Deleted == false).ToList();
             var categoryViewList = Mapper.Map<List<CategoryViewModel>>(categories);
             ViewData["Category"] = categoryViewList;
 
@@ -118,11 +118,13 @@ namespace ComiShop.Areas.Admin.Controllers
             {
                 var product = new Product
                 {
+                    Id = detail.Id,
                     ProductDes = detail.ProductDes,
                     DesDetail = detail.DesDetail,
                     ProductName = detail.ProductName,
                     UnitPrice = detail.UnitPrice,
-                    Quantity = detail.Quantity
+                    Quantity = detail.Quantity,
+                    CategoryId = detail.CategoryId
                 };
                 _unitOfWork.ProductRepository.Edit(product);
                                 
@@ -135,6 +137,7 @@ namespace ComiShop.Areas.Admin.Controllers
             }
         }
 
+        [HttpPost]
         public async Task<IActionResult> UploadPicture(int productId, List<IFormFile> files = null)
         {
             var filePath = _hostingEnv.WebRootPath + "\\images";
@@ -152,7 +155,7 @@ namespace ComiShop.Areas.Admin.Controllers
             }
             _unitOfWork.Commit();
 
-            return View();
+            return RedirectToAction("ManagePicture", new { id = productId });
         }
 
         [HttpGet]
@@ -163,11 +166,11 @@ namespace ComiShop.Areas.Admin.Controllers
             return View(listOfPictures);
         }
 
-        public ActionResult ImageDelete(int id)
+        public ActionResult ImageDelete(int id, int productId)
         {
             _unitOfWork.ProductDetailRepository.Delete(id);
             _unitOfWork.Commit();
-            return View("Index");
+            return RedirectToAction("ManagePicture", new { id = productId });
         }
 
         // POST: Admin/Create   
@@ -217,7 +220,7 @@ namespace ComiShop.Areas.Admin.Controllers
         {
             _unitOfWork.CategoryRepository.Create(Mapper.Map<Category>(category));   
             _unitOfWork.Commit();
-            return View();
+            return View("Index");
         }
 
         [HttpGet]

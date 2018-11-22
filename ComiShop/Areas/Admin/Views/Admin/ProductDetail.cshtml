@@ -20,7 +20,6 @@
                             <th>Category Name</th>
                             <th>Description</th>
                             <th>Detail</th>
-                            <th>Category</th>
                             <th>Quantity</th>
                             <th>Unit Price</th>
                             <th>Image</th>
@@ -36,9 +35,8 @@
                             <td rowspan="@rowSpan" style="vertical-align: middle">@(Model.ProductName)</td>
                             <td rowspan="@rowSpan" style="vertical-align: middle">@(Model.CategoryName)</td>
                             <td rowspan="@rowSpan" style="vertical-align: middle">@(Model.ProductDes)</td>
-                            <td rowspan="@rowSpan" style="vertical-align: middle">@(Model.CategoryId)</td>
-                            <td rowspan="@rowSpan" style="vertical-align: middle">@(Model.Quantity)</td>
                             <td rowspan="@rowSpan" style="vertical-align: middle">@(Model.DesDetail)</td>
+                            <td rowspan="@rowSpan" style="vertical-align: middle">@(Model.Quantity)</td>
                             <td rowspan="@rowSpan" style="vertical-align: middle">@(Model.UnitPrice)</td>
                             <td><img src="~/images/@image" width="50" height="60"/></td>
                         </tr>
