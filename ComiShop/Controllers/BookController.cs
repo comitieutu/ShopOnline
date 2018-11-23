@@ -33,9 +33,11 @@ namespace ComiShop.Controllers
         {
             ViewBag.NewProduct = _unitOfWork.ProductRepository.GetAll().Include(p => p.ProductDetails)
                 .Where(p => p.Deleted == false).OrderByDescending(p => p.CreatedDate).Take(4).ToList();
+
             var so = _unitOfWork.SaleOrderDetailRepository.GetAll().GroupBy(s => s.ProductId)
                 .Select(o => new { ProductId = o.FirstOrDefault().ProductId, Quantity = o.Sum(p => p.Quantity) })
                 .OrderByDescending(p => p.Quantity).Take(4).ToList();
+
             List<Product> bestSellers = new List<Product>();
             so.ForEach(s => bestSellers.Add(_unitOfWork.ProductRepository.GetAll()
                 .Include(p => p.ProductDetails)
