@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace ComiShop.ViewModels
 {
@@ -15,7 +13,6 @@ namespace ComiShop.ViewModels
     {
         public Pager(int totalItems, int? page, int pageSize = 12)
         {
-            // calculate total, start and end pages
             var totalPages = (int)Math.Ceiling((decimal)totalItems / (decimal)pageSize);
             var currentPage = page != null ? (int)page : 1;
             var startPage = currentPage - 5;

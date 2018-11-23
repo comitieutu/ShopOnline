@@ -4,9 +4,11 @@ using System.Security.Claims;
 using AutoMapper;
 using ComiShop.Data.Entities;
 using ComiShop.Interfaces;
+using ComiShop.Models;
 using ComiShop.Services;
 using ComiShop.ViewModels;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -19,13 +21,15 @@ namespace ComiShop.Controllers
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
         private readonly IHttpContextAccessor _httpContextAccessor;
+        private readonly UserManager<ApplicationUser> _userManager;
 
-        public ProductController(IMailService mailService, IUnitOfWork unitOfWork, IMapper mapper, IHttpContextAccessor httpContextAccessor)
+        public ProductController(IMailService mailService, IUnitOfWork unitOfWork, IMapper mapper, IHttpContextAccessor httpContextAccessor, UserManager<ApplicationUser> userManager)
         {
             _mailService = mailService;
             _unitOfWork = unitOfWork;
             _mapper = mapper;
             _httpContextAccessor = httpContextAccessor;
+            _userManager = userManager;
         }
 
         [Route("ProductList/{id}")]
@@ -94,10 +98,10 @@ namespace ComiShop.Controllers
                 {
                     UserId = c.UserId,
                     ProductId = c.ProductId,
-                    Context = c.Context
+                    Context = c.Context,
+                    ApplicationUser = c.ApplicationUser
                 }).ToList();
             var commentView = _mapper.Map<List<CommentViewModel>>(comment);
-
             var detailView = new ProductDetailViewModel {
                 ProductListViewModel = productView,
                 CommentViewModels = commentView,
@@ -113,7 +117,8 @@ namespace ComiShop.Controllers
                 {
                     Context = data.CommentCreateViewModel.Context,
                     UserId = _httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value,
-                    ProductId = id
+                    ProductId = id,
+                    ApplicationUser = _userManager.Users.Where(u => u.Id == _httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value).Single()
                 };
                 _unitOfWork.CommentRepository.Create(cmt);
                 _unitOfWork.Commit();

@@ -181,7 +181,7 @@
                                                 <h3>Comments</h3>
                                                 @foreach (var cmt in Model.CommentViewModels)
                                                 {
-                                                    @*<label>@cmt.ApplicationUser.Email</label>*@
+                                                    <label>@cmt.ApplicationUser.Email</label>
                                                     <div class="well">@cmt.Context</div>
                                                 }
                                             </div>
@@ -194,7 +194,7 @@
                                                 </div>
                                                 <form asp-controller="Product" asp-action="Comment" asp-route-id="@Model.ProductListViewModel.Id" method="post">
                                                     <label>Your Review </label>
-                                                    <textarea asp-for="CommentCreateViewModel.Context" type="text" Name="Message" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Message...';}" required="">Message...</textarea>
+                                                    <textarea asp-for="CommentCreateViewModel.Context" type="text" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Message...';}">Message...</textarea>
                                                     <input type="submit" value="SEND">
                                                 </form>
                                             </div>

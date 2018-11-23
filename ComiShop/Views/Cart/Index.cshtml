@@ -1,4 +1,4 @@
-﻿@model ReceiveProductViewModel
+﻿
 @{
     ViewData["Title"] = "Index";
     int seq = 0;
@@ -55,81 +55,39 @@
                 }
             </div>
 
-            <h3 class="title1">Shipping infomation</h3>
-            <div class="form-three widget-shadow">
-                <form asp-controller="Cart" asp-action="Order" class="form-horizontal" method="post">
-                    <div class="form-group">
-                        <label for="focusedinput" class="col-sm-2 control-label">Ship to name</label>
-                        <div class="col-sm-8">
-                            <input asp-for="ShipToName" type="text" class="form-control1" id="focusedinput" placeholder="Name">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="focusedinput" class="col-sm-2 control-label">Ship to phone</label>
-                        <div class="col-sm-8">
-                            <input asp-for="ShipToPhone" type="text" class="form-control1" id="focusedinput" placeholder="Phone">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="focusedinput" class="col-sm-2 control-label">Ship to address</label>
-                        <div class="col-sm-8">
-                            <input asp-for="ShipToAddress" type="text" class="form-control1" id="focusedinput" placeholder="Address">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="focusedinput" class="col-sm-2 control-label">Ship to street</label>
-                        <div class="col-sm-8">
-                            <input asp-for="ShipToStreet" type="text" class="form-control1" id="focusedinput" placeholder="Street">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="focusedinput" class="col-sm-2 control-label">Ship to district</label>
-                        <div class="col-sm-8">
-                            <input asp-for="ShipToDistrict" type="text" class="form-control1" id="focusedinput" placeholder="District">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="focusedinput" class="col-sm-2 control-label">Ship to city</label>
-                        <div class="col-sm-8">
-                            <input asp-for="ShipToCity" type="text" class="form-control1" id="focusedinput" placeholder="City">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="focusedinput" class="col-sm-2 control-label">Ship to Country</label>
-                        <div class="col-sm-8">
-                            <input asp-for="ShipToCountry" type="text" class="form-control1" id="focusedinput" placeholder="Country">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="col-sm-2"></div>
-                        <div class="col-sm-8">
-                            <input type="submit" value="Check out" />
-                        </div>
-                    </div>
-                </form>
+            <div>
+                Chọn phương thức thanh toán
             </div>
+            <div class="row">
+                <div class="col-md-4"></div>
+                <div class="col-md-2">
+                    <form action="@ViewBag.PayPalConfig.PostUrl" method="post">
 
-            <form action="@ViewBag.PayPalConfig.PostUrl" method="post">
+                        <input type="hidden" name="upload" value="1" />
+                        <input type="hidden" name="return" value="@ViewBag.PayPalConfig.ReturnUrl" />
+                        <input type="hidden" name="cmd" value="_cart" />
+                        <input type="hidden" name="business" value="@ViewBag.PayPalConfig.Business" />
+                        <input type="hidden" name="currency_code" value="USD" />
 
-                <input type="hidden" name="upload" value="1" />
-                <input type="hidden" name="return" value="@ViewBag.PayPalConfig.ReturnUrl" />
-                <input type="hidden" name="cmd" value="_cart" />
-                <input type="hidden" name="business" value="@ViewBag.PayPalConfig.Business" />
+                        @{var index = 1; }
 
-                @{var index = 1; }
-
-                @foreach (var i in ViewBag.cart)
-                {
-                    <input type="hidden" name="item_number_@index" value="@i.Product.Id" />
-                    <input type="hidden" name="item_name_@index" value="@i.Product.ProductName" />
-                    <input type="hidden" name="amount_@index" value="@i.Product.UnitPrice" />
-                    <input type="hidden" name="quantity_@index" value="@i.Product.Quantity" />
-                    index++;
-
-                }
-                    <input type="image" src="https://www.paypal.com/en_US/i/btn/btn_xpressCheckout.gif" />
-            </form>
-
+                        @foreach (var i in ViewBag.cart)
+                        {
+                            <input type="hidden" name="item_number_@index" value="@i.Product.Id" />
+                            <input type="hidden" name="item_name_@index" value="@i.Product.ProductName" />
+                            <input type="hidden" name="amount_@index" value="@i.Product.UnitPrice" />
+                            <input type="hidden" name="quantity_@index" value="@i.Quantity" />
+                            index++;
+                        }
+                        <input type="image" src="https://www.paypal.com/en_US/i/btn/btn_xpressCheckout.gif" />
+                    </form>
+                </div>
+                <div class="col-md-2">
+                    <a asp-controller="Cart" asp-action="CheckOut" asp-route-id="cash" class="btn btn-default">Cash</a>
+                </div>
+            </div>
+            
+            
         </div>
     </div>
     

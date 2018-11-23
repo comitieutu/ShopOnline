@@ -9,8 +9,14 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
+using System.Collections.Specialized;
+using System.IO;
 using System.Linq;
+using System.Net;
+using System.Net.Http;
 using System.Security.Claims;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace ComiShop.Controllers
 {
@@ -22,6 +28,7 @@ namespace ComiShop.Controllers
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
         private readonly IHttpContextAccessor _httpContextAccessor;
+        private static readonly HttpClient _client = new HttpClient();
 
         public CartController(IMailService mailService, IUnitOfWork unitOfWork, IMapper mapper, IHttpContextAccessor httpContextAccessor)
         {
@@ -100,20 +107,78 @@ namespace ComiShop.Controllers
             return RedirectToAction("Index");
         }
 
-        [Route("Order")]
+        [Route("Success")]
+        public IActionResult Success()
+        {
+            var result = PDTHolder.Success(Request.Query["tx"].ToString());
+            if (result != null)
+            {
+                return RedirectToAction("CheckOut", new { id = "paypal" });
+            }
+            return RedirectToAction("False");
+        }
+
+        [Route("False")]
+        [HttpGet]
+        public IActionResult False()
+        {
+            return View();
+        }
+
+        [Route("Complete")]
+        [HttpGet]
+        public IActionResult Complete()
+        {
+            return View();
+        }
+
+        [Route("CheckOut/{id}")]
+        [HttpGet]
+        public IActionResult CheckOut(string id)
+        {
+            ViewBag.method = id == "cash" ? "cash" : "paypal";
+            return View();
+        }
+        [Route("CheckOut/{id}")]
         [HttpPost]
-        public IActionResult Order(ReceiveProductViewModel receiveProduct)
+        public IActionResult CheckOut(string id, ReceiveProductViewModel receiveProduct)
+        {
+            if (id == "CheckOutCash")
+            {
+                SaleOrder(receiveProduct, false);
+            }
+            else
+            {
+                SaleOrder(receiveProduct, true);
+            }
+            return RedirectToAction("Complete");
+        }
+
+        private int Exists(List<ItemViewModel> cart, int id)
+        {
+            for (int i = 0; i < cart.Count; i++)
+            {
+                if (cart[i].Product.Id == id)
+                {
+                    return i;
+                }
+            }
+            return -1;
+        }
+
+        private void SaleOrder(ReceiveProductViewModel receiveProduct, bool payment)
         {
             var userId = _httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
 
             var cart = SessionHelper.GetObjectFromJson<List<ItemViewModel>>(HttpContext.Session, "cart");
+
             var order = new SaleOrder
             {
                 TotalPrice = cart.Sum(i => i.Product.UnitPrice * i.Quantity),
-                UserId = userId,
-                ShipperId = 1
+                UserId = userId,    
+                Payment = payment
             };
-            
+
             _unitOfWork.SaleOrderRepository.Create(order);
             _unitOfWork.Commit();
 
@@ -127,10 +192,12 @@ namespace ComiShop.Controllers
                 UnitPrice = i.Product.UnitPrice
             }));
 
-            cart.ForEach(i => 
+            Product product = new Product();
+            cart.ForEach(i =>
             {
-                i.Product.Quantity -= i.Quantity;
-                _unitOfWork.ProductRepository.Edit(i.Product);
+                product = _unitOfWork.ProductRepository.Get(i.Product.Id);
+                product.Quantity -= i.Quantity;
+                _unitOfWork.ProductRepository.Edit(product);
             });
             var receivePro = _mapper.Map<ReceiveProductViewModel, ReceiveProduct>(receiveProduct);
             receivePro.SaleId = saleId;
@@ -139,27 +206,6 @@ namespace ComiShop.Controllers
             _unitOfWork.Commit();
 
             SessionHelper.SetObjectAsJson(HttpContext.Session, "cart", null);
-
-            return View("Order");
-        }
-
-        [Route("Success")]
-        public IActionResult Success()
-        {
-            var result = PDTHolder.Success(Request.Query["tx"].ToString());
-            return View("Success");
-        }
-
-            private int Exists(List<ItemViewModel> cart, int id)
-        {
-            for (int i = 0; i < cart.Count; i++)
-            {
-                if (cart[i].Product.Id == id)
-                {
-                    return i;
-                }
-            }
-            return -1;
         }
     }
 }
