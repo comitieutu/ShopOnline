@@ -23,7 +23,6 @@ namespace ComiShop
         public bool Payment { get; set; }
         public int ShipperId { get; set; }
         public virtual ApplicationUser ApplicationUser { get; set; }
-        public virtual Shipper Shipper { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SaleOrderDetail> SaleOrderDetails { get; set; }
     }
