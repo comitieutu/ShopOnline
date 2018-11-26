@@ -20,6 +20,7 @@ namespace ComiShop.Areas.Admin.Controllers
         }
         public IActionResult Index()
         {
+            //TODO: UPDATE LATER
             var warehouseReport = WarehouseReport();
             return View(warehouseReport);
         }
