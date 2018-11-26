@@ -2,9 +2,6 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace ComiShop.Data.SeedData
 {
@@ -18,8 +15,14 @@ namespace ComiShop.Data.SeedData
             modelBuilder.Entity<ApplicationRole>().HasData(new ApplicationRole
             {
                 Id = ROLE_ID,
-                Name = "admin",
-                NormalizedName = "admin"
+                Name = "SuperAdmin",
+                NormalizedName = "SuperAdmin"
+            });
+            modelBuilder.Entity<ApplicationRole>().HasData(new ApplicationRole
+            {
+                Id = "a18be9c0-aa65-4af8-bd17-00bd9344e576",
+                Name = "Admin",
+                NormalizedName = "Admin"
             });
 
             var user = new ApplicationUser

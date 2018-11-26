@@ -1,6 +1,8 @@
 ﻿@model IList<Category>
-
-@foreach (var item in Model)
+@{ 
+    var categorys = Model.Where(c => c.Deleted == false).ToList();
+}
+@foreach (var item in categorys)
 {
     <li><a asp-controller="Product" asp-action="ProductList" asp-route-id="@item.Id">@item.CategoryName</a></li>
 }

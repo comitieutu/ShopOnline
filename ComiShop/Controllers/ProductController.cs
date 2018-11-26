@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
 using AutoMapper;
@@ -10,6 +11,8 @@ using ComiShop.ViewModels;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.AspNetCore.Routing;
 using Microsoft.EntityFrameworkCore;
 
 namespace ComiShop.Controllers
@@ -33,16 +36,52 @@ namespace ComiShop.Controllers
         }
 
         [Route("ProductList/{id}")]
-        public ActionResult ProductList(int id)
+        public IActionResult ProductList(int id, string SearchPrice = "1")
         {
+            double min = 0;
+            double max = 0;
+            switch (SearchPrice)
+            {
+                case "1":
+                    min = double.MinValue;
+                    max = double.MaxValue;
+                    break;
+                case "2":
+                    min = 0;
+                    max = 10;
+                    break;
+                case "3":
+                    min = 10;
+                    max = 50;
+                    break;
+                case "4":
+                    min = 50;
+                    max = 100;
+                    break;
+                case "5":
+                    min = 100;
+                    max = double.MaxValue;
+                    break;
+            };
             var product = _mapper.Map<IEnumerable<Product>, IEnumerable<ProductListViewModel>>(_unitOfWork.ProductRepository.GetAll()
-                .Include(p => p.ProductDetails).Where(p => p.CategoryId == id && p.Deleted == false));
+                .Include(p => p.ProductDetails).Where(p => p.CategoryId == id && p.Deleted == false && p.UnitPrice >= min && p.UnitPrice <= max));
             var pager = new Pager(product.Count(), null);
             var viewModel = new PageViewModel
             {
                 ProductListViewModels = product,
                 Pager = pager
             };
+            IEnumerable<SelectListItem> price = new List<SelectListItem>
+            {
+                new SelectListItem{ Value = "1", Text = "All"},
+                new SelectListItem{ Value = "2", Text = "0 - 10"},
+                new SelectListItem{ Value = "3", Text = "10 - 50"},
+                new SelectListItem{ Value = "4", Text = "50 - 100"},
+                new SelectListItem{ Value = "5", Text = "Trên 100"},
+            };
+            price.Where(p => p.Value == SearchPrice).Single().Selected = true;
+            ViewBag.id = id;
+            ViewBag.SearchPrice = price;
             return View(viewModel);
         }
 

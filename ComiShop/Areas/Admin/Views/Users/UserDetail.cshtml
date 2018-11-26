@@ -1,0 +1,52 @@
+﻿@model UserViewModel
+@{
+    ViewData["Title"] = "UserDetail";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div id="page-wrapper">
+    <div class="main-page">
+        <div class="row">
+            <h4>User detail</h4>
+            <hr />
+            <div class="col-md-10">
+                <table class="table table-responsive table-bordered table-condensed">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Email</th>
+                            <th>Username</th>
+                            <th>Phone</th>
+                            <th>Bank account</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                @Model.Id
+                            </td>
+                            <td>
+                                @Model.Email
+                            </td>
+                            <td>
+                                @Model.UserName
+                            </td>
+                            <td>
+                                @Model.PhoneNumber
+                            </td>
+                            <td>
+                                @Model.BankAccount
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div>
+                </div>
+            </div>
+        </div>
+        <div>
+            <a asp-action="Index">Back to List</a>
+        </div>
+    </div>
+</div>
+

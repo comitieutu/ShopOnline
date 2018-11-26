@@ -13,7 +13,7 @@
             <input type="submit" value="Logout" />
         </li>
     </form>
-    @if (User.IsInRole("admin"))
+    @if (User.IsInRole("Admin") || User.IsInRole("SuperAdmin"))
     {
         <li><a asp-area="Admin" asp-controller="Admin" asp-action="Index">Admin</a></li>
     }
