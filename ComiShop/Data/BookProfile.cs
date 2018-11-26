@@ -1,9 +1,7 @@
 ﻿using AutoMapper;
+using ComiShop.Models;
 using ComiShop.ViewModels;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace ComiShop.Data
 {
@@ -21,6 +19,11 @@ namespace ComiShop.Data
                 .ForMember(dest => dest.ProductDetails, opt => opt.Ignore());
             CreateMap<ReceiveProduct, ReceiveProductViewModel>().ReverseMap();
             CreateMap<CategoryCreateViewModel, Category>().ReverseMap();
+            CreateMap<SalesOrderViewModel, SaleOrder>().ReverseMap();
+            CreateMap<ShipperViewModel, Shipper>().ReverseMap();
+            CreateMap<SaleOrderDetailViewModel, SaleOrderDetail>().ReverseMap();
+            CreateMap<UserViewModel, ApplicationUser>().ReverseMap();
+            CreateMap<EditUserViewModel, ApplicationUser>().ReverseMap();
         }
     }
 }

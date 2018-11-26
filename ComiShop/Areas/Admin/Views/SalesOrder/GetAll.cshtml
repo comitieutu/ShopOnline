@@ -1,0 +1,63 @@
+﻿@model IList<SalesOrderViewModel>
+@{
+    ViewData["Title"] = "GetAll";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div id="page-wrapper">
+    <div class="main-page">
+        <div class="row">
+            <h4>Sales order manage</h4>
+            <hr />
+            <div class="col-md-10">
+                <table class="table table-responsive table-bordered table-condensed">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>User Id</th>
+                            <th>Status</th>
+                            <th>Total Price</th>
+                            <th>Ship date</th>
+                            <th>Payment</th>
+                            <th>Shipper Id</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    <a asp-controller="SalesOrder" asp-action="SaleOrderDetail" asp-route-id="@item.Id">@item.Id</a>
+                                </td>
+                                <td>
+                                    <a asp-controller="Users" asp-action="UserDetail" asp-route-id="@item.UserId">@item.ApplicationUser.UserName</a>
+                                </td>
+                                <td>
+                                    @item.OrderStatus
+                                </td>
+                                <td>
+                                    @item.TotalPrice
+                                </td>
+                                <td>
+                                    @item.ShippedDate
+                                </td>
+                                <td>
+                                    @item.Payment
+                                </td>
+                                <td>
+                                    @item.ShipperId
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+                <div>
+                </div>
+            </div>
+        </div>
+        <div>
+            <a asp-action="Index">Back to List</a>
+        </div>
+    </div>
+</div>
+

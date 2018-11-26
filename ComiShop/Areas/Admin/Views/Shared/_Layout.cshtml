@@ -19,7 +19,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
     <!-- js-->
     <script src="~/js/jsAdmin/jquery-1.11.1.min.js"></script>
     <script src="~/js/jsAdmin/modernizr.custom.js"></script>
-    <!--webfonts--> 
+    <!--webfonts-->
     <link href='//fonts.googleapis.com/css?family=Roboto+Condensed:400,300,300italic,400italic,700,700italic' rel='stylesheet' type='text/css'>
     <!--//webfonts-->
     <!--animate-->
@@ -61,6 +61,18 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                         <li>
                             <a asp-controller="Admin" asp-action="CategoryList" class="active">Category List</a>
                         </li>
+                        <li>
+                            <a asp-controller="SalesOrder" asp-action="GetAll" class="active">All sales order</a>
+                        </li>
+                        <li>
+                            <a asp-controller="SalesOrder" asp-action="Index" class="active">Pending sales order</a>
+                        </li>
+                        @if(User.IsInRole("SuperAdmin"))
+                        {
+                            <li>
+                                <a asp-controller="Users" asp-action="Index" class="active">User</a>
+                            </li>
+                        }
                         <li>
                             <a href="#">Forms</a>
                             <ul class="nav nav-second-level">
@@ -302,23 +314,23 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
     <!-- Classie -->
     <script src="js/classie.js"></script>
     <script>
-			var menuLeft = document.getElementById( 'cbp-spmenu-s1' ),
-				showLeftPush = document.getElementById( 'showLeftPush' ),
-				body = document.body;
+        var menuLeft = document.getElementById('cbp-spmenu-s1'),
+            showLeftPush = document.getElementById('showLeftPush'),
+            body = document.body;
 
-			showLeftPush.onclick = function() {
-				classie.toggle( this, 'active' );
-				classie.toggle( body, 'cbp-spmenu-push-toright' );
-				classie.toggle( menuLeft, 'cbp-spmenu-open' );
-				disableOther( 'showLeftPush' );
-			};
+        showLeftPush.onclick = function () {
+            classie.toggle(this, 'active');
+            classie.toggle(body, 'cbp-spmenu-push-toright');
+            classie.toggle(menuLeft, 'cbp-spmenu-open');
+            disableOther('showLeftPush');
+        };
 
 
-			function disableOther( button ) {
-				if( button !== 'showLeftPush' ) {
-					classie.toggle( showLeftPush, 'disabled' );
-				}
-			}
+        function disableOther(button) {
+            if (button !== 'showLeftPush') {
+                classie.toggle(showLeftPush, 'disabled');
+            }
+        }
     </script>
     <!--scrolling js-->
     <script src="~/js/jquery.nicescroll.js"></script>

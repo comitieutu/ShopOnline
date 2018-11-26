@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using AutoMapper;
 using ComiShop.Interfaces;
 using ComiShop.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -14,6 +15,7 @@ using Microsoft.EntityFrameworkCore;
 namespace ComiShop.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles = "SuperAdmin,Admin")]
     public class AdminController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;

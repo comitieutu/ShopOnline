@@ -1,0 +1,63 @@
+﻿@model List<UserViewModel>
+@using Microsoft.AspNetCore.Identity
+
+@inject UserManager<ApplicationUser> UserManager
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    ApplicationUser user;
+    IList<string> role;
+}
+
+<div id="page-wrapper">
+    <div class="main-page">
+        <div class="row">
+            <h4>User manage</h4>
+            <hr />
+            <div class="col-md-10">
+                <table class="table table-responsive table-bordered table-condensed">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Email</th>
+                            <th>Username</th>
+                            <th>Phone</th>
+                            <th>Bank account</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                        <tr>
+                            <td>
+                                @item.Id
+                            </td>
+                            <td>
+                                @item.Email
+                            </td>
+                            <td>
+                                @item.UserName
+                            </td>
+                            <td>
+                                @item.PhoneNumber
+                            </td>
+                            <td>
+                                @item.BankAccount
+                            </td>
+                            @(user = UserManager.FindByIdAsync(item.Id).Result);
+                            @(role = UserManager.GetRolesAsync(user).Result);
+                            @if (role.FirstOrDefault() != "SuperAdmin" )
+                            {
+                            <td>
+                                <a asp-controller="Users" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                            </td>
+                            }
+                        </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,56 @@
+﻿@model SaleOrderDetailViewModel
+@{
+    ViewData["Title"] = "SaleOrderDetail";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div id="page-wrapper">
+    <div class="main-page">
+        <div class="row">
+            <h4>Sales order detail</h4>
+            <hr />
+            <div class="col-md-10">
+                <table class="table table-responsive table-bordered table-condensed">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Sale order id</th>
+                            <th>Product</th>
+                            <th>Quantity</th>
+                            <th>Price</th>
+                            <th>Discount</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                @Model.Id
+                            </td>
+                            <td>
+                                @Model.SaleOrderId
+                            </td>
+                            <td>
+                                @Model.ProductId
+                            </td>
+                            <td>
+                                @Model.Quantity
+                            </td>
+                            <td>
+                                @Model.UnitPrice
+                            </td>
+                            <td>
+                                @Model.Discount
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div>
+                </div>
+            </div>
+        </div>
+        <div>
+            <a asp-action="GetAll">Back to List</a>
+        </div>
+    </div>
+</div>
+

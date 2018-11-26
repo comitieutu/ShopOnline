@@ -1,8 +1,5 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace ComiShop.Models
 {
@@ -18,7 +15,6 @@ namespace ComiShop.Models
             : base(roleName)
         {
             base.Name = roleName;
-
             this.Description = description;
             this.CreatedDate = createdDate;
         }
