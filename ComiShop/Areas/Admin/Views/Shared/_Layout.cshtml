@@ -53,24 +53,39 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                 <nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1">
                     <ul class="nav" id="side-menu">
                         <li>
-                            <a asp-controller="Admin" asp-action="CreateCategory" class="active">Input Category</a>
+                            <a><i class="fa fa-cogs nav_icon"></i>Category management <span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level collapse">
+                                <li>
+                                    <a asp-controller="Admin" asp-action="CreateCategory">Create category</a>
+                                </li>
+                                <li>
+                                    <a asp-controller="Admin" asp-action="CategoryList">All category</a>
+                                </li>
+                            </ul>
                         </li>
                         <li>
-                            <a asp-controller="Admin" asp-action="CreateProduct" class="active">Input Product</a>
+                            <a><i class="fa fa-cogs nav_icon"></i>Product management <span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level collapse">
+                                <li>
+                                    <a asp-controller="Admin" asp-action="CreateProduct">Create product</a>
+                                </li>
+                            </ul>
                         </li>
                         <li>
-                            <a asp-controller="Admin" asp-action="CategoryList" class="active">Category List</a>
-                        </li>
-                        <li>
-                            <a asp-controller="SalesOrder" asp-action="GetAll" class="active">All sales order</a>
-                        </li>
-                        <li>
-                            <a asp-controller="SalesOrder" asp-action="Index" class="active">Pending sales order</a>
+                            <a><i class="fa fa-cogs nav_icon"></i>Sales order management <span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level collapse">
+                                <li>
+                                    <a asp-controller="SalesOrder" asp-action="GetAll">All sales order</a>
+                                </li>
+                                <li>
+                                    <a asp-controller="SalesOrder" asp-action="Index">Pending sales order</a>
+                                </li>
+                            </ul>
                         </li>
                         @if(User.IsInRole("SuperAdmin"))
                         {
                             <li>
-                                <a asp-controller="Users" asp-action="Index" class="active">User</a>
+                                <a asp-controller="Users" asp-action="Index"><i class="fa fa-cogs nav_icon"></i>User management</a>
                             </li>
                         }
                         <li>
@@ -98,9 +113,9 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                 <!--toggle button end-->
                 <!--logo -->
                 <div class="logo">
-                    <a asp-controller="Report" asp-action="Index">
-                        <h1>NOVUS</h1>
-                        <span>AdminPanel</span>
+                    <a asp-controller="Book" asp-action="Index">
+                        <h1>Shop</h1>
+                        <span>Back to shop</span>
                     </a>
                 </div>
                 <!--//logo-->
@@ -316,7 +331,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
         <!--//footer-->
     </div>
     <!-- Classie -->
-    <script src="js/classie.js"></script>
+    <script src="~/js/classie.js"></script>
     <script>
         var menuLeft = document.getElementById('cbp-spmenu-s1'),
             showLeftPush = document.getElementById('showLeftPush'),

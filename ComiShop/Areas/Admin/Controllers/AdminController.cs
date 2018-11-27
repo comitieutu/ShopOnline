@@ -59,7 +59,8 @@ namespace ComiShop.Areas.Admin.Controllers
         // GET: Admin/Create
         public ActionResult CreateProduct()
         {
-            var categories = _unitOfWork.CategoryRepository.GetAll().Where(x => x.Deleted == false).ToList();
+            var categories = _unitOfWork.CategoryRepository.GetAll()
+                .Where(x => x.Deleted == false && x.Id != 1 && x.Id != 2 && x.Id != 3).ToList();
             var categoryViewList = Mapper.Map<List<CategoryViewModel>>(categories);
 
             var viewModel = new ProductCreateViewModel()
@@ -224,7 +225,7 @@ namespace ComiShop.Areas.Admin.Controllers
         {
             _unitOfWork.CategoryRepository.Create(Mapper.Map<Category>(category));   
             _unitOfWork.Commit();
-            return View("Index");
+            return RedirectToAction("CategoryList");
         }
 
         [HttpGet]

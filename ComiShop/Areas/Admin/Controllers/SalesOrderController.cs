@@ -31,9 +31,8 @@ namespace ComiShop.Areas.Admin.Controllers
         [Route("Index")]
         public IActionResult Index()
         {
-            //_userManager.Users.Where(u => u.Id == _httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value).Single();
             var salesOrder = _unitOfWork.SaleOrderRepository.GetAll()
-                .Where(s => s.Deleted == false && (s.ShipperId == 0 || s.Payment == false))
+                .Where(s => s.Deleted == false && (s.ShipperId == 0 || s.Payment == false || s.OrderStatus == false))
                 .Select(s => new SaleOrder
                 {
                     Id = s.Id,
@@ -64,6 +63,7 @@ namespace ComiShop.Areas.Admin.Controllers
             var saleOrder = _unitOfWork.SaleOrderRepository.Get(data.Id);
             saleOrder.Payment = data.Payment;
             saleOrder.ShipperId = data.ShipperId;
+            saleOrder.OrderStatus = data.OrderStatus;
             saleOrder.ShippedDate = data.ShippedDate;
             _unitOfWork.SaleOrderRepository.Edit(saleOrder);
             _unitOfWork.Commit();

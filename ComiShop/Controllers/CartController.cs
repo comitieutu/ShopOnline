@@ -91,6 +91,7 @@ namespace ComiShop.Controllers
         }
 
         [Route("Remove/{id}")]
+        [AllowAnonymous]
         public IActionResult Remove(int id)
         {
             var cart = SessionHelper.GetObjectFromJson<List<ItemViewModel>>(HttpContext.Session, "cart");

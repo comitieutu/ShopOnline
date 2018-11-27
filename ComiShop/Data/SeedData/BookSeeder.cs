@@ -48,19 +48,20 @@ namespace ComiShop.Data.SeedData
                 RoleId = ROLE_ID,
                 UserId = ADMIN_ID
             });
-            
-            //modelBuilder.Entity<Category>().HasData(
-            //    new Category { Id = 1, CategoryName = "Sách", CategoryDes = "Tiểu thuyết nổi tiếng" },
-            //    new Category { Id = 2, CategoryName = "Quần áo", CategoryDes = "Quần áo" }
-            //);
-            
+
+            modelBuilder.Entity<Category>().HasData(
+                new Category { Id = 1, CategoryName = "Văn học", CategoryDes = "Văn học cổ điển và hiện đại" },
+                new Category { Id = 2, CategoryName = "Kinh tế", CategoryDes = "Kinh tế" },
+                new Category { Id = 3, CategoryName = "Thiếu nhi", CategoryDes = "Dành cho lứa tuổi nhỏ" }
+            );
+
             //modelBuilder.Entity<Product>().HasData(
             //    new Product { Id = 1, UnitPrice = 50, ProductName = "Cuốn theo chiều gió", ProductDes = "Kinh điển", Quantity = 5, CategoryId = 1},
             //    new Product { Id = 2, UnitPrice = 60, ProductName = "Mắt biếc", ProductDes = "Việt Nam", Quantity = 12, CategoryId = 1 },
             //    new Product { Id = 3, UnitPrice = 60, ProductName = "Sơ mi", ProductDes = "Việt Nam", Quantity = 11, CategoryId = 2 },
             //    new Product { Id = 4, UnitPrice = 70, ProductName = "Đầm", ProductDes = "Việt Nam", Quantity = 22, CategoryId = 2 }
             //);
-            
+
             //modelBuilder.Entity<ProductDetail>().HasData(
             //    new ProductDetail { Id = 1, ProductImage = "i1.jpg", ProductId = 1},
             //    new ProductDetail { Id = 2, ProductImage = "i10.jpg", ProductId = 2 },

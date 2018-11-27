@@ -2,6 +2,7 @@
 @{
     ViewBag.Title = "Product list";
     int flag;
+    List<Category> categories = (List<Category>)ViewBag.Category;
 }
 @section scripts{
     <script src="~/js/jquery-ui.js"></script>
@@ -25,7 +26,33 @@
                     <div class="categories">
                         <h3>Categories</h3>
                         <ul class="tree-list-pad">
-                            @(await Component.InvokeAsync("Menu"))
+                            <li>
+                                <input type="checkbox" checked="checked" id="item-0" /><label for="item-0"><span></span>Văn học</label>
+                                <ul>
+                                    @foreach(var c in categories.Where(c => c.Parent == 1))
+                                    {
+                                        <li><a asp-controller="Product" asp-action="ProductList" asp-route-id="@c.Id">@c.CategoryName</a></li>
+                                    }
+                                </ul>
+                            </li>
+                            <li>
+                                <input type="checkbox" checked="checked" id="item-1" /><label for="item-1"><span></span>Kinh tế</label>
+                                <ul>
+                                    @foreach(var c in categories.Where(c => c.Parent == 2))
+                                    {
+                                        <li><a asp-controller="Product" asp-action="ProductList" asp-route-id="@c.Id">@c.CategoryName</a></li>
+                                    }
+                                </ul>
+                            </li>
+                            <li>
+                                <input type="checkbox" checked="checked" id="item-2" /><label for="item-2"><span></span>Thiếu nhi</label>
+                                <ul>
+                                    @foreach(var c in categories.Where(c => c.Parent == 3))
+                                    {
+                                        <li><a asp-controller="Product" asp-action="ProductList" asp-route-id="@c.Id">@c.CategoryName</a></li>
+                                    }
+                                </ul>
+                            </li>
                         </ul>
                     </div>
                     <div class="price">
