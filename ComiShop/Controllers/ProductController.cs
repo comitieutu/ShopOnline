@@ -60,7 +60,7 @@ namespace ComiShop.Controllers
                     break;
             };
             var product = _mapper.Map<IEnumerable<Product>, IEnumerable<ProductListViewModel>>(_unitOfWork.ProductRepository.GetAll()
-                .Include(p => p.ProductDetails).Where(p => p.CategoryId == id && p.Deleted == false && p.UnitPrice >= min && p.UnitPrice <= max));
+                .Include(p => p.ProductDetails).Where(p => p.CategoryId == id && p.Quantity > 0 && p.Deleted == false && p.UnitPrice >= min && p.UnitPrice <= max));
             var pager = new Pager(product.Count(), null);
             var viewModel = new PageViewModel
             {
@@ -99,7 +99,7 @@ namespace ComiShop.Controllers
             
             var recentProduct = _unitOfWork.ProductRepository.GetAll()
                 .Include(p => p.ProductDetails)
-                .Where(p => p.CategoryId == product.CategoryId && p.Id != id && p.Deleted == false)
+                .Where(p => p.CategoryId == product.CategoryId && p.Id != id && p.Deleted == false && p.Quantity > 0)
                 .Select(p => new Product
                 {
                     Id = p.Id,
@@ -114,7 +114,7 @@ namespace ComiShop.Controllers
             ViewBag.RecentProducts = recentProduct;
 
             ViewBag.NewProduct = _unitOfWork.ProductRepository.GetAll().Include(p => p.ProductDetails)
-                .Where(p => p.Deleted == false).OrderByDescending(p => p.CreatedDate)
+                .Where(p => p.Deleted == false && p.Quantity > 0).OrderByDescending(p => p.CreatedDate)
                 .Select(p => new Product
                 {
                     Id = p.Id,

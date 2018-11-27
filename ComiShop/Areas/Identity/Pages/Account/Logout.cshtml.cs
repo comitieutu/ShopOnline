@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
+using ComiShop.Helpers;
 
 namespace ComiShop.Areas.Identity.Pages.Account
 {
@@ -31,6 +32,7 @@ namespace ComiShop.Areas.Identity.Pages.Account
         {
             await _signInManager.SignOutAsync();
             _logger.LogInformation("User logged out.");
+            SessionHelper.SetObjectAsJson(HttpContext.Session, "cart", null);
             if (returnUrl != null)
             {
                 return LocalRedirect(returnUrl);

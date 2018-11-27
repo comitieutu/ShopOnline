@@ -12,6 +12,6 @@ namespace ComiShop.ViewModels
         public int ProductId { get; set; }
         public int Quantity { get; set; }
         public double UnitPrice { get; set; }
-        public int? Discount { get; set; }
+        public int Discount { get; set; }
     }
 }
