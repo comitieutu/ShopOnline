@@ -10,7 +10,7 @@
 <!--banner-->
 <div class="banner1">
     <div class="container">
-        <h3><a href="index.html">Home</a> / <span>Products</span></h3>
+        <h3><a asp-controller="Book" asp-action="Index">Home</a> / <span>Products</span></h3>
     </div>
 </div>
 <!--banner-->
@@ -67,7 +67,6 @@
                                 <!--quantity-->
                             </div>
                             <div class="women">
-                                <span class="size">XL / XXL / S </span>
                                 <a asp-controller="Cart" asp-action="Buy" asp-route-id="@Model.ProductListViewModel.Id" id="addItem" data-text="Add To Cart" class="my-cart-b item_add">Add To Cart </a>
                             </div>
 
@@ -187,8 +186,6 @@
                                             </div>
                                             <div class="reviews-bottom">
                                                 <h4>Add Reviews</h4>
-                                                <p>Your email address will not be published. Required fields are marked *</p>
-                                                <p>Your Rating</p>
                                                 <div class="block">
                                                     <div class="starbox small ghosting"><div class="positioner"><div class="stars"><div class="ghost" style="width: 42.5px; display: none;"></div><div class="colorbar" style="width: 42.5px;"></div><div class="star_holder"><div class="star star-0"></div><div class="star star-1"></div><div class="star star-2"></div><div class="star star-3"></div><div class="star star-4"></div></div></div></div></div>
                                                 </div>

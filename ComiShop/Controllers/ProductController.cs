@@ -48,18 +48,14 @@ namespace ComiShop.Controllers
                     break;
                 case "2":
                     min = 0;
-                    max = 10;
+                    max = 5;
                     break;
                 case "3":
-                    min = 10;
-                    max = 50;
+                    min = 5;
+                    max = 10;
                     break;
                 case "4":
-                    min = 50;
-                    max = 100;
-                    break;
-                case "5":
-                    min = 100;
+                    min = 10;
                     max = double.MaxValue;
                     break;
             };
@@ -74,10 +70,9 @@ namespace ComiShop.Controllers
             IEnumerable<SelectListItem> price = new List<SelectListItem>
             {
                 new SelectListItem{ Value = "1", Text = "All"},
-                new SelectListItem{ Value = "2", Text = "0 - 10"},
-                new SelectListItem{ Value = "3", Text = "10 - 50"},
-                new SelectListItem{ Value = "4", Text = "50 - 100"},
-                new SelectListItem{ Value = "5", Text = "Trên 100"},
+                new SelectListItem{ Value = "2", Text = "0 - 5"},
+                new SelectListItem{ Value = "3", Text = "5 - 10"},
+                new SelectListItem{ Value = "4", Text = "Trên 10"},
             };
             price.Where(p => p.Value == SearchPrice).Single().Selected = true;
             ViewBag.id = id;
@@ -114,7 +109,7 @@ namespace ComiShop.Controllers
                     DesDetail = p.DesDetail,
                     UnitPrice = p.UnitPrice,
                     ProductDetails = p.ProductDetails.Select(pd => new ProductDetail { ProductImage = pd.ProductImage }).ToList()
-                }).ToList();
+                }).Take(4).ToList();
 
             ViewBag.RecentProducts = recentProduct;
 

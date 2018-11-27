@@ -44,8 +44,10 @@
                             <td>
                                 @item.BankAccount
                             </td>
-                            @(user = UserManager.FindByIdAsync(item.Id).Result);
-                            @(role = UserManager.GetRolesAsync(user).Result);
+                            @{
+                                user = UserManager.FindByIdAsync(item.Id).Result;
+                                role = UserManager.GetRolesAsync(user).Result;
+                            }
                             @if (role.FirstOrDefault() != "SuperAdmin" )
                             {
                             <td>
