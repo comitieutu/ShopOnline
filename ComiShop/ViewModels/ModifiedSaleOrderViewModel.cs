@@ -10,7 +10,7 @@ namespace ComiShop.ViewModels
     {
         public int Id { get; set; }
         [Column(TypeName = "date")]
-        public DateTime? ShippedDate { get; set; }
+        public DateTime ShippedDate { get; set; }
         public bool Payment { get; set; }
         public int ShipperId { get; set; }
     }

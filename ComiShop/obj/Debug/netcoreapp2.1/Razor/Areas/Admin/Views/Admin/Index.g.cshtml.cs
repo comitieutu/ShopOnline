@@ -14,17 +14,27 @@ namespace AspNetCore
     using Microsoft.AspNetCore.Mvc.Rendering;
     using Microsoft.AspNetCore.Mvc.ViewFeatures;
 #line 1 "C:\Users\User\source\repos\BookLib\ComiShop\Areas\Admin\Views\_ViewImports.cshtml"
-using ComiShop.Controllers;
+using ComiShop;
 
 #line default
 #line hidden
 #line 2 "C:\Users\User\source\repos\BookLib\ComiShop\Areas\Admin\Views\_ViewImports.cshtml"
+using ComiShop.Models;
+
+#line default
+#line hidden
+#line 3 "C:\Users\User\source\repos\BookLib\ComiShop\Areas\Admin\Views\_ViewImports.cshtml"
+using ComiShop.Controllers;
+
+#line default
+#line hidden
+#line 4 "C:\Users\User\source\repos\BookLib\ComiShop\Areas\Admin\Views\_ViewImports.cshtml"
 using ComiShop.ViewModels;
 
 #line default
 #line hidden
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"bc7a76980ebdabe531b1a1119915ed047af411f8", @"/Areas/Admin/Views/Admin/Index.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"8cf9727cae66f267c5b7fd40c4f392f66c5419db", @"/Areas/Admin/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"9292eff7977125bb3107af751ebab9a2b12a4d75", @"/Areas/Admin/Views/_ViewImports.cshtml")]
     public class Areas_Admin_Views_Admin_Index : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<dynamic>
     {
         #pragma warning disable 1998

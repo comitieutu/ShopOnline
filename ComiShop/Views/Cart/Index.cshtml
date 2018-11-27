@@ -1,4 +1,7 @@
-﻿@{
+﻿@using Microsoft.AspNetCore.Identity
+
+@inject SignInManager<ApplicationUser> SignInManager
+@{
     ViewData["Title"] = "Index";
 }
 <div class="content">
@@ -45,49 +48,56 @@
                     <div>
                         <a asp-controller="Book" asp-action="Index" class="btn btn-default">Continue shopping</a>
                     </div>
-                }
-                else
-                {
-                    <h3>No item</h3>
-                }
-            </div>
+                    @if (!SignInManager.IsSignedIn(User))
+                    {
+                        <div>
+                            <a asp-area="Identity" asp-page="/Account/Login" class="btn btn-default">Login to checkout</a>
+                        </div>
+                    }
+                    else
+                    {
+                    <div>
+                        <center>Chọn phương thức thanh toán</center>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4"></div>
+                        <div class="col-md-2">
+                            <form action="@ViewBag.PayPalConfig.PostUrl" method="post">
 
-            <div>
-                Chọn phương thức thanh toán
-            </div>
-            <div class="row">
-                <div class="col-md-4"></div>
-                <div class="col-md-2">
-                    <form action="@ViewBag.PayPalConfig.PostUrl" method="post">
+                                <input type="hidden" name="upload" value="1" />
+                                <input type="hidden" name="return" value="@ViewBag.PayPalConfig.ReturnUrl" />
+                                <input type="hidden" name="cmd" value="_cart" />
+                                <input type="hidden" name="business" value="@ViewBag.PayPalConfig.Business" />
+                                <input type="hidden" name="currency_code" value="USD" />
 
-                        <input type="hidden" name="upload" value="1" />
-                        <input type="hidden" name="return" value="@ViewBag.PayPalConfig.ReturnUrl" />
-                        <input type="hidden" name="cmd" value="_cart" />
-                        <input type="hidden" name="business" value="@ViewBag.PayPalConfig.Business" />
-                        <input type="hidden" name="currency_code" value="USD" />
+                                @{var index = 1; }
 
-                        @{var index = 1; }
-
-                        @foreach (var i in ViewBag.cart)
-                        {
-                            <input type="hidden" name="item_number_@index" value="@i.Product.Id" />
-                            <input type="hidden" name="item_name_@index" value="@i.Product.ProductName" />
-                            <input type="hidden" name="amount_@index" value="@i.Product.UnitPrice" />
-                            <input type="hidden" name="quantity_@index" value="@i.Quantity" />
-                            index++;
+                                @foreach (var i in ViewBag.cart)
+                                {
+                                    <input type="hidden" name="item_number_@index" value="@i.Product.Id" />
+                                    <input type="hidden" name="item_name_@index" value="@i.Product.ProductName" />
+                                    <input type="hidden" name="amount_@index" value="@i.Product.UnitPrice" />
+                                    <input type="hidden" name="quantity_@index" value="@i.Quantity" />
+                                    index++;
+                                }
+                                <input type="image" src="https://www.paypal.com/en_US/i/btn/btn_xpressCheckout.gif" />
+                            </form>
+                        </div>
+                        <div class="col-md-2">
+                            <a asp-controller="Cart" asp-action="CheckOut" asp-route-id="cash" class="btn btn-default">Cash</a>
+                        </div>
+                    
+                    </div>
                         }
-                        <input type="image" src="https://www.paypal.com/en_US/i/btn/btn_xpressCheckout.gif" />
-                    </form>
+                    }
+                    else
+                    {
+                        <h3>No item</h3>
+                    }
                 </div>
-                <div class="col-md-2">
-                    <a asp-controller="Cart" asp-action="CheckOut" asp-route-id="cash" class="btn btn-default">Cash</a>
-                </div>
-            </div>
-            
-            
         </div>
     </div>
-    
+
     <!-- checkout -->
 </div>
 

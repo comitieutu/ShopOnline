@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v2.1",
-    "signature": "6fd42f2b64aa8a43acb4bd8816c09853dd79ca3e"
+    "signature": "54b842e0162b22b115691b64cd47e13bd7479332"
   },
   "compilationOptions": {
     "defines": [
@@ -33,6 +33,8 @@
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": "2.1.5",
           "OdeToCode.UseNodeModules": "1.0.6",
           "PayPal": "2.0.0-rc2",
+          "PhotoSauce.MagicScaler": "0.7.0-alpha",
+          "System.Drawing.Common": "4.5.1",
           "bootstrap": "4.1.3",
           "bootstrap.sass": "4.1.3"
         },
@@ -496,6 +498,25 @@
           "lib/netstandard2.0/Microsoft.VisualStudio.Web.CodeGenerators.Mvc.dll": {}
         }
       },
+      "Microsoft.Win32.SystemEvents/4.5.0": {
+        "dependencies": {
+          "Microsoft.NETCore.Platforms": "2.1.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.Win32.SystemEvents.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.6.26515.6"
+          }
+        },
+        "runtimeTargets": {
+          "runtimes/win/lib/netcoreapp2.0/Microsoft.Win32.SystemEvents.dll": {
+            "rid": "win",
+            "assetType": "runtime",
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.6.26515.6"
+          }
+        }
+      },
       "NETStandard.Library/2.0.3": {
         "dependencies": {
           "Microsoft.NETCore.Platforms": "2.1.0"
@@ -544,6 +565,21 @@
         },
         "compile": {
           "lib/netstandard2.0/Source.dll": {}
+        }
+      },
+      "PhotoSauce.MagicScaler/0.7.0-alpha": {
+        "dependencies": {
+          "Microsoft.NETCore.App": "2.1.0",
+          "System.Runtime.CompilerServices.Unsafe": "4.5.1"
+        },
+        "runtime": {
+          "lib/netcoreapp1.0/PhotoSauce.MagicScaler.dll": {
+            "assemblyVersion": "0.7.0.0",
+            "fileVersion": "0.7.0.0"
+          }
+        },
+        "compile": {
+          "lib/netcoreapp1.0/PhotoSauce.MagicScaler.dll": {}
         }
       },
       "popper.js/1.14.0": {},
@@ -704,6 +740,35 @@
         },
         "compile": {
           "lib/netstandard1.3/System.Diagnostics.DiagnosticSource.dll": {}
+        }
+      },
+      "System.Drawing.Common/4.5.1": {
+        "dependencies": {
+          "Microsoft.NETCore.Platforms": "2.1.0",
+          "Microsoft.Win32.SystemEvents": "4.5.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/System.Drawing.Common.dll": {
+            "assemblyVersion": "4.0.0.1",
+            "fileVersion": "4.6.26919.2"
+          }
+        },
+        "runtimeTargets": {
+          "runtimes/unix/lib/netcoreapp2.0/System.Drawing.Common.dll": {
+            "rid": "unix",
+            "assetType": "runtime",
+            "assemblyVersion": "4.0.0.1",
+            "fileVersion": "4.6.26919.2"
+          },
+          "runtimes/win/lib/netcoreapp2.0/System.Drawing.Common.dll": {
+            "rid": "win",
+            "assetType": "runtime",
+            "assemblyVersion": "4.0.0.1",
+            "fileVersion": "4.6.26919.2"
+          }
+        },
+        "compile": {
+          "ref/netstandard2.0/System.Drawing.Common.dll": {}
         }
       },
       "System.Interactive.Async/3.1.1": {
@@ -3784,6 +3849,13 @@
       "path": "microsoft.visualstudio.web.codegenerators.mvc/2.1.5",
       "hashPath": "microsoft.visualstudio.web.codegenerators.mvc.2.1.5.nupkg.sha512"
     },
+    "Microsoft.Win32.SystemEvents/4.5.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-K2TAr07pgl/m/J9ed3cmAzx0SD55kYuVfBG6SPRIH/ELTh/D2qGrjOWDQJo7r+LZl1nO2Nkl0UAQBUt6S2ewqQ==",
+      "path": "microsoft.win32.systemevents/4.5.0",
+      "hashPath": "microsoft.win32.systemevents.4.5.0.nupkg.sha512"
+    },
     "NETStandard.Library/2.0.3": {
       "type": "package",
       "serviceable": true,
@@ -3811,6 +3883,13 @@
       "sha512": "sha512-ryqzUiQHkLZEomaNtUfiFyHTZJX6ZmkzqaxhxMQhhPg5iZOcvwhT3aRO4rjdgV2vhth26FIOMabx4w/v4kLgkQ==",
       "path": "paypal/2.0.0-rc2",
       "hashPath": "paypal.2.0.0-rc2.nupkg.sha512"
+    },
+    "PhotoSauce.MagicScaler/0.7.0-alpha": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-QGpOBJY1M4ux5PvwejMI3yIXgJ2qinD7WAOi4UOr1NJVMFHsE60l6+Rp+M71MpKKN1WqklJEXX9rAlmYpkIRkw==",
+      "path": "photosauce.magicscaler/0.7.0-alpha",
+      "hashPath": "photosauce.magicscaler.0.7.0-alpha.nupkg.sha512"
     },
     "popper.js/1.14.0": {
       "type": "package",
@@ -3881,6 +3960,13 @@
       "sha512": "sha512-m86SgxAIi5j0iGzx2y1LrcMcopIYfinfcojyQ9CcNRy3MZvi0dVuDlMj2M7kV6MMGSunqZ+OnQ+rQbxWafFBaw==",
       "path": "system.diagnostics.diagnosticsource/4.5.1",
       "hashPath": "system.diagnostics.diagnosticsource.4.5.1.nupkg.sha512"
+    },
+    "System.Drawing.Common/4.5.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-RR9zs3qhIemEToSoCGZk8p/eox3NIYFrVSuIFJUUVr469+0f5zHJbGsZrzZSq6J1qmXnkaVv9d9t+05TGY9BHw==",
+      "path": "system.drawing.common/4.5.1",
+      "hashPath": "system.drawing.common.4.5.1.nupkg.sha512"
     },
     "System.Interactive.Async/3.1.1": {
       "type": "package",

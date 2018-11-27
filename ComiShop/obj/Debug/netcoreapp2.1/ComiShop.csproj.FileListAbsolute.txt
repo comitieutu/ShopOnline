@@ -62,7 +62,6 @@ C:\Users\User\source\repos\BookLib\ComiShop\obj\Debug\netcoreapp2.1\Razor\Areas\
 C:\Users\User\source\repos\BookLib\ComiShop\obj\Debug\netcoreapp2.1\Razor\Views\Book\Contact.g.cshtml.cs
 C:\Users\User\source\repos\BookLib\ComiShop\obj\Debug\netcoreapp2.1\Razor\Views\Book\Index.g.cshtml.cs
 C:\Users\User\source\repos\BookLib\ComiShop\obj\Debug\netcoreapp2.1\Razor\Views\Cart\Index.g.cshtml.cs
-C:\Users\User\source\repos\BookLib\ComiShop\obj\Debug\netcoreapp2.1\Razor\Views\Cart\Success.g.cshtml.cs
 C:\Users\User\source\repos\BookLib\ComiShop\obj\Debug\netcoreapp2.1\Razor\Views\Product\Details.g.cshtml.cs
 C:\Users\User\source\repos\BookLib\ComiShop\obj\Debug\netcoreapp2.1\Razor\Views\Product\ProductList.g.cshtml.cs
 C:\Users\User\source\repos\BookLib\ComiShop\obj\Debug\netcoreapp2.1\Razor\Views\Shared\Components\Menu\Default.g.cshtml.cs
@@ -79,4 +78,17 @@ C:\Users\User\source\repos\BookLib\ComiShop\obj\Debug\netcoreapp2.1\ComiShop.Vie
 C:\Users\User\source\repos\BookLib\ComiShop\obj\Debug\netcoreapp2.1\ComiShop.dll
 C:\Users\User\source\repos\BookLib\ComiShop\obj\Debug\netcoreapp2.1\ComiShop.pdb
 C:\Users\User\source\repos\BookLib\ComiShop\obj\Debug\netcoreapp2.1\ComiShop.csproj.CopyComplete
-C:\Users\User\source\repos\BookLib\ComiShop\obj\Debug\netcoreapp2.1\ComiShop.csprojAssemblyReference.cache
+C:\Users\User\source\repos\BookLib\ComiShop\obj\Debug\netcoreapp2.1\Razor\Areas\Admin\Views\Admin\ManagePicture.g.cshtml.cs
+C:\Users\User\source\repos\BookLib\ComiShop\obj\Debug\netcoreapp2.1\Razor\Areas\Admin\Views\Admin\ProductDetail.g.cshtml.cs
+C:\Users\User\source\repos\BookLib\ComiShop\obj\Debug\netcoreapp2.1\Razor\Areas\Admin\Views\Admin\ProductEdit.g.cshtml.cs
+C:\Users\User\source\repos\BookLib\ComiShop\obj\Debug\netcoreapp2.1\Razor\Areas\Admin\Views\Report\Index.g.cshtml.cs
+C:\Users\User\source\repos\BookLib\ComiShop\obj\Debug\netcoreapp2.1\Razor\Areas\Admin\Views\SalesOrder\GetAll.g.cshtml.cs
+C:\Users\User\source\repos\BookLib\ComiShop\obj\Debug\netcoreapp2.1\Razor\Areas\Admin\Views\SalesOrder\Index.g.cshtml.cs
+C:\Users\User\source\repos\BookLib\ComiShop\obj\Debug\netcoreapp2.1\Razor\Areas\Admin\Views\SalesOrder\ModifiedSaleOrder.g.cshtml.cs
+C:\Users\User\source\repos\BookLib\ComiShop\obj\Debug\netcoreapp2.1\Razor\Areas\Admin\Views\SalesOrder\SaleOrderDetail.g.cshtml.cs
+C:\Users\User\source\repos\BookLib\ComiShop\obj\Debug\netcoreapp2.1\Razor\Areas\Admin\Views\Users\Edit.g.cshtml.cs
+C:\Users\User\source\repos\BookLib\ComiShop\obj\Debug\netcoreapp2.1\Razor\Areas\Admin\Views\Users\Index.g.cshtml.cs
+C:\Users\User\source\repos\BookLib\ComiShop\obj\Debug\netcoreapp2.1\Razor\Areas\Admin\Views\Users\UserDetail.g.cshtml.cs
+C:\Users\User\source\repos\BookLib\ComiShop\obj\Debug\netcoreapp2.1\Razor\Views\Cart\CheckOut.g.cshtml.cs
+C:\Users\User\source\repos\BookLib\ComiShop\obj\Debug\netcoreapp2.1\Razor\Views\Cart\Complete.g.cshtml.cs
+C:\Users\User\source\repos\BookLib\ComiShop\obj\Debug\netcoreapp2.1\Razor\Views\Cart\False.g.cshtml.cs

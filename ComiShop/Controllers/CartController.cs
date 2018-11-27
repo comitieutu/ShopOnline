@@ -9,14 +9,9 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
-using System.Collections.Specialized;
-using System.IO;
 using System.Linq;
-using System.Net;
 using System.Net.Http;
 using System.Security.Claims;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ComiShop.Controllers
 {
@@ -38,6 +33,7 @@ namespace ComiShop.Controllers
             _httpContextAccessor = httpContextAccessor;
         }
         [Route("Index")]
+        [AllowAnonymous]
         public IActionResult Index()
         {
             var cart = SessionHelper.GetObjectFromJson<List<ItemViewModel>>(HttpContext.Session, "cart");
@@ -53,6 +49,7 @@ namespace ComiShop.Controllers
             return View();
         }
         [Route("Buy/{id}")]
+        [AllowAnonymous]
         public IActionResult Buy(int id, int quantity = 1)
         {
             var product = _unitOfWork.ProductRepository.GetAll().Include(p => p.ProductDetails)

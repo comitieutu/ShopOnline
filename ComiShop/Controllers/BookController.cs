@@ -32,7 +32,7 @@ namespace ComiShop.Controllers
         public async Task<IActionResult> Index()
         {
             ViewBag.NewProduct = _unitOfWork.ProductRepository.GetAll().Include(p => p.ProductDetails)
-                .Where(p => p.Deleted == false).OrderByDescending(p => p.CreatedDate).Take(4).ToList();
+                .Where(p => p.Deleted == false && p.Quantity > 0).OrderByDescending(p => p.CreatedDate).Take(4).ToList();
 
             var so = _unitOfWork.SaleOrderDetailRepository.GetAll().GroupBy(s => s.ProductId)
                 .Select(o => new { ProductId = o.FirstOrDefault().ProductId, Quantity = o.Sum(p => p.Quantity) })
