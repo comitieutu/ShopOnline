@@ -12,6 +12,7 @@
                             <tr>
                                 <th>Category Name</th>
                                 <th>Category Description</th>
+                                <th>Parent</th>
                                 <th></th>
                                 <th></th>
                             </tr>
@@ -22,6 +23,7 @@
                             <tr>
                                 <td>@category.CategoryName</td>
                                 <td>@category.CategoryDes</td>
+                                <td>@category.Parent</td>
                                 <td><a asp-action="CategoryDetail" asp-route-id="@(category.Id)">Edit</a></td>
                                 @if (category.IsDeleteAble)
                                 {

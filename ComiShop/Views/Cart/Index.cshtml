@@ -51,7 +51,7 @@
                     @if (!SignInManager.IsSignedIn(User))
                     {
                         <div>
-                            <a asp-area="Identity" asp-page="/Account/Login" class="btn btn-default">Login to checkout</a>
+                            <a asp-area="Identity" asp-page="/Account/Login" asp-route-returnUrl="@Url.Action("Index", "Cart", new {  })" class="btn btn-default">Login to checkout</a>
                         </div>
                     }
                     else
@@ -88,12 +88,12 @@
                         </div>
                     
                     </div>
-                        }
                     }
-                    else
-                    {
-                        <h3>No item</h3>
-                    }
+                }
+                else
+                {
+                    <h3>No item</h3>
+                }
                 </div>
         </div>
     </div>

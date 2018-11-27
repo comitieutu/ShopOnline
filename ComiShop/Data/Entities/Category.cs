@@ -14,6 +14,7 @@ namespace ComiShop
         }
         public string CategoryName { get; set; }
         public string CategoryDes { get; set; }
+        public int Parent { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Product> Products { get; set; }
     }

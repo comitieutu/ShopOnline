@@ -77,6 +77,7 @@ namespace ComiShop.Controllers
             price.Where(p => p.Value == SearchPrice).Single().Selected = true;
             ViewBag.id = id;
             ViewBag.SearchPrice = price;
+            ViewBag.Category = _unitOfWork.CategoryRepository.GetAll().Where(c => c.Deleted == false).ToList();
             return View(viewModel);
         }
 

@@ -35,11 +35,19 @@ namespace ComiShop.Migrations
 
                     b.Property<DateTime>("ModifiedDate");
 
+                    b.Property<int>("Parent");
+
                     b.Property<Guid>("UniqueId");
 
                     b.HasKey("Id");
 
                     b.ToTable("Category");
+
+                    b.HasData(
+                        new { Id = 1, CategoryDes = "Văn học cổ điển và hiện đại", CategoryName = "Văn học", CreatedDate = new DateTime(2018, 11, 27, 23, 25, 18, 610, DateTimeKind.Local), Deleted = false, ModifiedDate = new DateTime(2018, 11, 27, 23, 25, 18, 611, DateTimeKind.Local), Parent = 0, UniqueId = new Guid("5c1c1ab4-ebf3-4f83-8692-6aae9d2aba24") },
+                        new { Id = 2, CategoryDes = "Kinh tế", CategoryName = "Kinh tế", CreatedDate = new DateTime(2018, 11, 27, 23, 25, 18, 611, DateTimeKind.Local), Deleted = false, ModifiedDate = new DateTime(2018, 11, 27, 23, 25, 18, 611, DateTimeKind.Local), Parent = 0, UniqueId = new Guid("577734de-d345-4672-8137-4d47ea6ade7a") },
+                        new { Id = 3, CategoryDes = "Dành cho lứa tuổi nhỏ", CategoryName = "Thiếu nhi", CreatedDate = new DateTime(2018, 11, 27, 23, 25, 18, 611, DateTimeKind.Local), Deleted = false, ModifiedDate = new DateTime(2018, 11, 27, 23, 25, 18, 611, DateTimeKind.Local), Parent = 0, UniqueId = new Guid("904243af-45da-4d2f-913f-7826042b5aef") }
+                    );
                 });
 
             modelBuilder.Entity("ComiShop.Data.Entities.Comment", b =>
@@ -101,8 +109,8 @@ namespace ComiShop.Migrations
                     b.ToTable("AspNetRoles");
 
                     b.HasData(
-                        new { Id = "a18be9c0-aa65-4af8-bd17-00bd9344e575", ConcurrencyStamp = "46065512-4853-49a1-b981-bfdb8808c11d", CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Name = "SuperAdmin", NormalizedName = "SuperAdmin" },
-                        new { Id = "a18be9c0-aa65-4af8-bd17-00bd9344e576", ConcurrencyStamp = "b7fc292a-a574-4dcf-8559-500c1f184ea2", CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Name = "Admin", NormalizedName = "Admin" }
+                        new { Id = "a18be9c0-aa65-4af8-bd17-00bd9344e575", ConcurrencyStamp = "2be1021a-ea7f-4b7e-87e3-a3fe3ea027b1", CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Name = "SuperAdmin", NormalizedName = "SuperAdmin" },
+                        new { Id = "a18be9c0-aa65-4af8-bd17-00bd9344e576", ConcurrencyStamp = "5fe3330e-ac53-4dc9-af04-520668e67995", CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Name = "Admin", NormalizedName = "Admin" }
                     );
                 });
 
@@ -159,7 +167,7 @@ namespace ComiShop.Migrations
                     b.ToTable("AspNetUsers");
 
                     b.HasData(
-                        new { Id = "a18be9c0-aa65-4af8-bd17-00bd9344e575", AccessFailedCount = 0, ConcurrencyStamp = "816be083-545b-4391-bf60-4780337cac20", Email = "admin@gmail.com", EmailConfirmed = false, LockoutEnabled = true, NormalizedEmail = "admin@gmail.com", NormalizedUserName = "admin@gmail.com", PasswordHash = "AQAAAAEAACcQAAAAELZz/OJb3cbqeuNze+H1djH0vkaMIGlHstBsASqx4JVzTIlg+lf51P5mJDenTU6PDw==", PhoneNumberConfirmed = false, SecurityStamp = "ee9af272-0e86-40aa-a6a0-291f926f5a14", TwoFactorEnabled = false, UserName = "admin@gmail.com" }
+                        new { Id = "a18be9c0-aa65-4af8-bd17-00bd9344e575", AccessFailedCount = 0, ConcurrencyStamp = "7a2fd814-f3c5-4879-958e-b31f785f4c8e", Email = "admin@gmail.com", EmailConfirmed = false, LockoutEnabled = true, NormalizedEmail = "admin@gmail.com", NormalizedUserName = "admin@gmail.com", PasswordHash = "AQAAAAEAACcQAAAAEKVRBrXtHBoIgpfOAi0XaBMmuGJoqw0heGAuYywyXXvWGJleG1LvMr3y39kH7LlnVQ==", PhoneNumberConfirmed = false, SecurityStamp = "6304f8c7-ffe0-4456-8612-e2975a4cbfcf", TwoFactorEnabled = false, UserName = "admin@gmail.com" }
                     );
                 });
 
@@ -206,7 +214,7 @@ namespace ComiShop.Migrations
                     b.ToTable("PersonInfo");
 
                     b.HasData(
-                        new { Id = 1, CreatedDate = new DateTime(2018, 11, 27, 20, 14, 34, 858, DateTimeKind.Local), Deleted = false, FirstName = "Meo", LastName = "Meo", ModifiedDate = new DateTime(2018, 11, 27, 20, 14, 34, 858, DateTimeKind.Local), UniqueId = new Guid("57d5eb02-e06c-419d-99ac-e95f5d5de2bb"), UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e575" }
+                        new { Id = 1, CreatedDate = new DateTime(2018, 11, 27, 23, 25, 18, 611, DateTimeKind.Local), Deleted = false, FirstName = "Meo", LastName = "Meo", ModifiedDate = new DateTime(2018, 11, 27, 23, 25, 18, 611, DateTimeKind.Local), UniqueId = new Guid("670130fb-40f4-4c2d-8827-2c1ad64f3f4c"), UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e575" }
                     );
                 });
 
@@ -401,8 +409,8 @@ namespace ComiShop.Migrations
                     b.ToTable("Shipper");
 
                     b.HasData(
-                        new { Id = 1, ContactName = "Anga", ContactPhone = "094123321", CreatedDate = new DateTime(2018, 11, 27, 20, 14, 34, 859, DateTimeKind.Local), Deleted = false, ModifiedDate = new DateTime(2018, 11, 27, 20, 14, 34, 859, DateTimeKind.Local), UniqueId = new Guid("0870cac0-8ae9-42b2-a046-930c07492e1a") },
-                        new { Id = 2, ContactName = "Husky", ContactPhone = "037864457", CreatedDate = new DateTime(2018, 11, 27, 20, 14, 34, 859, DateTimeKind.Local), Deleted = false, ModifiedDate = new DateTime(2018, 11, 27, 20, 14, 34, 859, DateTimeKind.Local), UniqueId = new Guid("d5ec6036-bf26-43df-af03-9c263e6e9df6") }
+                        new { Id = 1, ContactName = "Anga", ContactPhone = "094123321", CreatedDate = new DateTime(2018, 11, 27, 23, 25, 18, 611, DateTimeKind.Local), Deleted = false, ModifiedDate = new DateTime(2018, 11, 27, 23, 25, 18, 611, DateTimeKind.Local), UniqueId = new Guid("d620ced6-6acb-4c76-8cfd-7b5127bc7514") },
+                        new { Id = 2, ContactName = "Husky", ContactPhone = "037864457", CreatedDate = new DateTime(2018, 11, 27, 23, 25, 18, 611, DateTimeKind.Local), Deleted = false, ModifiedDate = new DateTime(2018, 11, 27, 23, 25, 18, 611, DateTimeKind.Local), UniqueId = new Guid("35e02e7c-7be0-44d5-ab39-99c1ce731fbb") }
                     );
                 });
 

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace ComiShop.ViewModels
 {
@@ -14,6 +10,7 @@ namespace ComiShop.ViewModels
 
         [StringLength(50)]
         public string CategoryDes { get; set; }
+        public int Parent { get; set; }
         public bool IsDeleteAble { get; set; }
     }
 }

@@ -1,4 +1,7 @@
 ﻿@model ProductDetailViewModel
+@using Microsoft.AspNetCore.Identity
+
+@inject SignInManager<ApplicationUser> SignInManager
 @{
     ViewBag.Title = "Detail";
 }
@@ -156,14 +159,13 @@
                                 }
                             </div>
                         </div>
-                        <img class="img-responsive " src="images/woo2.jpg" alt="">
                     </div>
                     <div class="col-md-8 product-grid1">
                         <div class="tab-wl3">
                             <div class="bs-example bs-example-tabs" role="tabpanel" data-example-id="togglable-tabs">
                                 <ul id="myTab" class="nav nav-tabs left-tab" role="tablist">
                                     <li role="presentation" class="active"><a href="#home" id="home-tab" role="tab" data-toggle="tab" aria-controls="home" aria-expanded="true">Description</a></li>
-                                    <li role="presentation"><a href="#reviews" role="tab" id="reviews-tab" data-toggle="tab" aria-controls="reviews">Reviews (1)</a></li>
+                                    <li role="presentation"><a href="#reviews" role="tab" id="reviews-tab" data-toggle="tab" aria-controls="reviews">Reviews</a></li>
                                 </ul>
                                 <div id="myTabContent" class="tab-content">
                                     <div role="tabpanel" class="tab-pane fade in active" id="home" aria-labelledby="home-tab">
@@ -177,24 +179,31 @@
                                     <div role="tabpanel" class="tab-pane fade" id="reviews" aria-labelledby="reviews-tab">
                                         <div class="descr">
                                             <div class="grid_3 grid_5">
-                                                <h3>Comments</h3>
                                                 @foreach (var cmt in Model.CommentViewModels)
                                                 {
                                                     <label>@cmt.ApplicationUser.Email</label>
                                                     <div class="well">@cmt.Context</div>
                                                 }
                                             </div>
-                                            <div class="reviews-bottom">
-                                                <h4>Add Reviews</h4>
-                                                <div class="block">
-                                                    <div class="starbox small ghosting"><div class="positioner"><div class="stars"><div class="ghost" style="width: 42.5px; display: none;"></div><div class="colorbar" style="width: 42.5px;"></div><div class="star_holder"><div class="star star-0"></div><div class="star star-1"></div><div class="star star-2"></div><div class="star star-3"></div><div class="star star-4"></div></div></div></div></div>
+                                            @if (SignInManager.IsSignedIn(User))
+                                            {
+                                                <div class="reviews-bottom">
+                                                    <h4>Add Reviews</h4>
+                                                    <div class="block">
+                                                        <div class="starbox small ghosting"><div class="positioner"><div class="stars"><div class="ghost" style="width: 42.5px; display: none;"></div><div class="colorbar" style="width: 42.5px;"></div><div class="star_holder"><div class="star star-0"></div><div class="star star-1"></div><div class="star star-2"></div><div class="star star-3"></div><div class="star star-4"></div></div></div></div></div>
+                                                    </div>
+                                                    <form asp-controller="Product" asp-action="Comment" asp-route-id="@Model.ProductListViewModel.Id" method="post">
+                                                        <label>Your Review </label>
+                                                        <textarea asp-for="CommentCreateViewModel.Context" type="text" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Message...';}">Message...</textarea>
+                                                        <input type="submit" value="SEND">
+                                                    </form>
                                                 </div>
-                                                <form asp-controller="Product" asp-action="Comment" asp-route-id="@Model.ProductListViewModel.Id" method="post">
-                                                    <label>Your Review </label>
-                                                    <textarea asp-for="CommentCreateViewModel.Context" type="text" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Message...';}">Message...</textarea>
-                                                    <input type="submit" value="SEND">
-                                                </form>
-                                            </div>
+                                            }
+                                            else
+                                            {
+                                                <a asp-area="Identity" asp-page="/Account/Login" asp-route-returnUrl="@Url.Action("Details", "Product", new { id = @Model.ProductListViewModel.Id })" class="btn btn-primary">Login to review</a>
+                                            }
+
                                         </div>
                                     </div>
                                     <div role="tabpanel" class="tab-pane fade" id="custom" aria-labelledby="custom-tab">
