@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
+using ComiShop.Helpers;
 using ComiShop.Interfaces;
 using ComiShop.ViewModels;
 using Microsoft.AspNetCore.Authorization;
@@ -41,9 +43,9 @@ namespace ComiShop.Areas.Admin.Controllers
         [HttpGet]
         public ActionResult DataWarehouse()
         {
-            var products = _unitOfWork.ProductRepository.GetAll().ToList();
+            var products = _unitOfWork.ProductRepository.GetAll().Where(p => p.Deleted == false).ToList();
             var productListView = Mapper.Map<List<ProductListViewModel>>(products);
-            var category = _unitOfWork.CategoryRepository.GetAll().ToList();
+            var category = _unitOfWork.CategoryRepository.GetAll().Where(c => c.Deleted == false).ToList();
             var warehouseView = category.Select(ct => new WarehouseView
             {
                 CategoryId = ct.Id,
@@ -276,7 +278,15 @@ namespace ComiShop.Areas.Admin.Controllers
                 throw new Exception(nameof(e));
             }
         }
-
+        [Route("ProductDelete/{id}")]
+        public IActionResult ProductDelete(int id)
+        {
+            var productDetail = _unitOfWork.ProductDetailRepository.GetAll().Where(d => d.ProductId == id).ToList();
+            productDetail.ForEach(d => _unitOfWork.ProductDetailRepository.Delete(d.Id));
+            _unitOfWork.ProductRepository.Delete(id);
+            _unitOfWork.Commit();
+            return RedirectToAction("DataWarehouse");
+        }
 
     }
 }

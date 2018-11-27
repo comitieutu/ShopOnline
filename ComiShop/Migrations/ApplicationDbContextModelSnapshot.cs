@@ -40,11 +40,6 @@ namespace ComiShop.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Category");
-
-                    b.HasData(
-                        new { Id = 1, CategoryDes = "Tiểu thuyết nổi tiếng", CategoryName = "Sách", CreatedDate = new DateTime(2018, 11, 21, 0, 20, 38, 706, DateTimeKind.Local), Deleted = false, ModifiedDate = new DateTime(2018, 11, 21, 0, 20, 38, 706, DateTimeKind.Local), UniqueId = new Guid("ce4c1910-7a0b-4589-b61d-d7b814ef6743") },
-                        new { Id = 2, CategoryDes = "Quần áo", CategoryName = "Quần áo", CreatedDate = new DateTime(2018, 11, 21, 0, 20, 38, 707, DateTimeKind.Local), Deleted = false, ModifiedDate = new DateTime(2018, 11, 21, 0, 20, 38, 707, DateTimeKind.Local), UniqueId = new Guid("f792738f-e27e-4683-b69b-eec62620d5a8") }
-                    );
                 });
 
             modelBuilder.Entity("ComiShop.Data.Entities.Comment", b =>
@@ -106,7 +101,8 @@ namespace ComiShop.Migrations
                     b.ToTable("AspNetRoles");
 
                     b.HasData(
-                        new { Id = "a18be9c0-aa65-4af8-bd17-00bd9344e575", ConcurrencyStamp = "9285ad9b-c601-42d9-8b60-9fbe98578312", CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Name = "admin", NormalizedName = "admin" }
+                        new { Id = "a18be9c0-aa65-4af8-bd17-00bd9344e575", ConcurrencyStamp = "af5c0d68-b6d4-492b-905e-73ad34b0819d", CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Name = "SuperAdmin", NormalizedName = "SuperAdmin" },
+                        new { Id = "a18be9c0-aa65-4af8-bd17-00bd9344e576", ConcurrencyStamp = "7d615910-d2bb-48b5-beac-940ad54b5bb2", CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Name = "Admin", NormalizedName = "Admin" }
                     );
                 });
 
@@ -163,7 +159,7 @@ namespace ComiShop.Migrations
                     b.ToTable("AspNetUsers");
 
                     b.HasData(
-                        new { Id = "a18be9c0-aa65-4af8-bd17-00bd9344e575", AccessFailedCount = 0, ConcurrencyStamp = "3530985d-dcfd-4e1f-ae6b-cca48cbd5281", Email = "admin@gmail.com", EmailConfirmed = false, LockoutEnabled = true, NormalizedEmail = "admin@gmail.com", NormalizedUserName = "admin@gmail.com", PasswordHash = "AQAAAAEAACcQAAAAEB9VxTUlU8tq5U1VAIM77hFoKwOp26eGuoNKe3LTRQlOqy0C0evhlEsTvnQWMEDmjg==", PhoneNumberConfirmed = false, SecurityStamp = "cbd59e83-a5e8-4b67-b213-40d41c9b2e56", TwoFactorEnabled = false, UserName = "admin@gmail.com" }
+                        new { Id = "a18be9c0-aa65-4af8-bd17-00bd9344e575", AccessFailedCount = 0, ConcurrencyStamp = "29f4b994-07e6-4e89-9f8b-086a445383ee", Email = "admin@gmail.com", EmailConfirmed = false, LockoutEnabled = true, NormalizedEmail = "admin@gmail.com", NormalizedUserName = "admin@gmail.com", PasswordHash = "AQAAAAEAACcQAAAAEN36llz6KK7SPxDQiboJegmGPuEO4AgFchNM7UzpxLrcsaY5tmqH3EUlVxv/iKqktA==", PhoneNumberConfirmed = false, SecurityStamp = "ad94606f-7642-4770-9068-1f88d9ce6cca", TwoFactorEnabled = false, UserName = "admin@gmail.com" }
                     );
                 });
 
@@ -210,7 +206,7 @@ namespace ComiShop.Migrations
                     b.ToTable("PersonInfo");
 
                     b.HasData(
-                        new { Id = 1, CreatedDate = new DateTime(2018, 11, 21, 0, 20, 38, 707, DateTimeKind.Local), Deleted = false, FirstName = "Meo", LastName = "Meo", ModifiedDate = new DateTime(2018, 11, 21, 0, 20, 38, 707, DateTimeKind.Local), UniqueId = new Guid("bc0cbf09-9467-4f77-91a8-af27dcb523c0"), UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e575" }
+                        new { Id = 1, CreatedDate = new DateTime(2018, 11, 26, 23, 4, 10, 773, DateTimeKind.Local), Deleted = false, FirstName = "Meo", LastName = "Meo", ModifiedDate = new DateTime(2018, 11, 26, 23, 4, 10, 773, DateTimeKind.Local), UniqueId = new Guid("441d1eac-4565-452d-a0c6-3519fabefe0e"), UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e575" }
                     );
                 });
 
@@ -245,13 +241,6 @@ namespace ComiShop.Migrations
                     b.HasIndex("CategoryId");
 
                     b.ToTable("Product");
-
-                    b.HasData(
-                        new { Id = 1, CategoryId = 1, CreatedDate = new DateTime(2018, 11, 21, 0, 20, 38, 707, DateTimeKind.Local), Deleted = false, ModifiedDate = new DateTime(2018, 11, 21, 0, 20, 38, 707, DateTimeKind.Local), ProductDes = "Kinh điển", ProductName = "Cuốn theo chiều gió", Quantity = 5, UniqueId = new Guid("9cdb117a-d99f-4b09-857c-1d883efce7c7"), UnitPrice = 50.0 },
-                        new { Id = 2, CategoryId = 1, CreatedDate = new DateTime(2018, 11, 21, 0, 20, 38, 707, DateTimeKind.Local), Deleted = false, ModifiedDate = new DateTime(2018, 11, 21, 0, 20, 38, 707, DateTimeKind.Local), ProductDes = "Việt Nam", ProductName = "Mắt biếc", Quantity = 12, UniqueId = new Guid("f01294a2-c27d-464a-8b3d-b93f559a7882"), UnitPrice = 60.0 },
-                        new { Id = 3, CategoryId = 2, CreatedDate = new DateTime(2018, 11, 21, 0, 20, 38, 707, DateTimeKind.Local), Deleted = false, ModifiedDate = new DateTime(2018, 11, 21, 0, 20, 38, 707, DateTimeKind.Local), ProductDes = "Việt Nam", ProductName = "Sơ mi", Quantity = 11, UniqueId = new Guid("4a94762b-b59c-49da-808f-f33f3b0248f6"), UnitPrice = 60.0 },
-                        new { Id = 4, CategoryId = 2, CreatedDate = new DateTime(2018, 11, 21, 0, 20, 38, 707, DateTimeKind.Local), Deleted = false, ModifiedDate = new DateTime(2018, 11, 21, 0, 20, 38, 707, DateTimeKind.Local), ProductDes = "Việt Nam", ProductName = "Đầm", Quantity = 22, UniqueId = new Guid("1207765f-4577-4018-849f-b84630397196"), UnitPrice = 70.0 }
-                    );
                 });
 
             modelBuilder.Entity("ComiShop.ProductDetail", b =>
@@ -277,13 +266,6 @@ namespace ComiShop.Migrations
                     b.HasIndex("ProductId");
 
                     b.ToTable("ProductDetail");
-
-                    b.HasData(
-                        new { Id = 1, CreatedDate = new DateTime(2018, 11, 21, 0, 20, 38, 707, DateTimeKind.Local), Deleted = false, ModifiedDate = new DateTime(2018, 11, 21, 0, 20, 38, 707, DateTimeKind.Local), ProductId = 1, ProductImage = "i1.jpg", UniqueId = new Guid("3a79927d-dd40-49eb-a355-51c896bfbec3") },
-                        new { Id = 2, CreatedDate = new DateTime(2018, 11, 21, 0, 20, 38, 707, DateTimeKind.Local), Deleted = false, ModifiedDate = new DateTime(2018, 11, 21, 0, 20, 38, 707, DateTimeKind.Local), ProductId = 2, ProductImage = "i10.jpg", UniqueId = new Guid("1602d9c4-5ac6-4786-ba05-da91fb6d2503") },
-                        new { Id = 3, CreatedDate = new DateTime(2018, 11, 21, 0, 20, 38, 707, DateTimeKind.Local), Deleted = false, ModifiedDate = new DateTime(2018, 11, 21, 0, 20, 38, 707, DateTimeKind.Local), ProductId = 3, ProductImage = "i12.jpg", UniqueId = new Guid("cfa706f3-ab9d-48fe-a88e-55403f0b3152") },
-                        new { Id = 4, CreatedDate = new DateTime(2018, 11, 21, 0, 20, 38, 707, DateTimeKind.Local), Deleted = false, ModifiedDate = new DateTime(2018, 11, 21, 0, 20, 38, 707, DateTimeKind.Local), ProductId = 4, ProductImage = "i11.jpg", UniqueId = new Guid("88ba774a-4ea4-4136-8970-852f9f4fff0a") }
-                    );
                 });
 
             modelBuilder.Entity("ComiShop.ReceiveProduct", b =>
@@ -323,11 +305,6 @@ namespace ComiShop.Migrations
                     b.HasIndex("SaleOrderId");
 
                     b.ToTable("ReceiveProduct");
-
-                    b.HasData(
-                        new { Id = 1, CreatedDate = new DateTime(2018, 11, 21, 0, 20, 38, 708, DateTimeKind.Local), Deleted = false, ModifiedDate = new DateTime(2018, 11, 21, 0, 20, 38, 708, DateTimeKind.Local), SaleId = 1, ShipToName = "Ichi", ShipToPhone = "0888888888", UniqueId = new Guid("422bde86-10a8-40f2-9d65-164c2278ce24") },
-                        new { Id = 2, CreatedDate = new DateTime(2018, 11, 21, 0, 20, 38, 708, DateTimeKind.Local), Deleted = false, ModifiedDate = new DateTime(2018, 11, 21, 0, 20, 38, 708, DateTimeKind.Local), SaleId = 2, ShipToName = "Gau Gau", ShipToPhone = "094464467", UniqueId = new Guid("31b51513-25dc-4bcb-a175-43cd1f088c98") }
-                    );
                 });
 
             modelBuilder.Entity("ComiShop.SaleOrder", b =>
@@ -363,14 +340,7 @@ namespace ComiShop.Migrations
 
                     b.HasIndex("ApplicationUserId");
 
-                    b.HasIndex("ShipperId");
-
                     b.ToTable("SaleOrder");
-
-                    b.HasData(
-                        new { Id = 1, CreatedDate = new DateTime(2018, 11, 21, 0, 20, 38, 708, DateTimeKind.Local), Deleted = false, ModifiedDate = new DateTime(2018, 11, 21, 0, 20, 38, 708, DateTimeKind.Local), Payment = false, ShipperId = 1, TotalPrice = 50.0, UniqueId = new Guid("c5c1296f-3a82-4859-8cec-a11237435dd6"), UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e575" },
-                        new { Id = 2, CreatedDate = new DateTime(2018, 11, 21, 0, 20, 38, 708, DateTimeKind.Local), Deleted = false, ModifiedDate = new DateTime(2018, 11, 21, 0, 20, 38, 708, DateTimeKind.Local), Payment = false, ShipperId = 1, TotalPrice = 120.0, UniqueId = new Guid("975a2b2f-c1dd-4445-a5e1-dba25e377c75"), UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e575" }
-                    );
                 });
 
             modelBuilder.Entity("ComiShop.SaleOrderDetail", b =>
@@ -404,11 +374,6 @@ namespace ComiShop.Migrations
                     b.HasIndex("SaleOrderId");
 
                     b.ToTable("SaleOrderDetail");
-
-                    b.HasData(
-                        new { Id = 1, CreatedDate = new DateTime(2018, 11, 21, 0, 20, 38, 708, DateTimeKind.Local), Deleted = false, ModifiedDate = new DateTime(2018, 11, 21, 0, 20, 38, 708, DateTimeKind.Local), ProductId = 1, Quantity = 1, SaleOrderId = 1, UniqueId = new Guid("16929525-0834-4299-ab89-9cd792d79be4"), UnitPrice = 50.0 },
-                        new { Id = 2, CreatedDate = new DateTime(2018, 11, 21, 0, 20, 38, 708, DateTimeKind.Local), Deleted = false, ModifiedDate = new DateTime(2018, 11, 21, 0, 20, 38, 708, DateTimeKind.Local), ProductId = 3, Quantity = 2, SaleOrderId = 2, UniqueId = new Guid("9fc33088-1234-4edb-a30a-1166863d07d7"), UnitPrice = 60.0 }
-                    );
                 });
 
             modelBuilder.Entity("ComiShop.Shipper", b =>
@@ -436,8 +401,8 @@ namespace ComiShop.Migrations
                     b.ToTable("Shipper");
 
                     b.HasData(
-                        new { Id = 1, ContactName = "Anga", ContactPhone = "094123321", CreatedDate = new DateTime(2018, 11, 21, 0, 20, 38, 707, DateTimeKind.Local), Deleted = false, ModifiedDate = new DateTime(2018, 11, 21, 0, 20, 38, 707, DateTimeKind.Local), UniqueId = new Guid("5610bcf9-4b14-4b3e-9468-f06674e5b84c") },
-                        new { Id = 2, ContactName = "Husky", ContactPhone = "037864457", CreatedDate = new DateTime(2018, 11, 21, 0, 20, 38, 708, DateTimeKind.Local), Deleted = false, ModifiedDate = new DateTime(2018, 11, 21, 0, 20, 38, 708, DateTimeKind.Local), UniqueId = new Guid("a2a91757-7b17-4513-892b-d3aa57035506") }
+                        new { Id = 1, ContactName = "Anga", ContactPhone = "094123321", CreatedDate = new DateTime(2018, 11, 26, 23, 4, 10, 774, DateTimeKind.Local), Deleted = false, ModifiedDate = new DateTime(2018, 11, 26, 23, 4, 10, 774, DateTimeKind.Local), UniqueId = new Guid("f18fca14-a9d2-4ec4-8553-5fc9ef6e0bc9") },
+                        new { Id = 2, ContactName = "Husky", ContactPhone = "037864457", CreatedDate = new DateTime(2018, 11, 26, 23, 4, 10, 774, DateTimeKind.Local), Deleted = false, ModifiedDate = new DateTime(2018, 11, 26, 23, 4, 10, 774, DateTimeKind.Local), UniqueId = new Guid("2c1a3bde-3da0-4661-bf86-e1b9a546c8f0") }
                     );
                 });
 
@@ -582,11 +547,6 @@ namespace ComiShop.Migrations
                     b.HasOne("ComiShop.Models.ApplicationUser", "ApplicationUser")
                         .WithMany("SaleOrders")
                         .HasForeignKey("ApplicationUserId");
-
-                    b.HasOne("ComiShop.Shipper", "Shipper")
-                        .WithMany("SaleOrders")
-                        .HasForeignKey("ShipperId")
-                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("ComiShop.SaleOrderDetail", b =>

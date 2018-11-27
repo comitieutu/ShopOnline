@@ -8,11 +8,9 @@
 
 <div id="page-wrapper">
     <div class="main-page">
-        <h2>ProductDetail</h2>
+        <h2>Product detail</h2>
         <div class="row">
             <div class="col-md-10">
-                <h4>Product Detail</h4>
-                <hr />
                 <table class="table table-responsive table-bordered table-condensed">
                     <thead>
                         <tr>
@@ -38,7 +36,11 @@
                             <td rowspan="@rowSpan" style="vertical-align: middle">@(Model.DesDetail)</td>
                             <td rowspan="@rowSpan" style="vertical-align: middle">@(Model.Quantity)</td>
                             <td rowspan="@rowSpan" style="vertical-align: middle">@(Model.UnitPrice)</td>
-                            <td><img src="~/images/@image" width="50" height="60"/></td>
+                            <td><img src="~/images/@image" width="50" height="60" /></td>
+                            <td rowspan="@rowSpan" style="vertical-align: middle">
+                                <a asp-action="ProductEdit" asp-route-id="@(Model.Id)">Edit</a> |
+                                <a asp-action="ProductDelete" asp-route-id="@(Model.Id)">Delete</a>
+                            </td>
                         </tr>
                             }
                             else
@@ -55,8 +57,8 @@
         <div class="row">
             <div class="col-md-10">
                 <div>
-                    <a asp-action="ProductEdit" asp-route-id="@(Model.Id)">Edit</a> |
-                    <a asp-action="DataWarehouse">Back to List</a>
+                    <a asp-controller="Admin" asp-action="ProductEdit" asp-route-id="@(Model.Id)">Edit</a> |
+                    <a asp-controller="Admin" asp-action="DataWarehouse">Back to List</a>
                 </div>
             </div>
         </div>

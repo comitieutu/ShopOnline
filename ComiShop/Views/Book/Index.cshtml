@@ -9,16 +9,16 @@
             <div class="core-slider_viewport">
                 <div class="core-slider_list">
                     <div class="core-slider_item">
-                        <img src="~/images/b1.jpg" class="img-responsive" alt="">
+                        <img src="~/images/desk-white-black-header2.jpg" class="img-responsive" alt="">
                     </div>
                     <div class="core-slider_item">
-                        <img src="~/images/b2.jpg" class="img-responsive" alt="">
+                        <img src="~/images/pexels-photo-1098601.jpeg" class="img-responsive" alt="">
                     </div>
                     <div class="core-slider_item">
-                        <img src="~/images/b3.jpg" class="img-responsive" alt="">
+                        <img src="~/images/pexels-photo-1526049.jpeg" class="img-responsive" alt="">
                     </div>
                     <div class="core-slider_item">
-                        <img src="~/images/b4.jpg" class="img-responsive" alt="">
+                        <img src="~/images/pexels-photo-459791.jpeg" class="img-responsive" alt="">
                     </div>
                 </div>
             </div>
@@ -46,37 +46,22 @@
         <div class="container">
             <div class="col-md-6 ban-bottom">
                 <div class="ban-top">
-                    <img src="images/p1.jpg" class="img-responsive" alt="" />
-                    <div class="ban-text">
-                        <h4>Men’s Clothing</h4>
-                    </div>
-                    <div class="ban-text2 hvr-sweep-to-top">
-                        <h4>50% <span>Off/-</span></h4>
-                    </div>
+                    <img src="~/images/pexels-photo-590493.jpeg" width="540" height="580" alt="" />
                 </div>
             </div>
             <div class="col-md-6 ban-bottom3">
                 <div class="ban-top">
-                    <img src="images/p2.jpg" class="img-responsive" alt="" />
-                    <div class="ban-text1">
-                        <h4>Women's Clothing</h4>
-                    </div>
+                    <img src="~/images/pexels-photo-904616.jpeg" width="540" height="295" alt="" />
                 </div>
                 <div class="ban-img">
                     <div class=" ban-bottom1">
                         <div class="ban-top">
-                            <img src="images/p3.jpg" class="img-responsive" alt="" />
-                            <div class="ban-text1">
-                                <h4>T - Shirt</h4>
-                            </div>
+                            <img src="~/images/stack-of-books-vintage-books-book-books.jpg" width="259" height="259" alt="" />
                         </div>
                     </div>
                     <div class="ban-bottom2">
                         <div class="ban-top">
-                            <img src="images/p4.jpg" class="img-responsive" alt="" />
-                            <div class="ban-text1">
-                                <h4>Hand Bag</h4>
-                            </div>
+                            <img src="~/images/pexels-photo-176103.jpeg" width="259" height="259" alt="" />
                         </div>
                     </div>
                     <div class="clearfix"></div>
@@ -97,12 +82,12 @@
                         <div class="grid-arr">
                             <div class="grid-arrival">
                                 <figure>
-                                    <a asp-controller="Product" asp-action="Details" asp-route-id="@i.Id" class="new-gri">
+                                    <a asp-controller="Product" asp-action="Details" asp-route-id="@i.Id" class="new-grid">
                                         @foreach (var detail in i.ProductDetails)
                                         {
                                             flag++;
                                             <div class="grid-img">
-                                                <img src="~/images/@detail.ProductImage" class="img-responsive" alt="">
+                                                <img src="~/images/@detail.ProductImage" width="235" height="314" alt="">
                                             </div>
                                             if (flag == 2)
                                             { break; }
@@ -118,8 +103,7 @@
                                 <div class="starbox small ghosting"> </div>
                             </div>
                             <div class="women">
-                                <h6><a asp-controller="Product" asp-action="Details" asp-route-id="@i.Id">@i.ProductName</a></h6>
-                                <span class="size">XL / XXL / S </span>
+                                <p><b><a asp-controller="Product" asp-action="Details" asp-route-id="@i.Id">@i.ProductName</a></b></p>
                                 <p><em class="item_price">$@i.UnitPrice</em></p>
                                 <a asp-controller="Cart" asp-action="Buy" asp-route-id="@i.Id" data-text="Add To Cart" class="my-cart-b item_add addItem">Add To Cart</a>
                             </div>
@@ -134,12 +118,6 @@
     <!--accessories-->
     <div class="accessories-w3l">
         <div class="container">
-            <h3 class="tittle">20% Discount on</h3>
-            <span>TRENDING DESIGNS</span>
-            <div class="button">
-                <a href="#" class="button1"> Shop Now</a>
-                <a href="#" class="button1"> Quick View</a>
-            </div>
         </div>
     </div>
     <!--accessories-->
@@ -174,7 +152,6 @@
                             </div>
                             <div class="women">
                                 <h6><a asp-controller="Product" asp-action="Details" asp-route-id="@i.Id">@i.ProductName</a></h6>
-                                <span class="size">XL / XXL / S </span>
                                 <p><em class="item_price">$@i.UnitPrice</em></p>
                                 <a <a asp-controller="Cart" asp-action="Buy" asp-route-id="@i.Id" data-text="Add To Cart" class="my-cart-b item_add addItem">Add To Cart</a>
                             </div>
@@ -186,7 +163,7 @@
         </div>
     </div>
     <!--Products-->
-    <div class="latest-w3">
+    @*<div class="latest-w3">
         <div class="container">
             <h3 class="tittle1">Latest Fashion Trends</h3>
             <div class="latest-grids">
@@ -262,7 +239,7 @@
                 <div class="clearfix"></div>
             </div>
         </div>
-    </div>
+    </div>*@
 
     <!--new-arrivals-->
 

@@ -4,7 +4,7 @@
     ViewData["Title"] = "Index";
     List<string> label = new List<string>();
     List<int> data = new List<int>();
-    @foreach (var item in Model)
+    foreach (var item in Model)
     {
         label.Add(item.CategoryName);
         data.Add(item.TotalQuantity);
@@ -19,7 +19,7 @@
         <div class="row-one">
             <div class="col-md-4 widget">
                 <div class="stats-left ">
-                    <h5>Today + @label</h5>
+                    <h5>Today + @label[0]</h5>
                     <h4>Sales</h4>
                 </div>
                 <div class="stats-right">
