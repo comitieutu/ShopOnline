@@ -92,3 +92,4 @@ C:\Users\User\source\repos\BookLib\ComiShop\bin\Debug\netcoreapp2.1\ComiShop.Vie
 C:\Users\User\source\repos\BookLib\ComiShop\bin\Debug\netcoreapp2.1\ComiShop.Views.pdb
 C:\Users\User\source\repos\BookLib\ComiShop\obj\Debug\netcoreapp2.1\ComiShop.Views.pdb
 C:\Users\User\source\repos\BookLib\ComiShop\obj\Debug\netcoreapp2.1\ComiShop.csproj.CopyComplete
+C:\Users\User\source\repos\BookLib\ComiShop\obj\Debug\netcoreapp2.1\ComiShop.csprojAssemblyReference.cache

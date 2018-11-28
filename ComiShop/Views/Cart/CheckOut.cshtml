@@ -54,16 +54,26 @@
             <div class="col-sm-8">
                 @if (ViewBag.method == "cash")
                 {
-                    <input type="submit" value="Complete" formaction="CheckOutCash" />
+                    <input type="submit" value="Complete" formaction="CheckOutCash" class="removeAllLocalStorage"/>
                 }
                 else
                 {
-                    <input type="submit" value="Complete" formaction="CheckOutPaypal" />
+                    <input type="submit" value="Complete" formaction="CheckOutPaypal" class="removeAllLocalStorage"/>
                 }
                 <a asp-controller="Cart" asp-action="Index" class="btn btn-default">Back</a>
             </div>
-            
         </div>
+
+        <script>
+            $(document).ready(function() {
+                $(".removeAllLocalStorage").click(function() {
+                    Object.keys(localStorage).forEach(function(key) {
+                        localStorage.removeItem(key);
+                    });
+                });
+            });
+        </script>
+
     </form>
 </div>
 

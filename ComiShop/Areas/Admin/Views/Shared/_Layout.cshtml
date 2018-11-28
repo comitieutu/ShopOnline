@@ -53,8 +53,8 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                 <nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1">
                     <ul class="nav" id="side-menu">
                         <li>
-                            <a><i class="fa fa-cogs nav_icon"></i>Category management <span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level collapse">
+                            <a>Category management</a>
+                            <ul class="nav nav-second-level">
                                 <li>
                                     <a asp-controller="Admin" asp-action="CreateCategory">Create category</a>
                                 </li>
@@ -64,16 +64,16 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                             </ul>
                         </li>
                         <li>
-                            <a><i class="fa fa-cogs nav_icon"></i>Product management <span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level collapse">
+                            <a></i>Product management</a>
+                            <ul class="nav nav-second-level">
                                 <li>
                                     <a asp-controller="Admin" asp-action="CreateProduct">Create product</a>
                                 </li>
                             </ul>
                         </li>
                         <li>
-                            <a><i class="fa fa-cogs nav_icon"></i>Sales order management <span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level collapse">
+                            <a>Sales order management</a>
+                            <ul class="nav nav-second-level">
                                 <li>
                                     <a asp-controller="SalesOrder" asp-action="GetAll">All sales order</a>
                                 </li>
@@ -85,7 +85,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                         @if(User.IsInRole("SuperAdmin"))
                         {
                             <li>
-                                <a asp-controller="Users" asp-action="Index"><i class="fa fa-cogs nav_icon"></i>User management</a>
+                                <a asp-controller="Users" asp-action="Index">User management</a>
                             </li>
                         }
                         <li>
