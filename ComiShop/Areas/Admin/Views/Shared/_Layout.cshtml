@@ -32,17 +32,13 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
     <!-- chart -->
     <script src="~/js/jsAdmin/Chart.js"></script>
     <!-- //chart -->
-    <!--Calender-->
-    <link rel="stylesheet" href="~/css/cssAdmin/clndr.css" type="text/css" />
-    <script src="~/js/jsAdmin/underscore-min.js" type="text/javascript"></script>
-    <script src="~/js/jsAdmin/moment-2.2.1.js" type="text/javascript"></script>
-    <script src="~/js/jsAdmin/clndr.js" type="text/javascript"></script>
-    <script src="~/js/jsAdmin/site.js" type="text/javascript"></script>
-    <!--End Calender-->
+    
     <!-- Metis Menu -->
     <script src="~/js/jsAdmin/metisMenu.min.js"></script>
     <script src="~/js/jsAdmin/custom.js"></script>
     <link href="~/css/cssAdmin/custom.css" rel="stylesheet" />
+    <script src="~/js/jsAdmin/collapsible.js"></script>
+    <link href="~/css/cssAdmin/collapsible.css" rel="stylesheet" />
     <!--//Metis Menu -->
 </head>
 <body class="cbp-spmenu-push">
@@ -53,7 +49,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                 <nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1">
                     <ul class="nav" id="side-menu">
                         <li>
-                            <a>Category management</a>
+                            <a class="collapsible">Category management</a>
                             <ul class="nav nav-second-level">
                                 <li>
                                     <a asp-controller="Admin" asp-action="CreateCategory">Create category</a>
@@ -64,7 +60,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                             </ul>
                         </li>
                         <li>
-                            <a></i>Product management</a>
+                            <a class="collapsible">Product management</a>
                             <ul class="nav nav-second-level">
                                 <li>
                                     <a asp-controller="Admin" asp-action="CreateProduct">Create product</a>
@@ -72,7 +68,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                             </ul>
                         </li>
                         <li>
-                            <a>Sales order management</a>
+                            <a class="collapsible">Sales order management</a>
                             <ul class="nav nav-second-level">
                                 <li>
                                     <a asp-controller="SalesOrder" asp-action="GetAll">All sales order</a>
@@ -82,14 +78,19 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                                 </li>
                             </ul>
                         </li>
-                        @if(User.IsInRole("SuperAdmin"))
+                        @if (User.IsInRole("SuperAdmin"))
                         {
                             <li>
-                                <a asp-controller="Users" asp-action="Index">User management</a>
+                                <a class="collapsible">User management</a>
+                                <ul class="nav nav-second-level">
+                                    <li>
+                                        <a asp-controller="Users" asp-action="Index">All user</a>
+                                    </li>
+                                </ul>
                             </li>
                         }
                         <li>
-                            <a href="#">Forms</a>
+                            <a class="collapsible">Forms</a>
                             <ul class="nav nav-second-level">
                                 <li>
                                     <a asp-controller="Admin" asp-action="DataWarehouse">Warehouse</a>
@@ -331,27 +332,36 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
         <!--//footer-->
     </div>
     <!-- Classie -->
-    <script src="~/js/classie.js"></script>
+    <script src="~/js/jsAdmin/classie.js"></script>
     <script>
-        var menuLeft = document.getElementById('cbp-spmenu-s1'),
-            showLeftPush = document.getElementById('showLeftPush'),
-            body = document.body;
+        $(document).ready(function () {
+            var menuLeft = document.getElementById('cbp-spmenu-s1'),
+                showLeftPush = document.getElementById('showLeftPush'),
+                body = document.body;
 
-        showLeftPush.onclick = function () {
-            classie.toggle(this, 'active');
-            classie.toggle(body, 'cbp-spmenu-push-toright');
-            classie.toggle(menuLeft, 'cbp-spmenu-open');
-            disableOther('showLeftPush');
-        };
+            showLeftPush.onclick = function () {
+                classie.toggle(this, 'active');
+                classie.toggle(body, 'cbp-spmenu-push-toright');
+                classie.toggle(menuLeft, 'cbp-spmenu-open');
+                disableOther('showLeftPush');
+            };
 
 
-        function disableOther(button) {
-            if (button !== 'showLeftPush') {
-                classie.toggle(showLeftPush, 'disabled');
+            function disableOther(button) {
+                if (button !== 'showLeftPush') {
+                    classie.toggle(showLeftPush, 'disabled');
+                }
             }
         }
     </script>
     <!--scrolling js-->
+    <!--Calender-->
+    <link rel="stylesheet" href="~/css/cssAdmin/clndr.css" type="text/css" />
+    <script src="~/js/jsAdmin/underscore-min.js" type="text/javascript"></script>
+    <script src="~/js/jsAdmin/moment-2.2.1.js" type="text/javascript"></script>
+    <script src="~/js/jsAdmin/clndr.js" type="text/javascript"></script>
+    <script src="~/js/jsAdmin/site.js" type="text/javascript"></script>
+    <!--End Calender-->
     <script src="~/js/jquery.nicescroll.js"></script>
     <script src="~/js/scripts.js"></script>
     <!--//scrolling js-->

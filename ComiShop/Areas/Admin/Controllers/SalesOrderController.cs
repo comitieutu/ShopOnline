@@ -92,8 +92,8 @@ namespace ComiShop.Areas.Admin.Controllers
         public IActionResult SaleOrderDetail(int id)
         {
             var salesOrderDetail = _unitOfWork.SaleOrderDetailRepository.GetAll()
-                .Where(s => s.SaleOrderId == id).Single();
-            var salesOrderDetailView = _mapper.Map<SaleOrderDetailViewModel>(salesOrderDetail);
+                .Where(s => s.SaleOrderId == id).ToList();
+            var salesOrderDetailView = _mapper.Map<List<SaleOrderDetailViewModel>>(salesOrderDetail);
             return View(salesOrderDetailView);
         }
     }
