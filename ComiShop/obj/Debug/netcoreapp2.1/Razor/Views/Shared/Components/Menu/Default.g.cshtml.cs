@@ -87,7 +87,7 @@ using ComiShop.ViewModels;
             WriteLiteral("                        <li>");
             EndContext();
             BeginContext(515, 99, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "af7c47f5623740c7a3c890fdefd8d869", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "7e6b2af8e9c54837bf8e494a5e76a383", async() => {
                 BeginContext(593, 17, false);
 #line 14 "C:\Users\User\source\repos\BookLib\ComiShop\Views\Shared\Components\Menu\Default.cshtml"
                                                                                                     Write(item.CategoryName);
@@ -157,7 +157,7 @@ using ComiShop.ViewModels;
             WriteLiteral("                        <li>");
             EndContext();
             BeginContext(1171, 99, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "7ca8511946834cf3aaa7e3b4a9bdea34", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "09cbf9ebde814c4c96ede85b602ec981", async() => {
                 BeginContext(1249, 17, false);
 #line 30 "C:\Users\User\source\repos\BookLib\ComiShop\Views\Shared\Components\Menu\Default.cshtml"
                                                                                                     Write(item.CategoryName);
@@ -227,7 +227,7 @@ using ComiShop.ViewModels;
             WriteLiteral("                        <li>");
             EndContext();
             BeginContext(1856, 99, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "10438d37b526493b838fb33690b52bf8", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "90013232d7da4064a74dd599460eed5f", async() => {
                 BeginContext(1934, 17, false);
 #line 46 "C:\Users\User\source\repos\BookLib\ComiShop\Views\Shared\Components\Menu\Default.cshtml"
                                                                                                     Write(item.CategoryName);
