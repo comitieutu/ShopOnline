@@ -1,4 +1,4 @@
-﻿@model SaleOrderDetailViewModel
+﻿@model List<SaleOrderDetailViewModel>
 @{
     ViewData["Title"] = "SaleOrderDetail";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
@@ -22,26 +22,29 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>
-                                @Model.Id
-                            </td>
-                            <td>
-                                @Model.SaleOrderId
-                            </td>
-                            <td>
-                                @Model.ProductId
-                            </td>
-                            <td>
-                                @Model.Quantity
-                            </td>
-                            <td>
-                                @Model.UnitPrice
-                            </td>
-                            <td>
-                                @Model.Discount
-                            </td>
-                        </tr>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @item.Id
+                                </td>
+                                <td>
+                                    @item.SaleOrderId
+                                </td>
+                                <td>
+                                    @item.ProductId
+                                </td>
+                                <td>
+                                    @item.Quantity
+                                </td>
+                                <td>
+                                    @item.UnitPrice
+                                </td>
+                                <td>
+                                    @item.Discount
+                                </td>
+                            </tr>
+                        }
                     </tbody>
                 </table>
                 <div>
